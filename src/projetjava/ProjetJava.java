@@ -16,7 +16,7 @@ public class ProjetJava {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        //XXX
+        //test3
         //test2kokia
     }
     
