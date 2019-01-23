@@ -10,5 +10,5 @@ package projetjava;
  * @author fayet64
  */
 public class Test {
-    
+    //XXX
 }
