@@ -11,6 +11,7 @@ import java.util.HashMap;
  *
  * @author Julien Fayet
  */
+
 public class Chaine {
     private String Code;
     private String Nom;
