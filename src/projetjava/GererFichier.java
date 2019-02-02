@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package projetjava;
 
 import java.io.BufferedReader;
@@ -5,18 +10,17 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
-public class ImportFichier {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-// array liste contenant les element lus depuis le fichier csv
-		ArrayList<Element> elements =new ArrayList <Element>();
-		ArrayList<Chaine> chaineProd =new ArrayList <Chaine>();
+/**
+ *
+ * @author Julien Fayet
+ */
+public class GererFichier {
+                private static ArrayList<Element> elements =new ArrayList <Element>();
+		private static ArrayList<Chaine> chaineProd =new ArrayList <Chaine>();
 		//Lecture du fichier cntenant les elements 
-		
+		public static void charger(){
 		try {
 			//ouvert en mode lecture 
 			FileReader elem = new FileReader("elements.csv");
@@ -137,4 +141,15 @@ public class ImportFichier {
 		
 	}
 
+    public static ArrayList<Element> getElements() {
+        return elements;
+    }
+
+
+    public static ArrayList<Chaine> getChaineProd() {
+        return chaineProd;
+    }
+
+                
 }
+

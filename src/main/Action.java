@@ -5,6 +5,11 @@
  */
 package main;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import projetjava.Element;
+import projetjava.GererFichier;
+
 /**
  *
  * @author Julien Fayet
@@ -44,6 +49,11 @@ public class Action extends javax.swing.JFrame {
         });
 
         btnProduire.setText("Produire");
+        btnProduire.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProduireActionPerformed(evt);
+            }
+        });
 
         btnFermer.setText("Fermer");
 
@@ -86,7 +96,13 @@ public class Action extends javax.swing.JFrame {
 
     private void btnStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStockActionPerformed
         // TODO add your handling code here:
+        maProcedureActionPerformed(evt);
     }//GEN-LAST:event_btnStockActionPerformed
+
+    private void btnProduireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProduireActionPerformed
+        // TODO add your handling code here:
+        maProcedureActionPerformed(evt);
+    }//GEN-LAST:event_btnProduireActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,6 +138,30 @@ public class Action extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void maProcedureActionPerformed(java.awt.event.ActionEvent evt) {
+        Object source = evt.getSource();
+        String laChaine = null;
+        if (source == btnStock) {
+            JOptionPane.showMessageDialog(null,"Vous avez ouvert le stock") ; 
+            Stock laFenetreAction;
+            GererFichier.charger();
+            ArrayList<Element> elements =new ArrayList <Element>();
+            Element objElement=elements.get(0);
+	    laFenetreAction= new Stock(objElement);
+            laFenetreAction.setVisible(true);
+        } else {
+            if (source == btnProduire) {
+            JOptionPane.showMessageDialog(null,"Vous avez ouvert la production") ;            
+            Production laFenetreProduction;
+	    laFenetreProduction= new Production();
+            laFenetreProduction.setVisible(true);
+        }
+        }
+
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFermer;

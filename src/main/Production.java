@@ -123,6 +123,7 @@ public class Production extends javax.swing.JFrame {
 
     private void btnValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValiderActionPerformed
         // TODO add your handling code here:
+        System.out.println("test 77");
     }//GEN-LAST:event_btnValiderActionPerformed
 
     /**
