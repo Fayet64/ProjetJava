@@ -27,7 +27,7 @@ public class ProjetJava {
         }
 */
         GererFichier.charger();
-        Chaine objChaine=GererFichier.getChaineProd().get(2);
+        Chaine objChaine=GererFichier.getChaineProd().get(0);
         objChaine.produire(1);
         ArrayList<Element> lesElements=GererFichier.getElements();
         System.out.println(objChaine.getSortie().get(lesElements.get(5)));
