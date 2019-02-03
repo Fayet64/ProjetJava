@@ -79,7 +79,7 @@ public void produire (int nvx){
            // achat=this.verifStock(lesElements.indexOf(me2.getKey()));
             Element objE=(Element) me2.getKey();
             achat=objE.verifStock(this);
-            System.out.println(achat);
+            //System.out.println(achat);
         }
      
          
@@ -87,18 +87,18 @@ public void produire (int nvx){
     if(achat!=false){
         Element objElement=new Element();
         Iterator iterator2 = this.sortie.entrySet().iterator();
-        while (iterator2.hasNext() && achat==true) {
+        while (iterator2.hasNext()) {
              Map.Entry me2 = (Map.Entry) iterator2.next();
             objElement=(Element) me2.getKey();
         }
                 double newQuante= this.sortie.get(objElement);
-                System.out.println(" quantite: "+newQuante);
+                System.out.println(" Quantite en sortie du produit "+objElement.getNom()+" : "+newQuante);
                 // il faut une methode qui prend la quantie de lelement produit et lajouter au elements deja present dans element du coup ça fera un truc du genre pour la chiane de prod 1 
                 // quantite du produit e005 + 1
                 //en gros ca donne ça
-                    System.out.println("Quantite : "+objElement.getQuantite());
+                    System.out.println("Quantite du produit "+objElement.getNom()+ " avant "+objElement.getQuantite());
                      objElement.setQuantite(objElement.getQuantite()+(newQuante*nvx)) ;
-                     System.out.println("Quantite : "+objElement.getQuantite());
+                     System.out.println("Quantite du produit "+objElement.getNom()+ " après "+objElement.getQuantite());
                 // retirer les quantité 
                 Element objElement2=new Element();
                 Iterator iterator3 = this.entree.entrySet().iterator();
@@ -106,10 +106,10 @@ public void produire (int nvx){
                 while (iterator3.hasNext()) {
              Map.Entry me2 = (Map.Entry) iterator3.next();
             objElement2=(Element) me2.getKey();
-            System.out.println("Quantite de "+objElement2.getNom()+" avant: "+objElement2.getQuantite());
+            System.out.println("Quantite de matière première "+objElement2.getNom()+" avant: "+objElement2.getQuantite());
             double newQuantite= this.entree.get(me2.getKey());
             objElement2.setQuantite(objElement2.getQuantite()-newQuantite*nvx);
-            System.out.println("Quantite de "+objElement2.getNom()+" apres: "+objElement2.getQuantite());
+            System.out.println("Quantite de matière première "+objElement2.getNom()+" apres: "+objElement2.getQuantite());
         }
                        
                      // Fin de la premiere chaine de production 

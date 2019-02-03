@@ -7,8 +7,10 @@ package main;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import projetjava.Chaine;
 import projetjava.Element;
 import projetjava.GererFichier;
+import projetjava.Test2;
 
 /**
  *
@@ -56,17 +58,16 @@ public class Action extends javax.swing.JFrame {
         });
 
         btnFermer.setText("Fermer");
+        btnFermer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFermerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(btnStock)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnProduire)
-                .addGap(90, 90, 90))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -76,6 +77,12 @@ public class Action extends javax.swing.JFrame {
                         .addGap(170, 170, 170)
                         .addComponent(btnFermer)))
                 .addContainerGap(50, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(btnStock)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnProduire)
+                .addGap(90, 90, 90))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,6 +110,11 @@ public class Action extends javax.swing.JFrame {
         // TODO add your handling code here:
         maProcedureActionPerformed(evt);
     }//GEN-LAST:event_btnProduireActionPerformed
+
+    private void btnFermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFermerActionPerformed
+        // TODO add your handling code here:
+        maProcedureActionPerformed(evt);
+    }//GEN-LAST:event_btnFermerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,19 +154,23 @@ public class Action extends javax.swing.JFrame {
     private void maProcedureActionPerformed(java.awt.event.ActionEvent evt) {
         Object source = evt.getSource();
         String laChaine = null;
+        if(source==btnFermer){
+            this.dispose();
+        }
         if (source == btnStock) {
             JOptionPane.showMessageDialog(null,"Vous avez ouvert le stock") ; 
             Stock laFenetreAction;
             GererFichier.charger();
-            ArrayList<Element> elements =new ArrayList <Element>();
-            Element objElement=elements.get(0);
-	    laFenetreAction= new Stock(objElement);
+            ArrayList<Element> elements =GererFichier.getElements();
+	    laFenetreAction= new Stock(elements);
             laFenetreAction.setVisible(true);
         } else {
             if (source == btnProduire) {
-            JOptionPane.showMessageDialog(null,"Vous avez ouvert la production") ;            
+            JOptionPane.showMessageDialog(null,"Vous avez ouvert la production") ;
+            GererFichier.charger();            
             Production laFenetreProduction;
-	    laFenetreProduction= new Production();
+            ArrayList<Chaine> chaines =GererFichier.getChaineProd();
+	    laFenetreProduction= new Production(chaines);
             laFenetreProduction.setVisible(true);
         }
         }
