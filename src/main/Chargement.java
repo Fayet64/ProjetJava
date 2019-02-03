@@ -38,11 +38,6 @@ public class Chargement extends javax.swing.JFrame {
         Selection.setText("Veuillez séléctionnez le fichier : ");
 
         btnValider.setText("Valider");
-        btnValider.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnValiderActionPerformed(evt);
-            }
-        });
 
         jButton1.setText("Choisir");
 
@@ -98,10 +93,6 @@ public class Chargement extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void btnValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValiderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnValiderActionPerformed
 
     /**
      * @param args the command line arguments

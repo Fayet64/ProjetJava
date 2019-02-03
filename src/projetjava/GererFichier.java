@@ -51,6 +51,8 @@ public class GererFichier {
 				Element el= new Element(code,nom,quantite,unite,achat,vente);
 				elements.add(el);
 
+
+				
 			}
 			// le dernier a etre ouvert est le premier que tu ferme !!! mais ca depend de lchronologie
 			br.close();
