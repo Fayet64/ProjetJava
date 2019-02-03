@@ -17,7 +17,6 @@ private String unite;
 private double achat;
 private double vente;
 public Element(String code, String nom, double quantite, String unite, double achat, double vente) {
-	super();
 	this.code = code;
 	this.nom = nom;
 	this.quantite = quantite;
@@ -25,6 +24,16 @@ public Element(String code, String nom, double quantite, String unite, double ac
 	this.achat = achat;
 	this.vente = vente;
 }
+
+    public Element() {
+        this.code = "";
+	this.nom = "";
+	this.quantite = 0;
+	this.unite = "";
+	this.achat = 0;
+	this.vente = 0;
+    }
+
 public String getCode() {
 	return code;
 }
@@ -93,7 +102,19 @@ public void verifierPrixVente(){
     
 }
 
-public void verifierStock(){
-    
+public boolean verifStock(Chaine laChaine){
+    boolean res=true;
+    if (laChaine.getEntree().get(this) > this.getQuantite()){
+        if (this.getAchat()==0){
+            System.out.println("Nous ne pouvons pas faire ce produit");
+            res=false;
+        }
+             else {
+                 double l = laChaine.getEntree().get(this) - this.getQuantite();
+                   // Achat.ajoutQ(l);
+                System.out.println("le produit a ete commandé");
+                    }
+    }
+    return res;
 }
 }

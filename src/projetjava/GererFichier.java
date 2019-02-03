@@ -134,7 +134,7 @@ public class GererFichier {
 			
 			e.printStackTrace();
 		}
-                System.out.println(elements.get(0).getCode());
+                //System.out.println(elements.get(0).getCode());
 		//System.out.println(Arrays.toString(elements.toArray()));
 		//System.out.println(Arrays.toString(chaineProd.toArray()));
 

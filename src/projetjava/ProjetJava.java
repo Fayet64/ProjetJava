@@ -5,6 +5,8 @@
  */
 package projetjava;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author fayet64
@@ -18,11 +20,17 @@ public class ProjetJava {
         // TODO code application logic here
         //fayet
         //test2kokia
-        
-        //soustractionStockElement(10); 
-        //if(this.niveau==0){
-          //  Syst
-        //}
+        /*
+        soustractionStockElement(10); 
+        if(this.niveau==0){
+            Syst
+        }
+*/
+        GererFichier.charger();
+        Chaine objChaine=GererFichier.getChaineProd().get(2);
+        objChaine.produire(1);
+        ArrayList<Element> lesElements=GererFichier.getElements();
+        System.out.println(objChaine.getSortie().get(lesElements.get(5)));
     }
         
 }

@@ -5,7 +5,10 @@
  */
 package projetjava;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  *
@@ -25,7 +28,6 @@ public class Chaine {
         this.sortie=new HashMap <Element,Double>();
     }
     public Chaine(String code, String nom, HashMap<Element, Double> entree, HashMap<Element, Double> sortie) {
-	super();
 	this.code = code;
 	this.nom = nom;
 	this.entree = entree;
@@ -59,81 +61,84 @@ public void setSortie(HashMap<Element, Double> sortie) {
 public String toString() {
 	return "ChaineDeProduction [code=" + code + ", nom=" + nom + ", entree=" + entree + ", sortie=" + sortie + "]\n";
 }
-public void produire (int  nvx, int n){
-    //1erer etape recuperer les produits dont on a besoin pour la chaine choisi en parametre
-    GererFichier.getChaineProd().get(n);
+public void produire (int nvx){
+    //1erer etape recuperer les produit dont on a besoin pour la chaine choisi en parametre
+   // Chaine laChaine =GererFichier.getChaineProd().get(nbChaine);
     //regarder combien de produit on a besoin en entrée.BOF PAS BESOIN CAR ON CONNAIT DEJA LE CODE DE LA CHAINE 
-     GererFichier.getChaineProd().get(n).entree.size();
+    // GererFichier.getChaineProd().get(n).entree.size();
      GererFichier.getChaineProd().get(1).entree.get(GererFichier.getElements().get(1));
+     ArrayList<Element> lesElements=GererFichier.getElements();
+     
+     boolean achat=true;
+     Iterator iterator = this.entree.entrySet().iterator();
+        while (iterator.hasNext() && achat==true) {
+             Map.Entry me2 = (Map.Entry) iterator.next();
+            //System.out.println("Test : Key: "+me2.getKey() + " & Value: " + me2.getValue());
+            //System.out.println(lesElements.indexOf(me2.getKey()));
+            //System.out.println(this.verifStock(lesElements.indexOf(me2.getKey())));
+           // achat=this.verifStock(lesElements.indexOf(me2.getKey()));
+            Element objE=(Element) me2.getKey();
+            achat=objE.verifStock(this);
+            System.out.println(achat);
+        }
      
          
-     // Gestion de la premiere chaine de production 
-    //2eme etape pour chaque produit verifier que cette matiere premeire ou produit existe (le get(n) cest quel chaine qui va etre choisi 
-    if (GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(3)) > GererFichier.getElements().get(3).getQuantite()){
-        if (GererFichier.getElements().get(3).getAchat()==0){
+  
+    if(achat!=false){
+        Element objElement=new Element();
+        Iterator iterator2 = this.sortie.entrySet().iterator();
+        while (iterator2.hasNext() && achat==true) {
+             Map.Entry me2 = (Map.Entry) iterator2.next();
+            objElement=(Element) me2.getKey();
+        }
+                double newQuante= this.sortie.get(objElement);
+                System.out.println(" quantite: "+newQuante);
+                // il faut une methode qui prend la quantie de lelement produit et lajouter au elements deja present dans element du coup ça fera un truc du genre pour la chiane de prod 1 
+                // quantite du produit e005 + 1
+                //en gros ca donne ça
+                    System.out.println("Quantite : "+objElement.getQuantite());
+                     objElement.setQuantite(objElement.getQuantite()+(newQuante*nvx)) ;
+                     System.out.println("Quantite : "+objElement.getQuantite());
+                // retirer les quantité 
+                Element objElement2=new Element();
+                Iterator iterator3 = this.entree.entrySet().iterator();
+        
+                while (iterator3.hasNext()) {
+             Map.Entry me2 = (Map.Entry) iterator3.next();
+            objElement2=(Element) me2.getKey();
+            System.out.println("Quantite de "+objElement2.getNom()+" avant: "+objElement2.getQuantite());
+            double newQuantite= this.entree.get(me2.getKey());
+            objElement2.setQuantite(objElement2.getQuantite()-newQuantite*nvx);
+            System.out.println("Quantite de "+objElement2.getNom()+" apres: "+objElement2.getQuantite());
+        }
+                       
+                     // Fin de la premiere chaine de production 
+    } 
+    else{
+        System.out.println("Vous ne pouvez pas réaliser ce produit car il manque du stock et il n'y à pas de prix d'achat");
+    }
+    
+
+}
+/*
+public boolean verifStock(int nbElement){
+    boolean res=true;
+    System.out.println("test verifStock");
+    if (this.entree.get(GererFichier.getElements().get(nbElement)) > GererFichier.getElements().get(nbElement).getQuantite()){
+        if (GererFichier.getElements().get(nbElement).getAchat()==0){
             System.out.println("Nous ne pouvons pas faire ce produit");
+            res=false;
         }
              else {
-                 double l = GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(1)) - GererFichier.getElements().get(3).getQuantite();
+                 double l = this.entree.get(GererFichier.getElements().get(nbElement)) - GererFichier.getElements().get(nbElement).getQuantite();
                    // Achat.ajoutQ(l);
                 System.out.println("le produit a ete commandé");
                     }
     }
-    if (GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(2)) < GererFichier.getElements().get(1).getQuantite()){
-        // la on rentre sur la deuxieme entree
-               if (GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(2)) > GererFichier.getElements().get(1).getQuantite()){
-                    if (GererFichier.getElements().get(1).getAchat()==0)
-                    System.out.println("Nous ne pouvons pas faire ce produit");
-               }else{ 
-                 double l = GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(2)) - GererFichier.getElements().get(1).getQuantite();
-                   // Achat.ajoutQ(l);
-                    System.out.println("le produit a ete commandé");
-                    } 
-    }
-    if (GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(3)) < GererFichier.getElements().get(2).getQuantite()){
-                    // la on rentre sur la troisieme  entree
-                         if (GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(3)) > GererFichier.getElements().get(2).getQuantite()){
-                             if (GererFichier.getElements().get(1).getAchat()==0)
-                                System.out.println("Nous ne pouvons pas faire ce produit");
-                         }else{ 
-                             double l = GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(3)) - GererFichier.getElements().get(2).getQuantite();
-                              //Achat.ajoutQ(l);
-                            System.out.println("le produit a ete commandé");
-                             } 
-                         
-            } else {
-                double newQuante= GererFichier.getChaineProd().get(0).sortie.get(GererFichier.getElements().get(1));
-                
-                // il faut une methode qui prend la quantie de lelement produit et lajouter au elements deja present dans element du coup ça fera un truc du genre pour la chiane de prod 1 
-                // quantite du produit e005 + 1
-                //en gros ca donne ça
-                     GererFichier.getElements().get(6).setQuantite(GererFichier.getElements().get(6).getQuantite()+newQuante*nvx) ;
-                     
-                // retirer les quantité 
-                        double newQuante1= GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(1));
-                        double newQuante2= GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(2));
-                        double newQuante3= GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(3));
-                        
-                     GererFichier.getElements().get(6).setQuantite(GererFichier.getElements().get(3).getQuantite()-newQuante1*nvx);
-                     GererFichier.getElements().get(6).setQuantite(GererFichier.getElements().get(1).getQuantite()-newQuante2*nvx);
-                     GererFichier.getElements().get(6).setQuantite(GererFichier.getElements().get(2).getQuantite()-newQuante3*nvx);
-                     
-                     // Fin de la premiere chaine de production 
-                     
-                     
-                     
-                     
-                     
-                     
-                    }
-        
-    }
-
-public void efficacite(){
-    
-}
-
 
 
 
 }
+    return res;
+}
+*/
