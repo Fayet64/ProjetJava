@@ -82,19 +82,18 @@ public void produire (int nvx, int n){
     }
     if (GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(1)) < GererFichier.getElements().get(1).getQuantite()){
         // la on rentre sur la deuxieme entree
-               if (GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(1)) > GererFichier.getElements().get(1).getQuantite()){
-                    if (GererFichier.getElements().get(1).getAchat()==0)
-                    System.out.println("Nous ne pouvons pas faire ce produit");
-               }else{ 
-                 double l = GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(1)) - GererFichier.getElements().get(1).getQuantite();
+                    if (GererFichier.getElements().get(1).getAchat()==0){
+                        System.out.println("Nous ne pouvons pas faire ce produit");
+               }
+                    else{ 
+                        double l = GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(1)) - GererFichier.getElements().get(1).getQuantite();
                    // Achat.ajoutQ(l);
-                    System.out.println("le produit a ete commandé");
+                        System.out.println("le produit a ete commandé");
                     } 
     }
     if (GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(2)) < GererFichier.getElements().get(2).getQuantite()){
                     // la on rentre sur la troisieme  entree
-                         if (GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(2)) > GererFichier.getElements().get(2).getQuantite()){
-                             if (GererFichier.getElements().get(1).getAchat()==0)
+                             if (GererFichier.getElements().get(1).getAchat()==0){
                                 System.out.println("Nous ne pouvons pas faire ce produit");
                          }else{ 
                              double l = GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(2)) - GererFichier.getElements().get(2).getQuantite();
