@@ -66,6 +66,14 @@ public void produire (int nvx){
    // Chaine laChaine =GererFichier.getChaineProd().get(nbChaine);
     //regarder combien de produit on a besoin en entrée.BOF PAS BESOIN CAR ON CONNAIT DEJA LE CODE DE LA CHAINE 
     // GererFichier.getChaineProd().get(n).entree.size();
+    
+    if (nvx<0) {
+		System.out.println("Il faut que votre niveau de production soit superieur a zero");
+	} 		
+		else if(nvx==0) {
+				System.out.println("la chaine ne produit rien");
+		
+	}else{
      GererFichier.getChaineProd().get(1).entree.get(GererFichier.getElements().get(1));
      ArrayList<Element> lesElements=GererFichier.getElements();
      
@@ -78,7 +86,7 @@ public void produire (int nvx){
             //System.out.println(this.verifStock(lesElements.indexOf(me2.getKey())));
            // achat=this.verifStock(lesElements.indexOf(me2.getKey()));
             Element objE=(Element) me2.getKey();
-            achat=objE.verifStock(this);
+            achat=objE.verifStock(this,nvx);
             System.out.println(achat);
         }
      
@@ -118,7 +126,7 @@ public void produire (int nvx){
         System.out.println("Vous ne pouvez pas réaliser ce produit car il manque du stock et il n'y à pas de prix d'achat");
     }
     
-
+                }
 }
 /*
 public boolean verifStock(int nbElement){
