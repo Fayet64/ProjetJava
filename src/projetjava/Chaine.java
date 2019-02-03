@@ -86,7 +86,7 @@ public void produire (int nvx){
             //System.out.println(this.verifStock(lesElements.indexOf(me2.getKey())));
            // achat=this.verifStock(lesElements.indexOf(me2.getKey()));
             Element objE=(Element) me2.getKey();
-            achat=objE.verifStock(this);
+            achat=objE.verifStock(this,nvx);
             //System.out.println(achat);
         }
      
