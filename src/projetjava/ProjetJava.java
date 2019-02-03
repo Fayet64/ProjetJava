@@ -5,6 +5,7 @@
  */
 package projetjava;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -15,8 +16,9 @@ public class ProjetJava {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // TODO code application logic here
         //fayet
         //test2kokia
@@ -31,10 +33,11 @@ public class ProjetJava {
                 
         ArrayList<Element> lesElements=GererFichier.getElements();
         //System.out.println(lesElements);
-        objChaine.produire(1);
+        objChaine.produire(100);
         ArrayList<Element> lesElements2=GererFichier.getElements();
         //System.out.println(lesElements2);
         //System.out.println(objChaine.getSortie().get(lesElements.get(5)));
+        GererFichier.ecrireFichier();
     }
         
 }

@@ -6,8 +6,10 @@
 package projetjava;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -145,7 +147,24 @@ public class GererFichier {
     public static ArrayList<Chaine> getChaineProd() {
         return chaineProd;
     }
+public static void ecrireFichier () throws IOException {
+        BufferedWriter fw = new BufferedWriter(new FileWriter("elements.csv"));
 
+    	
+    	String lapinius= "Code"+";"+"Nom"+";"+"Quantite"+";"+"Unite"+";"+"Achat"+";"+"Vente";
+        fw.write(lapinius);
+        fw.newLine();
+    	for(Element e:elements) {
+                                 
+				 String lapin= e.getCode()+";"+e.getNom()+";"+e.getQuantite()+";"+e.getUnite()+";"+e.getAchat()+";"+e.getVente();
+                                 
+                                 
+                                 fw.write(lapin);
+                                fw.newLine();
+			}
+				fw.close();
+    	
+    }
                 
 }
 
