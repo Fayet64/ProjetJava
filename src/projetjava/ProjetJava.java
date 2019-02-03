@@ -18,11 +18,12 @@ public class ProjetJava {
         // TODO code application logic here
         //fayet
         //test2kokia
-        
+        /*
         soustractionStockElement(10); 
         if(this.niveau==0){
             Syst
         }
+*/
     }
         
 }
