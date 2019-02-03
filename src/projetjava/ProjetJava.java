@@ -28,9 +28,13 @@ public class ProjetJava {
 */
         GererFichier.charger();
         Chaine objChaine=GererFichier.getChaineProd().get(0);
-        objChaine.produire(1);
+                
         ArrayList<Element> lesElements=GererFichier.getElements();
-        System.out.println(objChaine.getSortie().get(lesElements.get(5)));
+        //System.out.println(lesElements);
+        objChaine.produire(1);
+        ArrayList<Element> lesElements2=GererFichier.getElements();
+        //System.out.println(lesElements2);
+        //System.out.println(objChaine.getSortie().get(lesElements.get(5)));
     }
         
 }

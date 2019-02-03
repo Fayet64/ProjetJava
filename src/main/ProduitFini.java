@@ -5,6 +5,12 @@
  */
 package main;
 
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import projetjava.Element;
+import projetjava.GererFichier;
+
 /**
  *
  * @author Julien Fayet
@@ -14,8 +20,9 @@ public class ProduitFini extends javax.swing.JFrame {
     /**
      * Creates new form ProduitFini
      */
-    public ProduitFini() {
+    public ProduitFini(Element lElement) {
         initComponents();
+        setComponents(lElement);
     }
 
     /**
@@ -38,10 +45,16 @@ public class ProduitFini extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtCode = new javax.swing.JTextField();
         btnVerifStock = new javax.swing.JButton();
+        btnValider = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnRetour.setText("Retour");
+        btnRetour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetourActionPerformed(evt);
+            }
+        });
 
         Unite.setText("Unite : ");
 
@@ -54,6 +67,18 @@ public class ProduitFini extends javax.swing.JFrame {
         jLabel1.setText("Stock du produit");
 
         btnVerifStock.setText("Vérifier stock");
+        btnVerifStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerifStockActionPerformed(evt);
+            }
+        });
+
+        btnValider.setText("Valider");
+        btnValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValiderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,11 +105,13 @@ public class ProduitFini extends javax.swing.JFrame {
                         .addGap(146, 146, 146)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
+                        .addGap(58, 58, 58)
                         .addComponent(btnRetour)
-                        .addGap(55, 55, 55)
-                        .addComponent(btnVerifStock)))
-                .addContainerGap(88, Short.MAX_VALUE))
+                        .addGap(32, 32, 32)
+                        .addComponent(btnVerifStock)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnValider)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,47 +137,29 @@ public class ProduitFini extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRetour)
-                    .addComponent(btnVerifStock))
+                    .addComponent(btnVerifStock)
+                    .addComponent(btnValider))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ProduitFini.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ProduitFini.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ProduitFini.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ProduitFini.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValiderActionPerformed
+        // TODO add your handling code here:
+        maGestionDeLevenement(evt);
+    }//GEN-LAST:event_btnValiderActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ProduitFini().setVisible(true);
-            }
-        });
-    }
+    private void btnVerifStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifStockActionPerformed
+        // TODO add your handling code here
+        maGestionDeLevenement(evt);
+    }//GEN-LAST:event_btnVerifStockActionPerformed
+
+    private void btnRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetourActionPerformed
+        // TODO add your handling code here:
+        maGestionDeLevenement(evt);
+    }//GEN-LAST:event_btnRetourActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Code;
@@ -158,6 +167,7 @@ public class ProduitFini extends javax.swing.JFrame {
     private javax.swing.JLabel Quantite;
     private javax.swing.JLabel Unite;
     private javax.swing.JButton btnRetour;
+    private javax.swing.JButton btnValider;
     private javax.swing.JButton btnVerifStock;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtCode;
@@ -165,4 +175,31 @@ public class ProduitFini extends javax.swing.JFrame {
     private javax.swing.JTextField txtQuantite;
     private javax.swing.JTextField txtUnite;
     // End of variables declaration//GEN-END:variables
+
+    private void maGestionDeLevenement(ActionEvent evt) {
+        Object source = evt.getSource();
+        if(source==btnRetour){
+            this.dispose();
+        }
+        if (source == btnVerifStock) {
+            JOptionPane.showMessageDialog(null,"Vous avez ouvert le stock") ; 
+            Stock laFenetreAction;
+            ArrayList<Element> elements =GererFichier.getElements();
+            System.out.println(elements);
+	    laFenetreAction= new Stock(elements);
+            laFenetreAction.setVisible(true);
+        }
+        if(source==btnValider){
+            JOptionPane.showMessageDialog(null,"Vous avez validez la production et donc modifier le fichier element.csv") ; 
+        }
+        
+    }
+
+    private void setComponents(Element lElement) {
+        txtCode.setText(lElement.getCode());
+        txtNom.setText(lElement.getNom());
+        txtQuantite.setText(String.valueOf(lElement.getQuantite()));
+        txtUnite.setText(lElement.getUnite());
+       
+    }
 }

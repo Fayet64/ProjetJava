@@ -5,7 +5,9 @@
  */
 package main;
 
+import java.util.ArrayList;
 import projetjava.Element;
+import projetjava.GererFichier;
 
 /**
  *
@@ -16,9 +18,9 @@ public class Stock extends javax.swing.JFrame {
     /**
      * Creates new form Interface
      */
-    public Stock(Element objElement) {
+    public Stock(ArrayList<Element> listeElement) {
         initComponents();
-        setComponents(objElement);
+        setComponents(listeElement);
     }
 
     /**
@@ -41,8 +43,7 @@ public class Stock extends javax.swing.JFrame {
         txtUnite = new javax.swing.JTextField();
         btnRetour = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        listeElements = new javax.swing.JList<>();
+        listeElement = new javax.swing.JComboBox<>();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -62,15 +63,19 @@ public class Stock extends javax.swing.JFrame {
         Unite.setText("Unite : ");
 
         btnRetour.setText("Retour");
+        btnRetour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetourActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Affichage du stock");
 
-        listeElements.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        listeElement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listeElementActionPerformed(evt);
+            }
         });
-        jScrollPane2.setViewportView(listeElements);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,12 +90,13 @@ public class Stock extends javax.swing.JFrame {
                         .addComponent(Code)
                         .addComponent(Nom)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtUnite)
-                    .addComponent(txtQuantite)
-                    .addComponent(txtNom)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
-                .addGap(102, 102, 102))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtUnite, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                        .addComponent(txtQuantite)
+                        .addComponent(txtNom))
+                    .addComponent(listeElement, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83))
             .addGroup(layout.createSequentialGroup()
                 .addGap(146, 146, 146)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,11 +109,15 @@ public class Stock extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Code, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(Code, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(listeElement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Nom, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtNom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -119,7 +129,7 @@ public class Stock extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUnite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Unite))
-                .addGap(35, 35, 35)
+                .addGap(42, 42, 42)
                 .addComponent(btnRetour)
                 .addContainerGap())
         );
@@ -127,43 +137,38 @@ public class Stock extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void listeElementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listeElementActionPerformed
+        // TODO add your handling code here:
+        maProcedureActionPerformed(evt);
+    }//GEN-LAST:event_listeElementActionPerformed
+
+    private void btnRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetourActionPerformed
+        // TODO add your handling code here:
+        maProcedureActionPerformed(evt);
+    }//GEN-LAST:event_btnRetourActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Stock.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Stock.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Stock.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Stock.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void maProcedureActionPerformed(java.awt.event.ActionEvent evt) {
+        Object source = evt.getSource();
+        
+        ArrayList<Element> listeE=GererFichier.getElements();
+        String nom=listeElement.getSelectedItem().toString();
+        Element objElement=new Element();
+        for(Element e:listeE){
+            if(e.getNom().equals(nom))
+                objElement=e;
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //new Stock(objElement).setVisible(true);
-            }
-        });
+        txtNom.setText(objElement.getNom());
+        txtQuantite.setText(String.valueOf(objElement.getQuantite()));
+        txtUnite.setText(objElement.getUnite());
+        
+        if(source==btnRetour)
+            this.dispose();
     }
-
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Code;
     private javax.swing.JLabel Nom;
@@ -173,14 +178,25 @@ public class Stock extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JList<String> listeElements;
+    private javax.swing.JComboBox<String> listeElement;
     private javax.swing.JTextField txtNom;
     private javax.swing.JTextField txtQuantite;
     private javax.swing.JTextField txtUnite;
     // End of variables declaration//GEN-END:variables
 
-    private void setComponents(Element objElement) {
+    private void setComponents(ArrayList<Element> listeE) {
+        for(Element e:listeE){
+            listeElement.addItem(e.getNom());
+        }
+        String nom=listeElement.getSelectedItem().toString();
+        Element objElement=new Element();
+        for(Element e:listeE){
+            if(e.getNom()==nom)
+                objElement=e;
+        }
         txtNom.setText(objElement.getNom());
+        txtQuantite.setText(String.valueOf(objElement.getQuantite()));
+        txtUnite.setText(objElement.getUnite());
+        
     }
 }

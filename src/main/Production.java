@@ -5,6 +5,16 @@
  */
 package main;
 
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import projetjava.Chaine;
+import projetjava.Element;
+import projetjava.GererFichier;
+
 /**
  *
  * @author Julien Fayet
@@ -14,8 +24,9 @@ public class Production extends javax.swing.JFrame {
     /**
      * Creates new form Production
      */
-    public Production() {
+    public Production(ArrayList<Chaine> listeChaine) {
         initComponents();
+        setComponents(listeChaine);
     }
 
     /**
@@ -30,11 +41,11 @@ public class Production extends javax.swing.JFrame {
         NiveauA = new javax.swing.JLabel();
         txtNiveau = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listeChaine = new javax.swing.JList<>();
-        btnValider = new javax.swing.JButton();
+        btnEssai = new javax.swing.JButton();
         btnRetour = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        listeChaines = new javax.swing.JComboBox<>();
+        btnValider = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,12 +59,27 @@ public class Production extends javax.swing.JFrame {
 
         jLabel1.setText("Chaine : ");
 
-        listeChaine.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        btnEssai.setText("Faire un essai");
+        btnEssai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEssaiActionPerformed(evt);
+            }
         });
-        jScrollPane1.setViewportView(listeChaine);
+
+        btnRetour.setText("Retour");
+        btnRetour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetourActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Essai de production");
+
+        listeChaines.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listeChainesActionPerformed(evt);
+            }
+        });
 
         btnValider.setText("Valider");
         btnValider.addActionListener(new java.awt.event.ActionListener() {
@@ -62,33 +88,29 @@ public class Production extends javax.swing.JFrame {
             }
         });
 
-        btnRetour.setText("Retour");
-
-        jLabel2.setText("Essai de production");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(102, Short.MAX_VALUE)
+                .addContainerGap(68, Short.MAX_VALUE)
                 .addComponent(btnRetour)
-                .addGap(59, 59, 59)
+                .addGap(39, 39, 39)
+                .addComponent(btnEssai)
+                .addGap(38, 38, 38)
                 .addComponent(btnValider)
-                .addGap(143, 143, 143))
+                .addGap(46, 46, 46))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(51, 51, 51)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(NiveauA)
-                                .addGap(44, 44, 44)
-                                .addComponent(txtNiveau, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(NiveauA)
+                            .addComponent(jLabel1))
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNiveau, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(listeChaines, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
                         .addComponent(jLabel2)))
@@ -99,18 +121,19 @@ public class Production extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(listeChaines, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NiveauA)
                     .addComponent(txtNiveau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnValider)
-                    .addComponent(btnRetour))
+                    .addComponent(btnEssai)
+                    .addComponent(btnRetour)
+                    .addComponent(btnValider))
                 .addGap(34, 34, 34))
         );
 
@@ -121,54 +144,79 @@ public class Production extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNiveauActionPerformed
 
+    private void btnEssaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEssaiActionPerformed
+        // TODO add your handling code here:
+        maGestionDeLEvenement(evt);
+    }//GEN-LAST:event_btnEssaiActionPerformed
+
+    private void listeChainesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listeChainesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listeChainesActionPerformed
+
     private void btnValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValiderActionPerformed
         // TODO add your handling code here:
-        System.out.println("test 77");
+        maGestionDeLEvenement(evt);
     }//GEN-LAST:event_btnValiderActionPerformed
+
+    private void btnRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetourActionPerformed
+        // TODO add your handling code here:
+        maGestionDeLEvenement(evt);
+    }//GEN-LAST:event_btnRetourActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Production.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Production.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Production.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Production.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Production().setVisible(true);
-            }
-        });
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel NiveauA;
+    private javax.swing.JButton btnEssai;
     private javax.swing.JButton btnRetour;
     private javax.swing.JButton btnValider;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> listeChaine;
+    private javax.swing.JComboBox<String> listeChaines;
     private javax.swing.JTextField txtNiveau;
     // End of variables declaration//GEN-END:variables
-}
+
+    private void setComponents(ArrayList<Chaine> listeChaine) {
+        for(Chaine c:listeChaine){
+            listeChaines.addItem(c.getNom());
+        }
+    }
+
+    private void maGestionDeLEvenement(ActionEvent evt) {
+        JButton source =(JButton) evt.getSource();
+        
+        if(source == btnEssai){
+        int niveau=Integer.parseInt(txtNiveau.getText());
+        
+        ArrayList<Chaine> lesChaines=GererFichier.getChaineProd();
+        Chaine laChaine=GererFichier.getChaineProd().get(0);
+        for(Chaine c:lesChaines){
+            if(c.getNom().equals(listeChaines.getSelectedItem().toString()))
+                laChaine=c;
+        }
+        laChaine.produire(niveau);
+        
+        Element objElement=new Element();
+        Iterator iterator2 = laChaine.getSortie().entrySet().iterator();
+        while (iterator2.hasNext()) {
+             Map.Entry me2 = (Map.Entry) iterator2.next();
+            objElement=(Element) me2.getKey();
+        }
+        ProduitFini laFenetreProduitFini;
+            laFenetreProduitFini= new ProduitFini(objElement);
+            laFenetreProduitFini.setVisible(true);
+        
+        }
+        if(source==btnValider){
+            JOptionPane.showMessageDialog(null,"Vous avez validez la production et donc modifier le fichier element.csv") ; 
+        }
+        if(source==btnRetour){
+            this.dispose();
+        }
+    }
+        
+    }
+

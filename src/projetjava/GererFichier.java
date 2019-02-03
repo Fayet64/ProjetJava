@@ -54,9 +54,7 @@ public class GererFichier {
 				
 				Element el= new Element(code,nom,quantite,unite,achat,vente);
 				elements.add(el);
-
-
-				
+	
 			}
 			// le dernier a etre ouvert est le premier que tu ferme !!! mais ca depend de lchronologie
 			br.close();
@@ -69,8 +67,6 @@ public class GererFichier {
 			
 			e.printStackTrace();
 		}
-		
-		
 		try {
 			//ouvert en mode lecture 
 			FileReader chaine = new FileReader("chaines.csv");
