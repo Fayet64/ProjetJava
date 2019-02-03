@@ -35,6 +35,9 @@ public class ProjetJava {
         ArrayList<Element> lesElements2=GererFichier.getElements();
         //System.out.println(lesElements2);
         //System.out.println(objChaine.getSortie().get(lesElements.get(5)));
+   
     }
+    
+    
         
 }
