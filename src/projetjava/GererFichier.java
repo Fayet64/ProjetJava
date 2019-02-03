@@ -151,15 +151,15 @@ public static void ecrireFichier () throws IOException {
         BufferedWriter fw = new BufferedWriter(new FileWriter("elements.csv"));
 
     	
-    	String lapinius= "Code"+";"+"Nom"+";"+"Quantite"+";"+"Unite"+";"+"Achat"+";"+"Vente";
-        fw.write(lapinius);
+    	String ligneTitre= "Code"+";"+"Nom"+";"+"Quantite"+";"+"Unite"+";"+"Achat"+";"+"Vente";
+        fw.write(ligneTitre);
         fw.newLine();
     	for(Element e:elements) {
                                  
-				 String lapin= e.getCode()+";"+e.getNom()+";"+e.getQuantite()+";"+e.getUnite()+";"+e.getAchat()+";"+e.getVente();
+				 String ligne= e.getCode()+";"+e.getNom()+";"+e.getQuantite()+";"+e.getUnite()+";"+e.getAchat()+";"+e.getVente();
                                  
                                  
-                                 fw.write(lapin);
+                                 fw.write(ligne);
                                 fw.newLine();
 			}
 				fw.close();
