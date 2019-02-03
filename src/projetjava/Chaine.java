@@ -69,6 +69,12 @@ public void produire (int nvx){
      GererFichier.getChaineProd().get(1).entree.get(GererFichier.getElements().get(1));
      ArrayList<Element> lesElements=GererFichier.getElements();
      
+     if(nvx<0){
+        System.out.println("Il faut votre niveau de production soit supérieur à zéro"); 
+     }
+     else if(nvx>=0){
+         System.out.println("la chaine ne produit rien"); 
+     }
      boolean achat=true;
      Iterator iterator = this.entree.entrySet().iterator();
         while (iterator.hasNext() && achat==true) {
@@ -78,7 +84,7 @@ public void produire (int nvx){
             //System.out.println(this.verifStock(lesElements.indexOf(me2.getKey())));
            // achat=this.verifStock(lesElements.indexOf(me2.getKey()));
             Element objE=(Element) me2.getKey();
-            achat=objE.verifStock(this);
+            achat=objE.verifStock(this, nvx);
             System.out.println(achat);
         }
      
@@ -99,7 +105,7 @@ public void produire (int nvx){
                     System.out.println("Quantite : "+objElement.getQuantite());
                      objElement.setQuantite(objElement.getQuantite()+(newQuante*nvx)) ;
                      System.out.println("Quantite : "+objElement.getQuantite());
-                // retirer les quantité 
+                // retirer les quantités 
                 Element objElement2=new Element();
                 Iterator iterator3 = this.entree.entrySet().iterator();
         
@@ -135,10 +141,10 @@ public boolean verifStock(int nbElement){
                 System.out.println("le produit a ete commandé");
                     }
     }
-
-
-
-}
     return res;
 }
 */
+
+
+
+}

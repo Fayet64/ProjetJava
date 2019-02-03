@@ -11,7 +11,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.io.BufferedReader; 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 /**
  *
  * @author Julien Fayet
@@ -150,6 +154,20 @@ public class GererFichier {
         return chaineProd;
     }
 
-                
+ 
+    
+    public static void ecrire() throws FileNotFoundException, IOException{
+        File file = new File("chaine.csv"); 
+        
+        try(BufferedWriter ecrir = new BufferedWriter(new FileWriter(file))){
+            ecrir.write(";"); 
+            ecrir.newLine(); 
+        }catch(FileNotFoundException e){
+            e.printStackTrace(); 
+        }
+    }
+    
+    
+  
 }
 

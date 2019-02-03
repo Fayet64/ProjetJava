@@ -86,35 +86,34 @@ public void ajoutStockElemProduit(int ajoute){
     this.quantite = this.quantite + ajoute; 
 }
 
-public int verifierPrixAchat(){
-     if(this.achat<=0){
-        System.out.println("Desole production impossible"); 
-    }
-    else {
-        if(this.achat>=0){
-            this.quantite = this. 
-        }   
-     }
-   return 0; 
+public void verifierPrixAchat(){
+    
 }
 
 public void verifierPrixVente(){
     
 }
 
-public boolean verifStock(Chaine laChaine){
+public boolean verifStock(Chaine laChaine, int nvx){
     boolean res=true;
-    if (laChaine.getEntree().get(this) > this.getQuantite()){
+    if (laChaine.getEntree().get(this)*nvx> this.getQuantite()){
         if (this.getAchat()==0){
             System.out.println("Nous ne pouvons pas faire ce produit");
             res=false;
         }
              else {
-                 double l = laChaine.getEntree().get(this) - this.getQuantite();
-                   // Achat.ajoutQ(l);
-                System.out.println("le produit a ete commandé");
-                    }
+                 double qte = laChaine.getEntree().get(this) - this.getQuantite();
+                 Achat objAchat=new Achat(this.getCode(),qte);
+                  Achat.ajouterAchat(objAchat);
+                System.out.println(" le produit a ete commandé");
+                //(Achat a:Achat.getListeAchat())
+                //System.out.println(a.getCodeAchat());
+                //    }
+    }
     }
     return res;
+
+
 }
+
 }
