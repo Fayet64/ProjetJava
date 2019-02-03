@@ -77,8 +77,16 @@ public void ajoutStockElemProduit(int ajoute){
     this.quantite = this.quantite + ajoute; 
 }
 
-public void verifierPrixAchat(){
-    
+public int verifierPrixAchat(){
+     if(this.achat<=0){
+        System.out.println("Desole production impossible"); 
+    }
+    else {
+        if(this.achat>=0){
+            this.quantite = this. 
+        }   
+     }
+   return 0; 
 }
 
 public void verifierPrixVente(){

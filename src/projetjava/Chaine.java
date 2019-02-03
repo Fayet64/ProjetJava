@@ -59,8 +59,8 @@ public void setSortie(HashMap<Element, Double> sortie) {
 public String toString() {
 	return "ChaineDeProduction [code=" + code + ", nom=" + nom + ", entree=" + entree + ", sortie=" + sortie + "]\n";
 }
-public void produire (int nvx, int n){
-    //1erer etape recuperer les produit dont on a besoin pour la chaine choisi en parametre
+public void produire (int  nvx, int n){
+    //1erer etape recuperer les produits dont on a besoin pour la chaine choisi en parametre
     GererFichier.getChaineProd().get(n);
     //regarder combien de produit on a besoin en entrée.BOF PAS BESOIN CAR ON CONNAIT DEJA LE CODE DE LA CHAINE 
      GererFichier.getChaineProd().get(n).entree.size();
@@ -68,7 +68,6 @@ public void produire (int nvx, int n){
      
          
      // Gestion de la premiere chaine de production 
-     
     //2eme etape pour chaque produit verifier que cette matiere premeire ou produit existe (le get(n) cest quel chaine qui va etre choisi 
     if (GererFichier.getChaineProd().get(0).entree.get(GererFichier.getElements().get(3)) > GererFichier.getElements().get(3).getQuantite()){
         if (GererFichier.getElements().get(3).getAchat()==0){
@@ -129,6 +128,10 @@ public void produire (int nvx, int n){
                     }
         
     }
+
+public void efficacite(){
+    
+}
 
 
 

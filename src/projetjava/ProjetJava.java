@@ -19,10 +19,10 @@ public class ProjetJava {
         //fayet
         //test2kokia
         
-        soustractionStockElement(10); 
-        if(this.niveau==0){
-            Syst
-        }
+        //soustractionStockElement(10); 
+        //if(this.niveau==0){
+          //  Syst
+        //}
     }
         
 }
