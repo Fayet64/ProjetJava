@@ -128,6 +128,24 @@ public void produire (int nvx){
     
                 }
 }
+
+        public void efficacite() {
+	if (Element.verifStock(this,3)==true) {
+		Element objElement3=new Element();
+		double totalAchat=0;
+		double totalVente=0;
+        Iterator iterator4 = this.entree.entrySet().iterator();
+
+        while (iterator4.hasNext()) {
+     
+    totalAchat = totalAchat+objElement3.getAchat();
+    totalVente= totalVente+objElement3.getVente();
+				
+		 }
+        double efficacite= totalVente-totalAchat;
+        System.out.println("votre efficacite est de "+efficacite);
+		}
+	}
 /*
 public boolean verifStock(int nbElement){
     boolean res=true;
