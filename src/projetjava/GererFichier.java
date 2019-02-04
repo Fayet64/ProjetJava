@@ -19,6 +19,10 @@ import java.util.HashMap;
  * @author Julien Fayet
  */
 public class GererFichier {
+    
+    /*
+    
+    */
                 private static ArrayList<Element> elements =new ArrayList <Element>();
 		private static ArrayList<Chaine> chaineProd =new ArrayList <Chaine>();
 		//Lecture du fichier cntenant les elements 
