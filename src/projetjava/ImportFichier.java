@@ -17,7 +17,6 @@ import java.util.HashMap;
  * La deuxième partie fait la conversions des attributs du tableau en attribut int etc... 
  * Ensuite les espace sont remplacé par des ), ( qui seront introduit dans le tableau 
  * et pour chaque element de la liste si sont code coreponds au codeelement, on va l'ajouter a la liste des entrer de la chaine de production;
-
  */
 public class ImportFichier {
 
