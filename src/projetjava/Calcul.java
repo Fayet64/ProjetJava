@@ -30,10 +30,7 @@ public class Calcul {
 * la quantite des elements en sorties seront ajouté au stock present 
 * l'achat des elements sera gerer dans la classe achat 
 */
-    public void produire (int nvx){
-    
-
-    
+    public void produire (Chaine laChaine,int nvx){
     if (nvx<0) {
 		System.out.println("Il faut que votre niveau de production soit superieur a zero");
 	} 		
@@ -41,12 +38,12 @@ public class Calcul {
 				System.out.println("la chaine ne produit rien");
 		
 	}else{
-     GererFichier.getChaineProd().get(1).entree.get(GererFichier.getElements().get(1));
+     GererFichier.getChaineProd().get(1).getEntree().get(GererFichier.getElements().get(1));
      ArrayList<Element> lesElements=GererFichier.getElements();
      
      boolean achat=true;
      
-     Iterator iterator = this.entree.entrySet().iterator();
+     Iterator iterator = laChaine.getEntree().entrySet().iterator();
         while (iterator.hasNext() && achat==true) {
              Map.Entry me2 = (Map.Entry) iterator.next();
             //System.out.println("Test : Key: "+me2.getKey() + " & Value: " + me2.getValue());
@@ -54,7 +51,7 @@ public class Calcul {
             //System.out.println(this.verifStock(lesElements.indexOf(me2.getKey())));
            // achat=this.verifStock(lesElements.indexOf(me2.getKey()));
             Element objE=(Element) me2.getKey();
-            achat=objE.verifStock(this,nvx);
+            achat=objE.verifStock(laChaine,nvx);
             
             //System.out.println(achat);
         }
@@ -63,12 +60,12 @@ public class Calcul {
                     // Ajout du produit fabriqué 
                     
         Element objElement=new Element();
-        Iterator iterator2 = this.sortie.entrySet().iterator();
+        Iterator iterator2 = laChaine.getSortie().entrySet().iterator();
         while (iterator2.hasNext()) {
              Map.Entry me2 = (Map.Entry) iterator2.next();
             objElement=(Element) me2.getKey();
         }
-                double newQuante= this.sortie.get(objElement);
+                double newQuante= laChaine.getSortie().get(objElement);
                 System.out.println(" Quantite en sortie du produit "+objElement.getNom()+" : "+newQuante);                
                     System.out.println("Quantite du produit "+objElement.getNom()+ " avant "+objElement.getQuantite());
                      objElement.setQuantite(objElement.getQuantite()+(newQuante*nvx)) ;
@@ -78,13 +75,13 @@ public class Calcul {
                     // retirer les quantité 
                     
                 Element objElement2=new Element();
-                Iterator iterator3 = this.entree.entrySet().iterator();
+                Iterator iterator3 = laChaine.getEntree().entrySet().iterator();
         
                 while (iterator3.hasNext()) {
              Map.Entry me2 = (Map.Entry) iterator3.next();
             objElement2=(Element) me2.getKey();
             System.out.println("Quantite de matière première "+objElement2.getNom()+" avant: "+objElement2.getQuantite());
-            double newQuantite= this.entree.get(me2.getKey());
+            double newQuantite= laChaine.getEntree().get(me2.getKey());
             objElement2.setQuantite(objElement2.getQuantite()-newQuantite*nvx);
             System.out.println("Quantite de matière première "+objElement2.getNom()+" apres: "+objElement2.getQuantite());
         }

@@ -18,7 +18,7 @@ import java.util.Map;
 public class Chaine {
     private String code;
     private String nom;
-    HashMap<Element,Double> entree;
+    private HashMap<Element,Double> entree;
     private HashMap<Element,Double> sortie;
     
     public Chaine(String code,String nom){
@@ -62,10 +62,8 @@ public String toString() {
 	return "ChaineDeProduction [code=" + code + ", nom=" + nom + ", entree=" + entree + ", sortie=" + sortie + "]\n";
 }
 
-
-
-
-        public void efficacite() {
+/*
+public void efficacite() {
             
             /*  Gestion de l'efficacite 
              * cette methode permet de verifier l'efficacité de la production 
