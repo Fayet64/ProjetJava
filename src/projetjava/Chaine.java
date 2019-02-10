@@ -95,11 +95,7 @@ public void produire (int nvx){
             achat=objE.verifStock(this,nvx);
             //System.out.println(achat);
         }
-     
-         
-  
     if(achat!=false){
-        
         
                     // Ajout du produit fabriqué 
                     
