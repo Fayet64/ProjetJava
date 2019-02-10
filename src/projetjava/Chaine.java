@@ -62,7 +62,7 @@ public String toString() {
 	return "ChaineDeProduction [code=" + code + ", nom=" + nom + ", entree=" + entree + ", sortie=" + sortie + "]\n";
 }
 
-/*
+
 public void efficacite() {
             
             /*  Gestion de l'efficacite 

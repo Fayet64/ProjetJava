@@ -11,6 +11,7 @@ import java.util.Iterator;
 import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import projetjava.Calcul;
 import projetjava.Chaine;
 import projetjava.Element;
 import projetjava.GererFichier;
@@ -203,7 +204,8 @@ public class Production extends javax.swing.JFrame {
             if(c.getNom().equals(listeChaines.getSelectedItem().toString()))
                 laChaine=c;
         }
-        laChaine.produire(niveau);
+        Calcul objCalcul=new Calcul();
+        objCalcul.produire(laChaine,niveau);
         
         Element objElement=new Element();
         Iterator iterator2 = laChaine.getSortie().entrySet().iterator();
