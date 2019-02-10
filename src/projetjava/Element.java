@@ -86,17 +86,9 @@ public void ajoutStockElemProduit(int ajoute){
     this.quantite = this.quantite + ajoute; 
 }
 
-public void verifierPrixAchat(){
-    
-}
-
-public void verifierPrixVente(){
-    
-}
 
 public boolean verifStock(Chaine laChaine,int nvx){
     
-   
     boolean res=true;
     if (laChaine.getEntree().get(this)*nvx > this.getQuantite()){
         if (this.getAchat()==0){
