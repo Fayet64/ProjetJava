@@ -70,9 +70,9 @@ public void efficacite() {
              * Si la production est possible,nous allons verifier sont efficacité en faisaint le calcul suivant
              *  Valeur des ventes de tous les stock dispo)- (le montant total des achat a effectuer)
              */
-            
+            int nvx;
             // il y a encore des imcomprehension dans cette methoode et si il n'y a pas d'achat a effectuer ? 
-	if (Element.verifStock(this,3)==true) {
+	if (Element.verifStock(this,nvx)==true) {
 		Element objElement3=new Element();
 		double totalAchat=0;
 		double totalVente=0;
