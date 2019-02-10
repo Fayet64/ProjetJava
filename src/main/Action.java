@@ -17,12 +17,14 @@ import projetjava.Test2;
  * @author Julien Fayet
  */
 public class Action extends javax.swing.JFrame {
-
+        private ArrayList<Element> elements =GererFichier.getElements();
+        private ArrayList<Chaine> chaines =GererFichier.getChaineProd();
     /**
      * Creates new form Action
      */
     public Action() {
         initComponents();
+        GererFichier.charger();
     }
 
     /**
@@ -158,16 +160,12 @@ public class Action extends javax.swing.JFrame {
         if (source == btnStock) {
             JOptionPane.showMessageDialog(null,"Vous avez ouvert le stock") ; 
             Stock laFenetreAction;
-            GererFichier.charger();
-            ArrayList<Element> elements =GererFichier.getElements();
 	    laFenetreAction= new Stock(elements);
             laFenetreAction.setVisible(true);
         } else {
             if (source == btnProduire) {
-            JOptionPane.showMessageDialog(null,"Vous avez ouvert la production") ;
-            GererFichier.charger();            
+            JOptionPane.showMessageDialog(null,"Vous avez ouvert la production") ;     
             Production laFenetreProduction;
-            ArrayList<Chaine> chaines =GererFichier.getChaineProd();
 	    laFenetreProduction= new Production(chaines);
             laFenetreProduction.setVisible(true);
         }

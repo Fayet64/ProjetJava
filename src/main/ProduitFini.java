@@ -194,7 +194,6 @@ public class ProduitFini extends javax.swing.JFrame {
     private void maGestionDeLevenement(ActionEvent evt) throws IOException {
         Object source = evt.getSource();
         if(source==btnRetour){
-            GererFichier.charger();
             this.dispose();
         }
         if (source == btnVerifStock) {

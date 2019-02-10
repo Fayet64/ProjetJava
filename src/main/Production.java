@@ -221,7 +221,6 @@ public class Production extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Vous avez validez la production et donc modifier le fichier element.csv") ; 
         }
         if(source==btnRetour){
-            GererFichier.charger();
             this.dispose();
         }
     }
