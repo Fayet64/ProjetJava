@@ -63,7 +63,7 @@ public String toString() {
 }
 
 
-public void efficacite() {
+ public void efficacite(Element objElement, int nvx) {
             
             /*  Gestion de l'efficacite 
              * cette methode permet de verifier l'efficacité de la production 
@@ -72,16 +72,16 @@ public void efficacite() {
              */
             
             // il y a encore des imcomprehension dans cette methoode et si il n'y a pas d'achat a effectuer ? 
-	if (Element.verifStock(this,3)==true) {
-		Element objElement3=new Element();
+          
+	if (objElement.verifStock(this,nvx)==true) {
+		
 		double totalAchat=0;
 		double totalVente=0;
         Iterator iterator4 = this.entree.entrySet().iterator();
-
         while (iterator4.hasNext()) {
      
-    totalAchat = totalAchat+objElement3.getAchat();
-    totalVente= totalVente+objElement3.getVente();
+    totalAchat = totalAchat+objElement.getAchat();
+    totalVente= totalVente+objElement.getVente();
 				
 		 }
         double efficacite= totalVente-totalAchat;
@@ -92,4 +92,5 @@ public void efficacite() {
 
 }
 
-}
+
+
