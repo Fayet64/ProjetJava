@@ -8,6 +8,7 @@ package main;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import projetjava.Element;
+import projetjava.FichierCSV;
 import projetjava.GererFichier;
 
 /**
@@ -150,9 +151,8 @@ public class Stock extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     private void maProcedureActionPerformed(java.awt.event.ActionEvent evt) {
-        
-        
-        ArrayList<Element> listeE=GererFichier.getElements();
+        GererFichier objFichier=new FichierCSV();        
+        ArrayList<Element> listeE=objFichier.getElements();
         String nom=listeElement.getSelectedItem().toString();
         Element objElement=new Element();
         for(Element e:listeE){

@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import projetjava.Element;
+import projetjava.FichierCSV;
 import projetjava.GererFichier;
 
 /**
@@ -193,20 +194,22 @@ public class ProduitFini extends javax.swing.JFrame {
 
     private void maGestionDeLevenement(ActionEvent evt) throws IOException {
         Object source = evt.getSource();
+        GererFichier objFichier=new FichierCSV();
+        
         if(source==btnRetour){
             this.dispose();
         }
         if (source == btnVerifStock) {
             JOptionPane.showMessageDialog(null,"Vous avez ouvert le stock") ; 
             Stock laFenetreAction;
-            ArrayList<Element> elements =GererFichier.getElements();
+            ArrayList<Element> elements =objFichier.getElements();
             System.out.println(elements);
 	    laFenetreAction= new Stock(elements);
             laFenetreAction.setVisible(true);
         }
         if(source==btnValider){
             JOptionPane.showMessageDialog(null,"Vous avez validez la production et donc modifier le fichier element.csv") ; 
-            GererFichier.ecrireFichier();
+            objFichier.ecrireFichier();
             this.dispose();
         }
         

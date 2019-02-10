@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import projetjava.Calcul;
 import projetjava.Chaine;
 import projetjava.Element;
+import projetjava.FichierCSV;
 import projetjava.GererFichier;
 
 /**
@@ -188,6 +189,7 @@ public class Production extends javax.swing.JFrame {
 
     private void maGestionDeLEvenement(ActionEvent evt) {
         JButton source =(JButton) evt.getSource();
+        GererFichier objFichier=new FichierCSV();
         
         if(source == btnEssai){
             
@@ -195,11 +197,9 @@ public class Production extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(null,"Veuillez rentrez un niveau de production") ;
           }
           else{
-        int niveau=Integer.parseInt(txtNiveau.getText());
-        
-        
-        ArrayList<Chaine> lesChaines=GererFichier.getChaineProd();
-        Chaine laChaine=GererFichier.getChaineProd().get(0);
+        int niveau=Integer.parseInt(txtNiveau.getText());        
+        ArrayList<Chaine> lesChaines=objFichier.getChaineProd();
+        Chaine laChaine=objFichier.getChaineProd().get(0);
         for(Chaine c:lesChaines){
             if(c.getNom().equals(listeChaines.getSelectedItem().toString()))
                 laChaine=c;

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import projetjava.Chaine;
 import projetjava.Element;
+import projetjava.FichierCSV;
 import projetjava.GererFichier;
 import projetjava.Test2;
 
@@ -17,14 +18,17 @@ import projetjava.Test2;
  * @author Julien Fayet
  */
 public class Action extends javax.swing.JFrame {
-        private ArrayList<Element> elements =GererFichier.getElements();
-        private ArrayList<Chaine> chaines =GererFichier.getChaineProd();
+        private ArrayList<Element> elements ;
+        private ArrayList<Chaine> chaines ;
     /**
      * Creates new form Action
      */
     public Action() {
         initComponents();
-        GererFichier.charger();
+        GererFichier objFichier=new FichierCSV();
+        objFichier.charger();
+        elements=objFichier.getElements();
+        chaines=objFichier.getChaineProd();
     }
 
     /**
@@ -43,9 +47,9 @@ public class Action extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Veuillez choisir l'action que vous désirez effectuez");
+        jLabel1.setText("Veuillez choisir l'action que vous dÃ©sirez effectuez");
 
-        btnStock.setText("Vérifier stock");
+        btnStock.setText("VÃ©rifier stock");
         btnStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStockActionPerformed(evt);

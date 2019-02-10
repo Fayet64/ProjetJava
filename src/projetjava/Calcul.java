@@ -31,15 +31,17 @@ public class Calcul {
 * l'achat des elements sera gerer dans la classe achat 
 */
     public void produire (Chaine laChaine,int nvx){
+        
+                    GererFichier objFichier=new FichierCSV();
     if (nvx<0) {
 		System.out.println("Il faut que votre niveau de production soit superieur a zero");
 	} 		
 		else if(nvx==0) {
 				System.out.println("la chaine ne produit rien");
 		
-	}else{
-     GererFichier.getChaineProd().get(1).getEntree().get(GererFichier.getElements().get(1));
-     ArrayList<Element> lesElements=GererFichier.getElements();
+	}else
+     objFichier.getChaineProd().get(1).getEntree().get(objFichier.getElements().get(1));
+     ArrayList<Element> lesElements=objFichier.getElements();
      
      boolean achat=true;
      
@@ -96,4 +98,4 @@ public class Calcul {
   
     }
     
-}
+
