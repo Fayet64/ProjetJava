@@ -162,7 +162,8 @@ public void produire (int nvx){
              */
             
             // il y a encore des imcomprehension dans cette methoode et si il n'y a pas d'achat a effectuer ? 
-	if (Element.verifStock(this,3)==true) {
+            int n; 
+	if (Element.verifStock(this,n)==true) {
 		Element objElement3=new Element();
 		double totalAchat=0;
 		double totalVente=0;
