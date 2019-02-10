@@ -93,7 +93,10 @@ public void verifierPrixAchat(){
 public void verifierPrixVente(){
     
 }
-
+/**
+ *Deja fait par chris
+ * 
+ */
 public boolean verifStock(Chaine laChaine,int nvx){
     boolean res=true;
     if (laChaine.getEntree().get(this)*nvx > this.getQuantite()){

@@ -6,7 +6,10 @@
 package main;
 
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import projetjava.Element;
 import projetjava.GererFichier;
@@ -146,18 +149,30 @@ public class ProduitFini extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValiderActionPerformed
-        // TODO add your handling code here:
-        maGestionDeLevenement(evt);
+        try {
+            // TODO add your handling code here:
+            maGestionDeLevenement(evt);
+        } catch (IOException ex) {
+            Logger.getLogger(ProduitFini.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnValiderActionPerformed
 
     private void btnVerifStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifStockActionPerformed
-        // TODO add your handling code here
-        maGestionDeLevenement(evt);
+        try {
+            // TODO add your handling code here
+            maGestionDeLevenement(evt);
+        } catch (IOException ex) {
+            Logger.getLogger(ProduitFini.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnVerifStockActionPerformed
 
     private void btnRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetourActionPerformed
-        // TODO add your handling code here:
-        maGestionDeLevenement(evt);
+        try {
+            // TODO add your handling code here:
+            maGestionDeLevenement(evt);
+        } catch (IOException ex) {
+            Logger.getLogger(ProduitFini.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnRetourActionPerformed
 
 
@@ -176,7 +191,7 @@ public class ProduitFini extends javax.swing.JFrame {
     private javax.swing.JTextField txtUnite;
     // End of variables declaration//GEN-END:variables
 
-    private void maGestionDeLevenement(ActionEvent evt) {
+    private void maGestionDeLevenement(ActionEvent evt) throws IOException {
         Object source = evt.getSource();
         if(source==btnRetour){
             this.dispose();
@@ -191,6 +206,7 @@ public class ProduitFini extends javax.swing.JFrame {
         }
         if(source==btnValider){
             JOptionPane.showMessageDialog(null,"Vous avez validez la production et donc modifier le fichier element.csv") ; 
+            GererFichier.ecrireFichier();
         }
         
     }

@@ -5,6 +5,7 @@
  */
 package main;
 
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import projetjava.Element;
 import projetjava.GererFichier;
@@ -36,7 +37,7 @@ public class Stock extends javax.swing.JFrame {
         jList1 = new javax.swing.JList<>();
         Code = new javax.swing.JLabel();
         Nom = new javax.swing.JLabel();
-        txtNom = new javax.swing.JTextField();
+        txtCode = new javax.swing.JTextField();
         Quantite = new javax.swing.JLabel();
         Unite = new javax.swing.JLabel();
         txtQuantite = new javax.swing.JTextField();
@@ -86,41 +87,39 @@ public class Stock extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Unite)
                     .addComponent(Quantite)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(Code)
-                        .addComponent(Nom)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Nom)
+                    .addComponent(Code))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(txtUnite, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
                         .addComponent(txtQuantite)
-                        .addComponent(txtNom))
+                        .addComponent(txtCode))
                     .addComponent(listeElement, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(83, 83, 83))
             .addGroup(layout.createSequentialGroup()
-                .addGap(146, 146, 146)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(btnRetour))
-                .addContainerGap(150, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(btnRetour))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(Code, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(listeElement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Nom, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtNom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(listeElement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Nom))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Code, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Quantite, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -144,14 +143,14 @@ public class Stock extends javax.swing.JFrame {
 
     private void btnRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetourActionPerformed
         // TODO add your handling code here:
-        maProcedureActionPerformed(evt);
+        maGestionDeLEvenement(evt);
     }//GEN-LAST:event_btnRetourActionPerformed
 
     /**
      * @param args the command line arguments
      */
     private void maProcedureActionPerformed(java.awt.event.ActionEvent evt) {
-        Object source = evt.getSource();
+        
         
         ArrayList<Element> listeE=GererFichier.getElements();
         String nom=listeElement.getSelectedItem().toString();
@@ -160,12 +159,17 @@ public class Stock extends javax.swing.JFrame {
             if(e.getNom().equals(nom))
                 objElement=e;
         }
-        txtNom.setText(objElement.getNom());
+        txtCode.setText(objElement.getCode());
         txtQuantite.setText(String.valueOf(objElement.getQuantite()));
         txtUnite.setText(objElement.getUnite());
         
-        if(source==btnRetour)
+        
+    }
+    private void maGestionDeLEvenement(ActionEvent evt) {
+        Object source = evt.getSource();
+        if(source==btnRetour){
             this.dispose();
+        }
     }
     
     
@@ -179,7 +183,7 @@ public class Stock extends javax.swing.JFrame {
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> listeElement;
-    private javax.swing.JTextField txtNom;
+    private javax.swing.JTextField txtCode;
     private javax.swing.JTextField txtQuantite;
     private javax.swing.JTextField txtUnite;
     // End of variables declaration//GEN-END:variables
@@ -194,7 +198,7 @@ public class Stock extends javax.swing.JFrame {
             if(e.getNom()==nom)
                 objElement=e;
         }
-        txtNom.setText(objElement.getNom());
+        txtCode.setText(objElement.getCode());
         txtQuantite.setText(String.valueOf(objElement.getQuantite()));
         txtUnite.setText(objElement.getUnite());
         

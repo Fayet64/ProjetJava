@@ -61,12 +61,22 @@ public void setSortie(HashMap<Element, Double> sortie) {
 public String toString() {
 	return "ChaineDeProduction [code=" + code + ", nom=" + nom + ", entree=" + entree + ", sortie=" + sortie + "]\n";
 }
+
+/**
+ *
+ * Cette classe permet de produire grâce au niveau de production 
+ * si le niveau est égal à 0 la chaine ne produit rien, si elle est supérieur
+ * faudrait que le niveau de produiction soit >0; 
+ * ce boolean retourne true si l'achat est possible tout en vérifiant le stock et le niveau
+   et false si l'achat est impossible 
+ */
 public void produire (int nvx){
     //1erer etape recuperer les produit dont on a besoin pour la chaine choisi en parametre
    // Chaine laChaine =GererFichier.getChaineProd().get(nbChaine);
     //regarder combien de produit on a besoin en entrée.BOF PAS BESOIN CAR ON CONNAIT DEJA LE CODE DE LA CHAINE 
     // GererFichier.getChaineProd().get(n).entree.size();
     
+    //vérification de niveau de production 
     if (nvx<0) {
 		System.out.println("Il faut que votre niveau de production soit superieur a zero");
 	} 		
@@ -83,6 +93,9 @@ public void produire (int nvx){
      else if(nvx>=0){
          System.out.println("la chaine ne produit rien"); 
      }
+     // ce boolean retourne true si l'achat est possible tout en vérifiant le stock et le niveau
+     // et false si l'achat est impossible 
+     
      boolean achat=true;
      Iterator iterator = this.entree.entrySet().iterator();
         while (iterator.hasNext() && achat==true) {
@@ -134,7 +147,26 @@ public void produire (int nvx){
     
                 }
 }
+
 /*
+        public void efficacite() {
+	if (Element.verifStock(this,3)==true) {
+		Element objElement3=new Element();
+		double totalAchat=0;
+		double totalVente=0;
+        Iterator iterator4 = this.entree.entrySet().iterator();
+
+        while (iterator4.hasNext()) {
+     
+                 totalAchat = totalAchat+objElement3.getAchat();
+                 totalVente= totalVente+objElement3.getVente();
+				
+		 }
+            double efficacite= totalVente-totalAchat;
+            System.out.println("votre efficacite est de "+efficacite);
+		}
+	}
+
 public boolean verifStock(int nbElement){
     boolean res=true;
     System.out.println("test verifStock");

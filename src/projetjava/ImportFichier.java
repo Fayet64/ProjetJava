@@ -8,6 +8,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+/**
+
+ * Cette fait l'ouverture, lecture du fichier, remplace les espace par des parenthèses ()
+ * array liste contenant les elements lus depuis le fichier csv, 
+ * buffere est un objet est objet qui possède la méthode readline et permet de lire un fichier ligne  par ligne 
+ * après ouverture du fichier l'on fait lecture ligne par lgne (attention au saut de la première ligne)
+ * Le split permet de le découper et mettre dans un tableau fields 
+ * La deuxième partie fait la conversions des attributs du tableau en attribut int etc... 
+ * Ensuite les espace sont remplacé par des ), ( qui seront introduit dans le tableau 
+ * et pour chaque element de la liste si sont code coreponds au codeelement, on va l'ajouter a la liste des entrer de la chaine de production
+
+ * 
 public class ImportFichier {
 
 	public static void main(String[] args) {
@@ -18,18 +30,17 @@ public class ImportFichier {
 		//Lecture du fichier cntenant les elements 
 		
 		try {
-			//ouvert en mode lecture 
+			
 			FileReader elem = new FileReader("elements.csv");
-			// pour le fichier on va bufferere est un obje qui possede la methode readline qui te permet de lire un fichier ligne par ligne 
-			//ouvert en mode parcour buffered
+			
 			BufferedReader br = new BufferedReader(elem); 
-			//lecture ligne par ligne 
+			
 			String line =br.readLine(); 
-			// attention saut de la prmiere ligne 
+			
 			while ((line=br.readLine()) !=null) {
-				// ici tu decoupe avec le split tu les met dans un tableau fields
+				
 				String[] fields=line.split(";");
-				// stanislas proposer pour regler le souci des na la facon suivante
+				
 				for (int i=0;i<fields.length;i++) {
 					if(fields[i].equals("NA")) {
 						fields[i]= "0";
@@ -64,33 +75,20 @@ public class ImportFichier {
 		
 		
 		try {
-			//ouvert en mode lecture 
+			
 			FileReader chaine = new FileReader("chaines.csv");
-			// pour le fichier on va bufferere est un obje qui possede la methode readline qui te permet de lire un fichier ligne par ligne 
-			//ouvert en mode parcour buffered
 			BufferedReader bre = new BufferedReader(chaine); 
-			//lecture ligne par ligne 
-			String line =bre.readLine(); 
-			// attention saut de la prmiere ligne 
+			String line =bre.readLine();  
 			while ((line=bre.readLine()) !=null) {
-				// ici tu decoupe avec le split tu les met dans un tableau fields
-				String[] fields=line.split(";");
-				// stanislas proposer pour regler le souci des na la facon suivante
-				
-				
-				// Partie 2 conversion des machin du tableaux en attribut du style int etc
+				String[] fields=line.split(";");			
 				String code =fields[0];
 				String nom=fields[1];
-				// ici conversion revoir le cours 
-				//Hashmap qui contient les element en entre
 				HashMap<Element,Double> entree=new HashMap<Element,Double>();
-				// ici on va suprimer les espace et on va separer avec ),( et on le fous dans  le tableau entrers
 				String[] entrers =fields[2].replace(" ","").split("\\),\\(");
 				for (int i=0;i<entrers.length;i++) {
 					String str[]= entrers[i].replace("(","").replace(")","").split(",");
 					String codeElem=str[0];
 					double quantiteElem=Double.parseDouble(str[1]);
-					//pour chaque element de la liste si sont code coreponds au codeelement et bien on va lajouter a la liste des entrer de la chaine de prod
 					for (Element elem:elements) {
 						if(elem.getCode().equals(codeElem)) {
 							entree.put(elem,quantiteElem);
@@ -104,7 +102,6 @@ public class ImportFichier {
 					String str[]= sortier[i].replace("(","").replace(")","").split(",");
 					String codeElem=str[0];
 					double quantiteElem=Double.parseDouble(str[1]);
-					//pour chaque element de la liste si sont code coreponds au codeelement et bie on va lajoouter a la liste des entrer de la chaine de prod
 					for (Element elem:elements) {
 						if(elem.getCode().equals(codeElem)) {
 							sortie.put(elem,quantiteElem);
@@ -119,7 +116,6 @@ public class ImportFichier {
 
 				
 			}
-			// le dernier a etre ouvert est le premier que tu ferme !!! mais ca depend de lchronologie
 			bre.close();
 			chaine.close();
 		} catch (FileNotFoundException e) {
