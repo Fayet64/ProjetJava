@@ -9,17 +9,16 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 /**
-
- * Cette fait l'ouverture, lecture du fichier, remplace les espace par des parenthèses ()
+ * Cette fait l'ouverture, lecture du fichier, remplace les espace par des parenthèses ();
  * array liste contenant les elements lus depuis le fichier csv, 
  * buffere est un objet est objet qui possède la méthode readline et permet de lire un fichier ligne  par ligne 
- * après ouverture du fichier l'on fait lecture ligne par lgne (attention au saut de la première ligne)
+ * après ouverture du fichier l'on fait lecture ligne par lgne (attention au saut de la première ligne);
  * Le split permet de le découper et mettre dans un tableau fields 
  * La deuxième partie fait la conversions des attributs du tableau en attribut int etc... 
  * Ensuite les espace sont remplacé par des ), ( qui seront introduit dans le tableau 
- * et pour chaque element de la liste si sont code coreponds au codeelement, on va l'ajouter a la liste des entrer de la chaine de production
+ * et pour chaque element de la liste si sont code coreponds au codeelement, on va l'ajouter a la liste des entrer de la chaine de production;
 
- * 
+ */
 public class ImportFichier {
 
 	public static void main(String[] args) {
