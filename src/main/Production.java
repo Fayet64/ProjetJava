@@ -189,7 +189,13 @@ public class Production extends javax.swing.JFrame {
         JButton source =(JButton) evt.getSource();
         
         if(source == btnEssai){
+            
+          if(txtNiveau.getText().equals("")){
+               JOptionPane.showMessageDialog(null,"Veuillez rentrez un niveau de production") ;
+          }
+          else{
         int niveau=Integer.parseInt(txtNiveau.getText());
+        
         
         ArrayList<Chaine> lesChaines=GererFichier.getChaineProd();
         Chaine laChaine=GererFichier.getChaineProd().get(0);
@@ -210,10 +216,12 @@ public class Production extends javax.swing.JFrame {
             laFenetreProduitFini.setVisible(true);
         
         }
+        }
         if(source==btnValider){
             JOptionPane.showMessageDialog(null,"Vous avez validez la production et donc modifier le fichier element.csv") ; 
         }
         if(source==btnRetour){
+            GererFichier.charger();
             this.dispose();
         }
     }

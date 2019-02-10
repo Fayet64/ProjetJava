@@ -69,12 +69,17 @@ public String toString() {
  * faudrait que le niveau de produiction soit >0; 
  * ce boolean retourne true si l'achat est possible tout en vérifiant le stock et le niveau
    et false si l'achat est impossible 
- */
+   * *  Gestion de la production 
+     * cette methode nous permet de gerer la production en fonction du niveau d'activité note nvx
+     * la première chose est de verifier le niveau d'activité  pour voir si une production peut être faite
+     * ensuite nous allons verifier si le stock des elements en entre de la chaine de production sont disponible grace à la methode verifStock
+     * si la methode verifstock nous renvoie true nous pouvons alors passé a la production.
+     * la quantite des elements utilisés dans la chaine de production seront retiré 
+     * la quantite des elements en sorties seront ajouté au stock present 
+     * l'achat des elements sera gerer dans la classe achat 
+    */
 public void produire (int nvx){
-    //1erer etape recuperer les produit dont on a besoin pour la chaine choisi en parametre
-   // Chaine laChaine =GererFichier.getChaineProd().get(nbChaine);
-    //regarder combien de produit on a besoin en entrée.BOF PAS BESOIN CAR ON CONNAIT DEJA LE CODE DE LA CHAINE 
-    // GererFichier.getChaineProd().get(n).entree.size();
+   
     
     //vérification de niveau de production 
     if (nvx<0) {
@@ -108,10 +113,10 @@ public void produire (int nvx){
             achat=objE.verifStock(this,nvx);
             //System.out.println(achat);
         }
-     
-         
-  
     if(achat!=false){
+        
+                    // Ajout du produit fabriqué 
+                    
         Element objElement=new Element();
         Iterator iterator2 = this.sortie.entrySet().iterator();
         while (iterator2.hasNext()) {
@@ -119,14 +124,14 @@ public void produire (int nvx){
             objElement=(Element) me2.getKey();
         }
                 double newQuante= this.sortie.get(objElement);
-                System.out.println(" Quantite en sortie du produit "+objElement.getNom()+" : "+newQuante);
-                // il faut une methode qui prend la quantie de lelement produit et lajouter au elements deja present dans element du coup ça fera un truc du genre pour la chiane de prod 1 
-                // quantite du produit e005 + 1
-                //en gros ca donne ça
+                System.out.println(" Quantite en sortie du produit "+objElement.getNom()+" : "+newQuante);                
                     System.out.println("Quantite du produit "+objElement.getNom()+ " avant "+objElement.getQuantite());
                      objElement.setQuantite(objElement.getQuantite()+(newQuante*nvx)) ;
                      System.out.println("Quantite du produit "+objElement.getNom()+ " après "+objElement.getQuantite());
-                // retirer les quantité 
+               
+                     
+                    // retirer les quantité 
+                    
                 Element objElement2=new Element();
                 Iterator iterator3 = this.entree.entrySet().iterator();
         
@@ -139,7 +144,7 @@ public void produire (int nvx){
             System.out.println("Quantite de matière première "+objElement2.getNom()+" apres: "+objElement2.getQuantite());
         }
                        
-                     // Fin de la premiere chaine de production 
+              
     } 
     else{
         System.out.println("Vous ne pouvez pas réaliser ce produit car il manque du stock et il n'y à pas de prix d'achat");
@@ -148,6 +153,31 @@ public void produire (int nvx){
                 }
 }
 
+        public void efficacite() {
+            
+            /*  Gestion de l'efficacite 
+             * cette methode permet de verifier l'efficacité de la production 
+             * Si la production est possible,nous allons verifier sont efficacité en faisaint le calcul suivant
+             *  Valeur des ventes de tous les stock dispo)- (le montant total des achat a effectuer)
+             */
+            
+            // il y a encore des imcomprehension dans cette methoode et si il n'y a pas d'achat a effectuer ? 
+	if (Element.verifStock(this,3)==true) {
+		Element objElement3=new Element();
+		double totalAchat=0;
+		double totalVente=0;
+        Iterator iterator4 = this.entree.entrySet().iterator();
+
+        while (iterator4.hasNext()) {
+     
+    totalAchat = totalAchat+objElement3.getAchat();
+    totalVente= totalVente+objElement3.getVente();
+				
+		 }
+        double efficacite= totalVente-totalAchat;
+        System.out.println("votre efficacite est de "+efficacite);
+		}
+	}
 /*
         public void efficacite() {
 	if (Element.verifStock(this,3)==true) {

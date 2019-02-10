@@ -23,6 +23,10 @@ import java.io.FileWriter;
  * @author Julien Fayet
  */
 public class GererFichier {
+    
+    /*
+    
+    */
                 private static ArrayList<Element> elements =new ArrayList <Element>();
 		private static ArrayList<Chaine> chaineProd =new ArrayList <Chaine>();
 		//Lecture du fichier cntenant les elements 
@@ -151,25 +155,19 @@ public class GererFichier {
     public static ArrayList<Chaine> getChaineProd() {
         return chaineProd;
     }
-    
-    /**
- * Crée un BufferedWriter qui nous permettra d'écrire dans le fichier element.csv
- * Cette methode permet d'écrire la chaine lignTitre, qui comprends le code, nom, quantité 
- * unité, achat et vente dans le fichier element.csv avec le séparateur (;) et le retour à la ligne
- * entre les attriuts tout en parcourant les éléments. 
- */
 public static void ecrireFichier () throws IOException {
-       
-    BufferedWriter fw = new BufferedWriter(new FileWriter("elements.csv"));    	
+        BufferedWriter fw = new BufferedWriter(new FileWriter("elements.csv"));
+
+    	
     	String ligneTitre= "Code"+";"+"Nom"+";"+"Quantite"+";"+"Unite"+";"+"Achat"+";"+"Vente";
-       
         fw.write(ligneTitre);
         fw.newLine();
     	for(Element e:elements) {
                                  
 				 String ligne= e.getCode()+";"+e.getNom()+";"+e.getQuantite()+";"+e.getUnite()+";"+e.getAchat()+";"+e.getVente();
                                  
-                                fw.write(ligne);
+                                 
+                                 fw.write(ligne);
                                 fw.newLine();
 			}
 				fw.close();
