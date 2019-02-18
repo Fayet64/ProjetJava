@@ -43,8 +43,8 @@ public class ImportFichier {
 				String unite = fields[3];
 				double achat =Double.parseDouble(fields[4]);
 				double vente =Double.parseDouble(fields[5]);
-				
-				Element el= new Element(code,nom,quantite,unite,achat,vente);
+				int demande=Integer.parseInt(fields[6]);
+				Element el= new Element(code,nom,quantite,unite,achat,vente,demande);
 				elements.add(el);
 
 
