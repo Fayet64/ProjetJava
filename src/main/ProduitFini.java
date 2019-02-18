@@ -280,7 +280,6 @@ public class ProduitFini extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Vous avez ouvert le stock") ; 
             Stock laFenetreAction;
             ArrayList<Element> elements =objFichier.getElements();
-            System.out.println(elements);
 	    laFenetreAction= new Stock(elements);
             laFenetreAction.setVisible(true);
         }

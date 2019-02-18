@@ -6,6 +6,7 @@
 package main;
 
 import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,33 +30,13 @@ public class ProduireSemaine extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        NiveauA = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        listeChaines = new javax.swing.JComboBox<>();
-        txtNiveau = new javax.swing.JTextField();
         btnRetour = new javax.swing.JButton();
-        btnEssai = new javax.swing.JButton();
+        btnContinuer = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtNbSemaine = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        NiveauA.setText("Niveau d'activité : ");
-
-        jLabel1.setText("Chaine : ");
-
-        listeChaines.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listeChainesActionPerformed(evt);
-            }
-        });
-
-        txtNiveau.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNiveauActionPerformed(evt);
-            }
-        });
 
         btnRetour.setText("Retour");
         btnRetour.addActionListener(new java.awt.event.ActionListener() {
@@ -64,14 +45,14 @@ public class ProduireSemaine extends javax.swing.JFrame {
             }
         });
 
-        btnEssai.setText("Faire un essai");
-        btnEssai.addActionListener(new java.awt.event.ActionListener() {
+        btnContinuer.setText("Continuer");
+        btnContinuer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEssaiActionPerformed(evt);
+                btnContinuerActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Essai de production");
+        jLabel2.setText("Choix du nombre de semaines");
 
         jLabel3.setText("Nombre de semaines:");
 
@@ -81,61 +62,33 @@ public class ProduireSemaine extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(94, 94, 94)
-                .addComponent(btnRetour, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                .addComponent(btnRetour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(39, 39, 39)
-                .addComponent(btnEssai, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                .addComponent(btnContinuer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(116, 116, 116))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(NiveauA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(21, 21, 21))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(74, 74, 74))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNiveau)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(listeChaines, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(2, 2, 2))
-                            .addComponent(txtNbSemaine))
-                        .addGap(27, 27, 27)))
-                .addGap(131, 131, 131))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(113, 113, 113)
+                .addComponent(txtNbSemaine)
+                .addGap(140, 140, 140))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(167, 167, 167)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(160, 160, 160))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                    .addComponent(listeChaines, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(NiveauA, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                    .addComponent(txtNiveau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                    .addComponent(txtNbSemaine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
+                .addGap(78, 78, 78)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEssai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtNbSemaine))
+                .addGap(134, 134, 134)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnContinuer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRetour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(34, 34, 34))
         );
@@ -143,38 +96,36 @@ public class ProduireSemaine extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void listeChainesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listeChainesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listeChainesActionPerformed
-
-    private void txtNiveauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNiveauActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNiveauActionPerformed
-
     private void btnRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetourActionPerformed
         // TODO add your handling code here:
         maGestionDeLEvenement(evt);
     }//GEN-LAST:event_btnRetourActionPerformed
 
-    private void btnEssaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEssaiActionPerformed
+    private void btnContinuerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuerActionPerformed
         // TODO add your handling code here:
         maGestionDeLEvenement(evt);
-    }//GEN-LAST:event_btnEssaiActionPerformed
+    }//GEN-LAST:event_btnContinuerActionPerformed
     
     private void maGestionDeLEvenement(ActionEvent evt) {
-        
+        Object source = evt.getSource();
+        String laChaine = null;
+        if(source==btnRetour){
+            this.dispose();
+        }
+        if (source == btnContinuer) {
+            JOptionPane.showMessageDialog(null,"Vous devrez choisir la semaine sur laquelle rajouter les productions") ; 
+            ProductionSemaine laFenetreProdSemaine;
+	    laFenetreProdSemaine= new ProductionSemaine();
+            laFenetreProdSemaine.setVisible(true);
+        } 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel NiveauA;
-    private javax.swing.JButton btnEssai;
+    private javax.swing.JButton btnContinuer;
     private javax.swing.JButton btnRetour;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JComboBox<String> listeChaines;
     private javax.swing.JTextField txtNbSemaine;
-    private javax.swing.JTextField txtNiveau;
     // End of variables declaration//GEN-END:variables
 
    

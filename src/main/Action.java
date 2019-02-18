@@ -44,7 +44,8 @@ public class Action extends javax.swing.JFrame {
         btnStock = new javax.swing.JButton();
         btnProduire = new javax.swing.JButton();
         btnFermer = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnProdSemaine = new javax.swing.JButton();
+        btnHistorique = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,7 +72,14 @@ public class Action extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Produire par semaine");
+        btnProdSemaine.setText("Produire par semaine");
+        btnProdSemaine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProdSemaineActionPerformed(evt);
+            }
+        });
+
+        btnHistorique.setText("Voir l'historique des productions");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,18 +89,22 @@ public class Action extends javax.swing.JFrame {
                 .addGap(102, 102, 102)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(52, 52, 52))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(177, 177, 177)
+                .addComponent(btnFermer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(150, 150, 150))
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(btnStock, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                 .addGap(28, 28, 28)
                 .addComponent(btnProduire, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                .addComponent(btnProdSemaine, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                 .addGap(21, 21, 21))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addComponent(btnFermer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(182, 182, 182))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnHistorique)
+                .addGap(140, 140, 140))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,10 +115,12 @@ public class Action extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnProduire, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(39, 39, 39)
-                .addComponent(btnFermer, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
-                .addGap(89, 89, 89))
+                    .addComponent(btnProdSemaine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(btnHistorique)
+                .addGap(44, 44, 44)
+                .addComponent(btnFermer, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addGap(45, 45, 45))
         );
 
         pack();
@@ -126,6 +140,11 @@ public class Action extends javax.swing.JFrame {
         // TODO add your handling code here:
         maProcedureActionPerformed(evt);
     }//GEN-LAST:event_btnFermerActionPerformed
+
+    private void btnProdSemaineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdSemaineActionPerformed
+        // TODO add your handling code here:
+        maProcedureActionPerformed(evt);
+    }//GEN-LAST:event_btnProdSemaineActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,14 +192,20 @@ public class Action extends javax.swing.JFrame {
             Stock laFenetreAction;
 	    laFenetreAction= new Stock(elements);
             laFenetreAction.setVisible(true);
-        } else {
-            if (source == btnProduire) {
+        } 
+        if (source == btnProduire) {
             JOptionPane.showMessageDialog(null,"Vous avez ouvert la production") ;     
             Production laFenetreProduction;
 	    laFenetreProduction= new Production(chaines);
             laFenetreProduction.setVisible(true);
         }
+        if(source == btnProdSemaine){
+            JOptionPane.showMessageDialog(null,"Vous avez ouvert la production par semaine") ;     
+            ProduireSemaine laFenetreProd;
+	    laFenetreProd= new ProduireSemaine();
+            laFenetreProd.setVisible(true);
         }
+        
 
     }
     
@@ -188,9 +213,10 @@ public class Action extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFermer;
+    private javax.swing.JButton btnHistorique;
+    private javax.swing.JButton btnProdSemaine;
     private javax.swing.JButton btnProduire;
     private javax.swing.JButton btnStock;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
