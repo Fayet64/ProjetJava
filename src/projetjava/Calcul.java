@@ -95,6 +95,17 @@ public class Calcul {
     }
     
          }
+    
+    public double satisfaction(double quantite,int demande){
+        if(demande>0){
+        return (double)(quantite/demande)*100;
+        }
+        else{
+            return 0;
+        }
+    }
+    
+  
   
     }
     
