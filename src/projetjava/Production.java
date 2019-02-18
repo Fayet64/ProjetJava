@@ -5,39 +5,34 @@
  */
 package projetjava;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-
 /**
  *
- * @author Aissatou Diop
+ * @author Julien Fayet
  */
 public class Production {
-    private Element objE;
-    private double quantite;
+    private Element objElement;
+    private int quantite;
 
-    public Production(Element objE, double quantite) {
-        this.objE = objE;
+    public Production(Element objElement, int quantite) {
+        this.objElement = objElement;
         this.quantite = quantite;
     }
 
-    public Element getObjE() {
-        return objE;
+    public Element getObjElement() {
+        return objElement;
     }
 
-    public double getQuantite() {
+    public void setObjElement(Element objElement) {
+        this.objElement = objElement;
+    }
+
+    public int getQuantite() {
         return quantite;
     }
 
-    public void setObjE(Element objE) {
-        this.objE = objE;
-    }
-
-    public void setQuantite(double quantite) {
+    public void setQuantite(int quantite) {
         this.quantite = quantite;
     }
-   
-
+    
     
 }
