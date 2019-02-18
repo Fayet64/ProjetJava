@@ -6,29 +6,18 @@
 package main;
 
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import projetjava.Calcul;
-import projetjava.Chaine;
-import projetjava.Element;
-import projetjava.FichierCSV;
-import projetjava.GererFichier;
 
 /**
  *
  * @author Julien Fayet
  */
-public class Production extends javax.swing.JFrame {
+public class ProduireSemaine extends javax.swing.JFrame {
 
     /**
-     * Creates new form Production
+     * Creates new form ProduireSemaine
      */
-    public Production(ArrayList<Chaine> listeChaine) {
+    public ProduireSemaine() {
         initComponents();
-        setComponents(listeChaine);
     }
 
     /**
@@ -41,30 +30,31 @@ public class Production extends javax.swing.JFrame {
     private void initComponents() {
 
         NiveauA = new javax.swing.JLabel();
-        txtNiveau = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        btnEssai = new javax.swing.JButton();
-        btnRetour = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         listeChaines = new javax.swing.JComboBox<>();
+        txtNiveau = new javax.swing.JTextField();
+        btnRetour = new javax.swing.JButton();
+        btnEssai = new javax.swing.JButton();
         btnValider = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtNbSemaine = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         NiveauA.setText("Niveau d'activité : ");
 
-        txtNiveau.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setText("Chaine : ");
+
+        listeChaines.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNiveauActionPerformed(evt);
+                listeChainesActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Chaine : ");
-
-        btnEssai.setText("Faire un essai");
-        btnEssai.addActionListener(new java.awt.event.ActionListener() {
+        txtNiveau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEssaiActionPerformed(evt);
+                txtNiveauActionPerformed(evt);
             }
         });
 
@@ -75,11 +65,10 @@ public class Production extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Essai de production");
-
-        listeChaines.addActionListener(new java.awt.event.ActionListener() {
+        btnEssai.setText("Faire un essai");
+        btnEssai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listeChainesActionPerformed(evt);
+                btnEssaiActionPerformed(evt);
             }
         });
 
@@ -90,12 +79,16 @@ public class Production extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Essai de production");
+
+        jLabel3.setText("Nombre de semaines:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(20, 20, 20)
                 .addComponent(btnRetour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(39, 39, 39)
                 .addComponent(btnEssai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -103,43 +96,54 @@ public class Production extends javax.swing.JFrame {
                 .addComponent(btnValider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(46, 46, 46))
             .addGroup(layout.createSequentialGroup()
-                .addGap(158, 158, 158)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(179, 179, 179))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NiveauA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(53, 53, 53)))
-                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtNiveau)
-                        .addGap(229, 229, 229))
+                        .addGap(158, 158, 158)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(listeChaines, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(NiveauA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(21, 21, 21))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(74, 74, 74))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNiveau)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(listeChaines, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(2, 2, 2))
+                            .addComponent(txtNbSemaine))
+                        .addGap(27, 27, 27)))
+                .addGap(131, 131, 131))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(59, 59, 59)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(listeChaines, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(NiveauA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(txtNiveau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
+                    .addComponent(txtNiveau))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtNbSemaine))
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEssai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRetour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -150,33 +154,32 @@ public class Production extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNiveauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNiveauActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNiveauActionPerformed
-
-    private void btnEssaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEssaiActionPerformed
-        // TODO add your handling code here:
-        maGestionDeLEvenement(evt);
-    }//GEN-LAST:event_btnEssaiActionPerformed
-
     private void listeChainesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listeChainesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_listeChainesActionPerformed
 
-    private void btnValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValiderActionPerformed
+    private void txtNiveauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNiveauActionPerformed
         // TODO add your handling code here:
-        maGestionDeLEvenement(evt);
-    }//GEN-LAST:event_btnValiderActionPerformed
+    }//GEN-LAST:event_txtNiveauActionPerformed
 
     private void btnRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetourActionPerformed
         // TODO add your handling code here:
         maGestionDeLEvenement(evt);
     }//GEN-LAST:event_btnRetourActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-  
+    private void btnEssaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEssaiActionPerformed
+        // TODO add your handling code here:
+        maGestionDeLEvenement(evt);
+    }//GEN-LAST:event_btnEssaiActionPerformed
+
+    private void btnValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValiderActionPerformed
+        // TODO add your handling code here:
+        maGestionDeLEvenement(evt);
+    }//GEN-LAST:event_btnValiderActionPerformed
+    
+    private void maGestionDeLEvenement(ActionEvent evt) {
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel NiveauA;
@@ -185,55 +188,11 @@ public class Production extends javax.swing.JFrame {
     private javax.swing.JButton btnValider;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JComboBox<String> listeChaines;
+    private javax.swing.JTextField txtNbSemaine;
     private javax.swing.JTextField txtNiveau;
     // End of variables declaration//GEN-END:variables
 
-    private void setComponents(ArrayList<Chaine> listeChaine) {
-        for(Chaine c:listeChaine){
-            listeChaines.addItem(c.getNom());
-        }
-    }
-
-    private void maGestionDeLEvenement(ActionEvent evt) {
-        JButton source =(JButton) evt.getSource();
-        GererFichier objFichier=new FichierCSV();
-        
-        if(source == btnEssai){
-            
-          if(txtNiveau.getText().equals("")){
-               JOptionPane.showMessageDialog(null,"Veuillez rentrez un niveau de production") ;
-          }
-          else{
-        int niveau=Integer.parseInt(txtNiveau.getText());        
-        ArrayList<Chaine> lesChaines=objFichier.getChaineProd();
-        Chaine laChaine=objFichier.getChaineProd().get(0);
-        for(Chaine c:lesChaines){
-            if(c.getNom().equals(listeChaines.getSelectedItem().toString()))
-                laChaine=c;
-        }
-        Calcul objCalcul=new Calcul();
-        objCalcul.produire(laChaine,niveau);
-        
-        Element objElement=new Element();
-        Iterator iterator2 = laChaine.getSortie().entrySet().iterator();
-        while (iterator2.hasNext()) {
-             Map.Entry me2 = (Map.Entry) iterator2.next();
-            objElement=(Element) me2.getKey();
-        }
-        ProduitFini laFenetreProduitFini;
-            laFenetreProduitFini= new ProduitFini(objElement);
-            laFenetreProduitFini.setVisible(true);
-        
-        }
-        }
-        if(source==btnValider){
-            JOptionPane.showMessageDialog(null,"Vous avez validez la production et donc modifier le fichier element.csv") ; 
-        }
-        if(source==btnRetour){
-            this.dispose();
-        }
-    }
-        
-    }
-
+   
+}

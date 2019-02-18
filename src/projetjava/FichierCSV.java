@@ -72,7 +72,7 @@ public class FichierCSV implements GererFichier{
 		try {
 			//ouvert en mode lecture 
 			FileReader chaine = new FileReader("chaines.csv");
-			// pour le fichier on va bufferere est un obje qui possede la methode readline qui te permet de lire un fichier ligne par ligne 
+			// pour le fichier on va bufferere est un objet qui possede la methode readline qui te permet de lire un fichier ligne par ligne 
 			//ouvert en mode parcour buffered
 			BufferedReader bre = new BufferedReader(chaine); 
 			//lecture ligne par ligne 
