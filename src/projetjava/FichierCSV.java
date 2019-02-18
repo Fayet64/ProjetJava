@@ -53,8 +53,8 @@ public class FichierCSV implements GererFichier{
 				String unite = fields[3];
 				double achat =Double.parseDouble(fields[4]);
 				double vente =Double.parseDouble(fields[5]);
-				
-				Element el= new Element(code,nom,quantite,unite,achat,vente);
+				int demande=Integer.parseInt(fields[6]);
+				Element el= new Element(code,nom,quantite,unite,achat,vente,demande);
 				elements.add(el);
 	
 			}
@@ -95,7 +95,13 @@ public class FichierCSV implements GererFichier{
 				for (int i=0;i<entrers.length;i++) {
 					String str[]= entrers[i].replace("(","").replace(")","").split(",");
 					String codeElem=str[0];
-					double quantiteElem=Double.parseDouble(str[1]);
+                                        double quantiteElem;
+                                        if(str.length<2){
+					quantiteElem=0.0;
+                                        }
+                                        else{
+                                        quantiteElem=Double.parseDouble(str[1]);
+                                        }
 					//pour chaque element de la liste si sont code coreponds au codeelement et bien on va lajouter a la liste des entrer de la chaine de prod
 					for (Element elem:elements) {
 						if(elem.getCode().equals(codeElem)) {
