@@ -16,13 +16,15 @@ private double quantite;
 private String unite;
 private double achat;
 private double vente;
-public Element(String code, String nom, double quantite, String unite, double achat, double vente) {
+private int demande;
+public Element(String code, String nom, double quantite, String unite, double achat, double vente,int demande) {
 	this.code = code;
 	this.nom = nom;
 	this.quantite = quantite;
 	this.unite = unite;
 	this.achat = achat;
 	this.vente = vente;
+        this.demande=demande;
 }
 
     public Element() {
@@ -32,6 +34,14 @@ public Element(String code, String nom, double quantite, String unite, double ac
 	this.unite = "";
 	this.achat = 0;
 	this.vente = 0;
+    }
+
+    public int getDemande() {
+        return demande;
+    }
+
+    public void setDemande(int demande) {
+        this.demande = demande;
     }
 
 public String getCode() {

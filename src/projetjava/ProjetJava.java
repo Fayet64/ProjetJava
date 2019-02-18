@@ -27,17 +27,18 @@ public class ProjetJava {
         if(this.niveau==0){
             Syst
         }
-*/
-        GererFichier.charger();
-        Chaine objChaine=GererFichier.getChaineProd().get(0);
+*/      GererFichier objF=new FichierCSV();
+        objF.charger();
+        Chaine objChaine=objF.getChaineProd().get(0);
                 
-        ArrayList<Element> lesElements=GererFichier.getElements();
+        ArrayList<Element> lesElements=objF.getElements();
         //System.out.println(lesElements);
-        objChaine.produire(100);
-        ArrayList<Element> lesElements2=GererFichier.getElements();
+        Calcul objCalcul=new Calcul();
+        objCalcul.produire(objChaine,50);
+        ArrayList<Element> lesElements2=objF.getElements();
         //System.out.println(lesElements2);
         //System.out.println(objChaine.getSortie().get(lesElements.get(5)));
-        GererFichier.ecrireFichier();
+        //objF.ecrireFichier();
     }
     
     

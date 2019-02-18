@@ -1,22 +1,32 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package projetjava;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
-public class ImportFichier {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-// array liste contenant les element lus depuis le fichier csv
-		ArrayList<Element> elements =new ArrayList <Element>();
-		ArrayList<Chaine> chaineProd =new ArrayList <Chaine>();
+/**
+ *
+ * @author Julien Fayet
+ */
+public class FichierCSV implements GererFichier{
+    
+    /*
+    
+    */
+                private static ArrayList<Element> elements =new ArrayList <Element>();
+		private static ArrayList<Chaine> chaineProd =new ArrayList <Chaine>();
 		//Lecture du fichier cntenant les elements 
-		
+		public  void charger(){
 		try {
 			//ouvert en mode lecture 
 			FileReader elem = new FileReader("elements.csv");
@@ -46,9 +56,7 @@ public class ImportFichier {
 				int demande=Integer.parseInt(fields[6]);
 				Element el= new Element(code,nom,quantite,unite,achat,vente,demande);
 				elements.add(el);
-
-
-				
+	
 			}
 			// le dernier a etre ouvert est le premier que tu ferme !!! mais ca depend de lchronologie
 			br.close();
@@ -61,12 +69,10 @@ public class ImportFichier {
 			
 			e.printStackTrace();
 		}
-		
-		
 		try {
 			//ouvert en mode lecture 
 			FileReader chaine = new FileReader("chaines.csv");
-			// pour le fichier on va bufferere est un obje qui possede la methode readline qui te permet de lire un fichier ligne par ligne 
+			// pour le fichier on va bufferere est un objet qui possede la methode readline qui te permet de lire un fichier ligne par ligne 
 			//ouvert en mode parcour buffered
 			BufferedReader bre = new BufferedReader(chaine); 
 			//lecture ligne par ligne 
@@ -89,7 +95,13 @@ public class ImportFichier {
 				for (int i=0;i<entrers.length;i++) {
 					String str[]= entrers[i].replace("(","").replace(")","").split(",");
 					String codeElem=str[0];
-					double quantiteElem=Double.parseDouble(str[1]);
+                                        double quantiteElem;
+                                        if(str.length<2){
+					quantiteElem=0.0;
+                                        }
+                                        else{
+                                        quantiteElem=Double.parseDouble(str[1]);
+                                        }
 					//pour chaque element de la liste si sont code coreponds au codeelement et bien on va lajouter a la liste des entrer de la chaine de prod
 					for (Element elem:elements) {
 						if(elem.getCode().equals(codeElem)) {
@@ -130,11 +142,46 @@ public class ImportFichier {
 			
 			e.printStackTrace();
 		}
-                System.out.println(elements.get(0).getCode());
+                //System.out.println(elements.get(0).getCode());
 		//System.out.println(Arrays.toString(elements.toArray()));
 		//System.out.println(Arrays.toString(chaineProd.toArray()));
 
 		
 	}
 
+    public  ArrayList<Element> getElements() {
+        return elements;
+    }
+
+
+    public  ArrayList<Chaine> getChaineProd() {
+        return chaineProd;
+    }
+public  void ecrireFichier () throws IOException {
+        BufferedWriter fw = new BufferedWriter(new FileWriter("elements.csv"));
+
+    	
+    	String ligneTitre= "Code"+";"+"Nom"+";"+"Quantite"+";"+"Unite"+";"+"Achat"+";"+"Vente";
+        fw.write(ligneTitre);
+        fw.newLine();
+    	for(Element e:elements) {
+                                 
+				 String ligne= e.getCode()+";"+e.getNom()+";"+e.getQuantite()+";"+e.getUnite()+";"+e.getAchat()+";"+e.getVente();
+                                 
+                                 
+                                 fw.write(ligne);
+                                fw.newLine();
+			}
+				fw.close();
+    	
+    }
+public void ecrireNouvFichier() throws IOException{
+    BufferedWriter fw = new BufferedWriter (new FileWriter("ProgrammationSemaines.csv"));
+    
 }
+public void getprodsemaine() {
+    
+}
+                
+}
+
