@@ -74,9 +74,19 @@ public class ProjetJava {
             System.out.println("test");
      */
        
-       Achat objB=new Achat("C002",10,10);
-       Achat objA=new Achat("C001",10,10);
-        System.out.println(objA.getCodeAchat()+" - "+objA.getCodeElement()+" - "+objA.getQuantite()+" - "+objA.getDateA());
+       //Achat objB=new Achat("C002",10,10);
+      // Achat objA=new Achat("C001",10,10);
+       //
+        //System.out.println(objA.getCodeAchat()+" - "+objA.getCodeElement()+" - "+objA.getQuantite()+" - "+objA.getDateA());
+         GererFichier objfichier = new FichierCSV();
+        objfichier.lireListePrix();
+        // ArrayList<Achat> listeAchat;
+         
+         //listeAchat=objfichier.getListeAchat();
+         //listeAchat.add(objA);
+         //bjfichier.ecrireListeAchat();
+         // objfichier.charger();
+
         }
         
         

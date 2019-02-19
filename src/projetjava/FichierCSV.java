@@ -30,6 +30,7 @@ public class FichierCSV implements GererFichier{
                 private static ArrayList<ProductionSemaine> listeProdSemaine=new ArrayList<ProductionSemaine>();
                 private static ArrayList<Achat> listeAchat=new ArrayList <Achat>();
                 private static HashMap<String,Double> listePrixE=new HashMap<String,Double>();
+                // String et element 
 
 		//Lecture du fichier cntenant les elements 
 		public  void charger(){
@@ -177,20 +178,20 @@ public class FichierCSV implements GererFichier{
     
 public  void ecrireFichier () throws IOException {
         BufferedWriter fw = new BufferedWriter(new FileWriter("elements.csv"));
-
-    	
-    	String ligneTitre= "Code"+";"+"Nom"+";"+"Quantite"+";"+"Unite"+";"+"Achat"+";"+"Vente";
+        
+        String ligneTitre= "Code"+";"+"Nom"+";"+"Quantite"+";"+"Unite"+";"+"Achat"+";"+"Vente";
+        
         fw.write(ligneTitre);
         fw.newLine();
+       
     	for(Element e:elements) {
                                  
 				 String ligne= e.getCode()+";"+e.getNom()+";"+e.getQuantite()+";"+e.getUnite()+";"+e.getAchat()+";"+e.getVente();
+                                fw.write(ligne);
                                  
-                                 
-                                 fw.write(ligne);
-                                fw.newLine();
+                                 fw.newLine();
 			}
-				fw.close();
+                                fw.close();
     	
     }
     public void ecrireProdSemaine() {
@@ -279,11 +280,57 @@ public void lireProdSemaine () {
                     
     }
 
- 
+ public void ecrireListeAchat(){
+     
+       BufferedWriter fy;
+                    try {
+                        fy = new BufferedWriter(new FileWriter("achats.csv"));
+                     
+                    
+        String lignetitrea= "CodeAchat"+";"+"CodeElement"+";"+"Quantite"+";"+"Date";
+        fy.write(lignetitrea);
+         fy.newLine();
+        for (Achat e:listeAchat){
+            String lignea = e.getCodeAchat()+";"+e.getCodeElement()+";"+e.getQuantite()+";"+e.getDateA();
+            fy.write(lignea); 
+            fy.newLine();
+        }
+        
+				fy.close();
+                                
+            } catch (IOException ex) {
+                        Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+    }
+ public void lireListePrix(){
+ try{
+    BufferedReader fs =new BufferedReader(new FileReader("listeprix.csv"));
+    String chaine;
+    int i=1;
+     
+         while ((chaine=fs.readLine())!=null){
+             if(i>1){
+                 String [] tabChaine=chaine.split(";");
+                 System.out.println(tabChaine[i]);
+             }
+             i++;
+             
+             
+         } 
+     try {
+         fs.close();
+     } catch (IOException ex) {
+         Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
+     }
+}catch (FileNotFoundException e){
+     System.out.println("Le fichier est introuable");
+}                   catch (IOException ex) {
+                        Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+ }
 
 }
-
-
 
     
 
