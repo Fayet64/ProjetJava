@@ -222,7 +222,7 @@ public class ProdSemaine extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null,"Il est impossible de créer ce produit");
                 }
                 else{
-                ArrayList<ProductionSemaine> listeProdSemaine=objFichier.getProdSemaines();
+                ArrayList<ProductionSemaine> listeProdSemaine=objFichier.getProdSemaine();
                 boolean existe=false;
                 ProductionSemaine objProdSemaine = null;
                 for(ProductionSemaine p:listeProdSemaine){
@@ -238,7 +238,7 @@ public class ProdSemaine extends javax.swing.JFrame {
                 objProdSemaine=new ProductionSemaine(listeSemaine.getSelectedItem().toString(),"19/02/2019");
                 objProdSemaine.ajouterProd(objProd);
                 listeProdSemaine.add(objProdSemaine);
-                objFichier.setListeProdSemaine(listeProdSemaine);
+                objFichier.setProdSemaine(listeProdSemaine);
                 }
                 
                 JOptionPane.showMessageDialog(null,objProd.getObjElement().getNom());
@@ -257,7 +257,7 @@ public class ProdSemaine extends javax.swing.JFrame {
             laFenetreAction.setVisible(true);
         }
         if(source == btnVoirProd){
-            ArrayList<ProductionSemaine> listeP=objFichier.getProdSemaines();
+            ArrayList<ProductionSemaine> listeP=objFichier.getProdSemaine();
             JOptionPane.showMessageDialog(null,listeP.get(0).getNomSemaine()) ; 
             if(listeP.size()==0){
                 JOptionPane.showMessageDialog(null,"Vous avez ouvert les productions") ; 

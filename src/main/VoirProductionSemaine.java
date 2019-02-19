@@ -172,7 +172,7 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
         
         String nomS=listeSemaine.getSelectedItem().toString();
         ProductionSemaine prodS=null;
-        for(ProductionSemaine p:objFichier.getProdSemaines()){
+        for(ProductionSemaine p:objFichier.getProdSemaine()){
             if(p.getNomSemaine().equals(nomS))
                 prodS=p;
         }

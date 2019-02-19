@@ -28,7 +28,7 @@ public class ProductionSemaine {
     public ProductionSemaine(String nomSemaine, String date) {
         this.nomSemaine = nomSemaine;
         this.date = date;
-        this.listeProd = new ArrayList<Production>();
+        this.listeProd = listeProd;
     }
 
     public String getNomSemaine() {

@@ -17,6 +17,8 @@ public interface GererFichier {
     public ArrayList<Element> getElements();
     public ArrayList<Chaine> getChaineProd();
     public void ecrireFichier () throws IOException;
-    public ArrayList<ProductionSemaine> getProdSemaines();
-    public void setListeProdSemaine(ArrayList<ProductionSemaine> listeProdSemaine);
+    public void ecrireProdSemaine();
+    public void lireProdSemaine();
+    public ArrayList<ProductionSemaine> getProdSemaine();
+    public void setProdSemaine(ArrayList<ProductionSemaine>obj );
 }
