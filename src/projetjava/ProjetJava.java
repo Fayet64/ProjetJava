@@ -27,7 +27,7 @@ public class ProjetJava {
         if(this.niveau==0){
             Syst
         }
-*/      GererFichier objF=new FichierCSV();
+*/      /*GererFichier objF=new FichierCSV();
         objF.charger();
         Chaine objChaine=objF.getChaineProd().get(0);
                 
@@ -39,6 +39,48 @@ public class ProjetJava {
         //System.out.println(lesElements2);
         //System.out.println(objChaine.getSortie().get(lesElements.get(5)));
         //objF.ecrireFichier();
+         */               
+            Element elem = new Element("CD001","lapin",10,"3",12,14,5);
+                   
+
+         Production lala= new Production (elem , 10);
+         
+         
+         
+         /*ProductionSemaine lipus = new ProductionSemaine ("semaine1","10/01/2019",);
+         lipus.ajouterProd(lala);
+         lipus.ajouterProd(lala);
+*/
+         
+       GererFichier objfichier = new FichierCSV();
+        //ArrayList<ProductionSemaine> listeProdSemaine=new ArrayList<ProductionSemaine>();
+        //listeProdSemaine.add(lipus);
+        //mettre ajour larraylist 
+        //objfichier.setProdSemaine(listeProdSemaine);
+        
+       // objfichier.ecrireProdSemaine();
+        objfichier.lireProdSemaine();
+        for (ProductionSemaine p : objfichier.getProdSemaine()){
+            System.out.println(p.getListeProd()+"nom"+p.getNomSemaine()+" date"+ p.getDate());
+            for (Production prod : p.getListeProd()){
+                System.out.println(p.getNomSemaine()+" -"+prod.getObjElement().getNom()+"-"+prod.getQuantite());
+                System.out.println("teeeeeeeeeeeeeeeeeeeeeeeeeee");
+            }
+            System.out.println("test");
+     
+        }
+        
+        
+        
+        
+        
+        
+                       
+                       
+                      
+
+    
+    
     }
     
     

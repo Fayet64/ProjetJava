@@ -219,10 +219,10 @@ public  void ecrireFichier () throws IOException {
     
 public void lireProdSemaine () {
    
-    String chemin = "ProgrammationSemaines.csv";
+    //String chemin = "ProgrammationSemaines.csv";
    BufferedReader bf = null;
                     try {
-                        bf = new BufferedReader(new FileReader(chemin));
+                        bf = new BufferedReader(new FileReader("ProgrammationSemaines.csv"));
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -238,7 +238,7 @@ public void lireProdSemaine () {
                         {
                             
                             
-                                String tabChaine[] = chaine.split(",");
+                                String tabChaine[] = chaine.split(";");
                                 
                             // Partie 2 conversion des machin du tableaux en attribut du style int etc
 				String nom =tabChaine[0];
@@ -251,38 +251,27 @@ public void lireProdSemaine () {
 				for (int i=0;i<entrers.length;i++) {
 					String str[]= entrers[i].replace("(","").replace(")","").split(",");
 					String codeElem=str[0];
-                                        double quantiteElem;
+                                        double quantite;
                                         if(str.length<2){
-					quantiteElem=0.0;
+					quantite=0.0;
                                         }
+                                        
                                         else{
-                                        quantiteElem=Double.parseDouble(str[1]);
+                                        quantite=Double.parseDouble(str[1]);
                                         }
 					//pour chaque element de la liste si sont code coreponds au codeelement et bien on va lajouter a la liste des entrer de la chaine de prod
 					for (Element elem:elements) {
 						if(elem.getCode().equals(codeElem)) {
-							prod.add(elem,quantiteElem);
-						}
-					}
-				}
-				HashMap<Element,Double> sortie=new HashMap<Element,Double>();
-				// ici on va suprimer les espace et on va separer avec ),( et on le fous dans  le tableau entrers
-				String[] sortier =fields[3].replace(" ","").split("\\),\\(");
-				for (int i=0;i<sortier.length;i++) {
-					String str[]= sortier[i].replace("(","").replace(")","").split(",");
-					String codeElem=str[0];
-					double quantiteElem=Double.parseDouble(str[1]);
-					//pour chaque element de la liste si sont code coreponds au codeelement et bie on va lajoouter a la liste des entrer de la chaine de prod
-					for (Element elem:elements) {
-						if(elem.getCode().equals(codeElem)) {
-							sortie.put(elem,quantiteElem);
+							
+                                                    prod.add(new Production (elem ,quantite));
 						}
 					}
 				}
 				
 				
-				Chaine cp= new Chaine(code,nom,entree,sortie);
-				chaineProd.add(cp);
+				// creer un production semaine et lajouter 
+				ProductionSemaine prodSem = new ProductionSemaine( nom,date,prod);
+				listeProdSemaine.add(prodSem);
 
 
                            
@@ -301,7 +290,7 @@ public void lireProdSemaine () {
                     
     }
 
- */ 
+ 
 
 }
 

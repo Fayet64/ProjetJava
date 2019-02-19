@@ -11,9 +11,9 @@ package projetjava;
  */
 public class Production {
     private Element objElement;
-    private int quantite;
+    private double quantite;
 
-    public Production(Element objElement, int quantite) {
+    public Production(Element objElement, double quantite) {
         this.objElement = objElement;
         this.quantite = quantite;
     }
@@ -26,11 +26,11 @@ public class Production {
         this.objElement = objElement;
     }
 
-    public int getQuantite() {
+    public double getQuantite() {
         return quantite;
     }
 
-    public void setQuantite(int quantite) {
+    public void setQuantite(double quantite) {
         this.quantite = quantite;
     }
     
