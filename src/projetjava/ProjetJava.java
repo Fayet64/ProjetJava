@@ -40,19 +40,20 @@ public class ProjetJava {
         //System.out.println(objChaine.getSortie().get(lesElements.get(5)));
         //objF.ecrireFichier();
          */               
-            Element elem = new Element("CD001","lapin",10,"3",12,14,5);
+           // Element elem = new Element("CD001","lapin",10,"3",12,14,5);
                    
 
-         Production lala= new Production (elem , 10);
+        // Production lala= new Production (elem , 10);
          
          
          
-         /*ProductionSemaine lipus = new ProductionSemaine ("semaine1","10/01/2019",);
-         lipus.ajouterProd(lala);
-         lipus.ajouterProd(lala);
-*/
+        // ProductionSemaine lipus = new ProductionSemaine ("semaine1","10/01/2019");
+        // lipus.ajouterProd(lala);
+        // lipus.ajouterProd(lala);
+
          
        GererFichier objfichier = new FichierCSV();
+       objfichier.charger();
         //ArrayList<ProductionSemaine> listeProdSemaine=new ArrayList<ProductionSemaine>();
         //listeProdSemaine.add(lipus);
         //mettre ajour larraylist 
