@@ -13,6 +13,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -158,6 +160,13 @@ public class FichierCSV implements GererFichier{
     public  ArrayList<Chaine> getChaineProd() {
         return chaineProd;
     }
+    public void setProdSemaine(ArrayList<ProductionSemaine> obj){
+         this.listeProdSemaine =obj ;
+    }
+    
+    public ArrayList<ProductionSemaine> getProdSemaine() {
+    return listeProdSemaine;
+}
 public  void ecrireFichier () throws IOException {
         BufferedWriter fw = new BufferedWriter(new FileWriter("elements.csv"));
 
@@ -176,13 +185,131 @@ public  void ecrireFichier () throws IOException {
 				fw.close();
     	
     }
-public void ecrireNouvFichier() throws IOException{
-    BufferedWriter fw = new BufferedWriter (new FileWriter("ProgrammationSemaines.csv"));
+    public void ecrireProdSemaine() {
+    
+    BufferedWriter fw = null;
+                    try {
+                        fw = new BufferedWriter (new FileWriter("ProgrammationSemaines.csv"));
+                        String ligneTitre= "Nom"+";"+"Date"+";"+"Production";
+                        fw.write(ligneTitre);
+                        fw.newLine();
+                        for (ProductionSemaine e:listeProdSemaine){
+                            String ligne= e.getNomSemaine()+";"+e.getDate()+";";
+                            for (Production p : e.getListeProd()){
+                                String prod ="("+ p.getObjElement().getCode()+","+p.getQuantite()+")";
+                                
+                                ligne=ligne+prod+"," ;
+                            }
+                            
+                            
+                            fw.write(ligne);
+                            fw.newLine();
+                            fw.close();
+                        }               } catch (IOException ex) {
+                        Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
+                    } finally {
+                        try {
+                            fw.close();
+                        } catch (IOException ex) {
+                            Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
     
 }
-public void getprodsemaine() {
     
+public void lireProdSemaine () {
+   
+    String chemin = "ProgrammationSemaines.csv";
+   BufferedReader bf = null;
+                    try {
+                        bf = new BufferedReader(new FileReader(chemin));
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+   String chaine;
+                    try {
+                        chaine = bf.readLine();
+                    } catch (IOException ex) {
+                        Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+ 
+                    try {
+                        while((chaine = bf.readLine())!= null)
+                        {
+                            
+                            
+                                String tabChaine[] = chaine.split(",");
+                                
+                            // Partie 2 conversion des machin du tableaux en attribut du style int etc
+				String nom =tabChaine[0];
+				String date=tabChaine[1];                                          
+				// ici conversion revoir le cours 
+				//Hashmap qui contient les element en entre
+				ArrayList<Production> prod=new ArrayList<Production>();
+				// ici on va suprimer les espace et on va separer avec ),( et on le fous dans  le tableau entrers
+				String[] entrers =tabChaine[2].replace(" ","").split("\\),\\(");
+				for (int i=0;i<entrers.length;i++) {
+					String str[]= entrers[i].replace("(","").replace(")","").split(",");
+					String codeElem=str[0];
+                                        double quantiteElem;
+                                        if(str.length<2){
+					quantiteElem=0.0;
+                                        }
+                                        else{
+                                        quantiteElem=Double.parseDouble(str[1]);
+                                        }
+					//pour chaque element de la liste si sont code coreponds au codeelement et bien on va lajouter a la liste des entrer de la chaine de prod
+					for (Element elem:elements) {
+						if(elem.getCode().equals(codeElem)) {
+							prod.add(elem,quantiteElem);
+						}
+					}
+				}
+				HashMap<Element,Double> sortie=new HashMap<Element,Double>();
+				// ici on va suprimer les espace et on va separer avec ),( et on le fous dans  le tableau entrers
+				String[] sortier =fields[3].replace(" ","").split("\\),\\(");
+				for (int i=0;i<sortier.length;i++) {
+					String str[]= sortier[i].replace("(","").replace(")","").split(",");
+					String codeElem=str[0];
+					double quantiteElem=Double.parseDouble(str[1]);
+					//pour chaque element de la liste si sont code coreponds au codeelement et bie on va lajoouter a la liste des entrer de la chaine de prod
+					for (Element elem:elements) {
+						if(elem.getCode().equals(codeElem)) {
+							sortie.put(elem,quantiteElem);
+						}
+					}
+				}
+				
+				
+				Chaine cp= new Chaine(code,nom,entree,sortie);
+				chaineProd.add(cp);
+
+
+                           
+                        }      
+                        
+                        
+               
+                    } catch (IOException ex) {
+                        Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try {                 
+                        bf.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+    }
+
+ */ 
+
 }
+
+
+
+    
+
+    
                 
-}
+
 
