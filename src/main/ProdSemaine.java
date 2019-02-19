@@ -6,7 +6,10 @@
 package main;
 
 import java.awt.event.ActionEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import projetjava.Calcul;
 import projetjava.Chaine;
@@ -21,12 +24,13 @@ import projetjava.ProductionSemaine;
  * @author Julien Fayet
  */
 public class ProdSemaine extends javax.swing.JFrame {
-
+    private int nb;
     /**
      * Creates new form ProductionSemaine
      */
     public ProdSemaine(int nb) {
         initComponents();
+        this.nb=nb;
         setComponents(nb);
     }
 
@@ -204,6 +208,8 @@ public class ProdSemaine extends javax.swing.JFrame {
  private void maGestionDeLEvenement(ActionEvent evt) {
         Object source = evt.getSource();
         GererFichier objFichier=new FichierCSV();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
+                Date date = new Date();
                 if(source ==btnAjouter){
             if(txtNiveauA.getText().equals("")){
                JOptionPane.showMessageDialog(null,"Veuillez rentrez un niveau de production") ;
@@ -231,8 +237,10 @@ public class ProdSemaine extends javax.swing.JFrame {
                     System.out.println("listeVide");
                     ArrayList<Production> listeDeProd=new ArrayList<Production>();
                     listeDeProd.add(objProd);
-                    ProductionSemaine objProdSem=new ProductionSemaine(listeSemaine.getSelectedItem().toString(),"19/02/2019",listeDeProd);
-                    System.out.println("ppp");
+                    date.setDate(date.getDate()+(7*listeSemaine.getSelectedIndex()));
+                    String dateA=dateFormat.format(date);
+                    ProductionSemaine objProdSem=new ProductionSemaine(listeSemaine.getSelectedItem().toString(),dateA,listeDeProd);
+                    System.out.println(objProdSem.getDate());
                     listeProdSemaine.add(objProdSem);
                     objFichier.setProdSemaine(listeProdSemaine);
                 }
@@ -254,7 +262,10 @@ public class ProdSemaine extends javax.swing.JFrame {
                 else{
                 ArrayList<Production> listeDeProd=new ArrayList<Production>();
                 listeDeProd.add(objProd);
-                objProdSemaine=new ProductionSemaine(listeSemaine.getSelectedItem().toString(),"19/02/2019",listeDeProd);
+                date.setDate(date.getDate()+(7*listeSemaine.getSelectedIndex()));
+                String dateA=dateFormat.format(date);
+                objProdSemaine=new ProductionSemaine(listeSemaine.getSelectedItem().toString(),dateA,listeDeProd);
+                System.out.println(objProdSemaine.getDate());
                 listeProdSemaine.add(objProdSemaine);
                 objFichier.setProdSemaine(listeProdSemaine);
                 }

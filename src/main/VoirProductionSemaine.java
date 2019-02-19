@@ -46,6 +46,7 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
         txtCode = new javax.swing.JTextField();
         txtqte = new javax.swing.JTextField();
         btnFermer = new javax.swing.JButton();
+        btnValider = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,6 +87,13 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
             }
         });
 
+        btnValider.setText("Valider");
+        btnValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValiderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,21 +111,20 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
                         .addComponent(listeSemaine, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(145, 145, 145))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnFermer)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel4)))
                         .addGap(79, 79, 79)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(listeElements, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(txtqte, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                                .addComponent(txtCode, javax.swing.GroupLayout.Alignment.LEADING)))
+                                .addComponent(txtCode, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(btnValider))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(253, 253, 253)
-                .addComponent(btnFermer)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,9 +147,11 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtqte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59)
-                .addComponent(btnFermer)
-                .addGap(39, 39, 39))
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFermer)
+                    .addComponent(btnValider))
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -166,6 +175,11 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
         // TODO add your handling code here:
         maGestionDeLEvenement(evt);
     }//GEN-LAST:event_btnFermerActionPerformed
+
+    private void btnValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValiderActionPerformed
+        // TODO add your handling code here:
+        maGestionDeLEvenement(evt);
+    }//GEN-LAST:event_btnValiderActionPerformed
 
     private void maGestionDeLEvenement(ActionEvent evt) {
         Object source = evt.getSource();
@@ -193,10 +207,14 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
         txtqte.setText(String.valueOf(objProd.getQuantite()));
         }
         
+        if(source ==btnValider){
+            objFichier.ecrireProdSemaine();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFermer;
+    private javax.swing.JButton btnValider;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
