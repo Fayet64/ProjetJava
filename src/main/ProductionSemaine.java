@@ -236,7 +236,10 @@ public class ProductionSemaine extends javax.swing.JFrame {
     private javax.swing.JTextField txtNiveauA;
     // End of variables declaration//GEN-END:variables
 
-    private void setComponents(int nb) {
-        for(int i=0)
+    private void setComponents(int nb) 
+        ArrayList<String> listeS=new ArrayList<String>();
+        for(int i=0;i<nb;i++){
+            listeS.add("Semaine"+i);
+        }
     }
 }

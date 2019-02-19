@@ -56,6 +56,12 @@ public class ProduireSemaine extends javax.swing.JFrame {
 
         jLabel3.setText("Nombre de semaines:");
 
+        txtNbSemaine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNbSemaineActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,6 +111,10 @@ public class ProduireSemaine extends javax.swing.JFrame {
         // TODO add your handling code here:
         maGestionDeLEvenement(evt);
     }//GEN-LAST:event_btnContinuerActionPerformed
+
+    private void txtNbSemaineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNbSemaineActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNbSemaineActionPerformed
     
     private void maGestionDeLEvenement(ActionEvent evt) {
         Object source = evt.getSource();
@@ -115,7 +125,7 @@ public class ProduireSemaine extends javax.swing.JFrame {
         if (source == btnContinuer) {
             JOptionPane.showMessageDialog(null,"Vous devrez choisir la semaine sur laquelle rajouter les productions") ; 
             ProductionSemaine laFenetreProdSemaine;
-	    laFenetreProdSemaine= new ProductionSemaine();
+	    laFenetreProdSemaine= new ProductionSemaine(Integer.parseInt(txtNbSemaine.getText()));
             laFenetreProdSemaine.setVisible(true);
         } 
     }
