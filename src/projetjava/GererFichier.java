@@ -22,4 +22,8 @@ public interface GererFichier {
     public ArrayList<ProductionSemaine> getProdSemaine();
     public void setProdSemaine(ArrayList<ProductionSemaine>obj );
     public ArrayList<Achat> getListeAchat();
+    public void ecrireListeAchat();
+
+    public void lireListePrix();
+
 }
