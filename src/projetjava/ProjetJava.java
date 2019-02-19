@@ -6,7 +6,10 @@
 package projetjava;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -60,7 +63,7 @@ public class ProjetJava {
         //objfichier.setProdSemaine(listeProdSemaine);
         
        // objfichier.ecrireProdSemaine();
-        objfichier.lireProdSemaine();
+       /* objfichier.lireProdSemaine();
         for (ProductionSemaine p : objfichier.getProdSemaine()){
             System.out.println(p.getListeProd()+"nom"+p.getNomSemaine()+" date"+ p.getDate());
             for (Production prod : p.getListeProd()){
@@ -69,10 +72,12 @@ public class ProjetJava {
             }
             System.out.println("test");
      
-        }
+        }*/
         
         
-        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    Date date = new Date();
+    System.out.println(dateFormat.format(date));
         
         
         

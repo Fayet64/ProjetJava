@@ -113,11 +113,17 @@ public boolean verifStock(Chaine laChaine,int nvx){
                 //(Achat a:Achat.getListeAchat())
                 //System.out.println(a.getCodeAchat());
                 //    }
-    }
+        }
     }
     return res;
 
 
 }
-
+ /* mettre arraylist dans fichier csv ; et mettre les acaht dans un fichier 
+                code achat qui est incrementer automatiiquement arrylist achat dans fichier csv dans verif stock on creer u obj achat on recuppere 
+                        la liste des achat on ajoute cette a chat et on ecrit 
+                                dans ecrire fichier on rajoute achat .
+    }                       faire en sorte decrire dans un fihchier achat */
+                        // dans achat jouter une date . verifistock la date du jour ; 
+    
 }

@@ -28,7 +28,7 @@ public class FichierCSV implements GererFichier{
                 private static ArrayList<Element> elements =new ArrayList <Element>();
 		private static ArrayList<Chaine> chaineProd =new ArrayList <Chaine>();
                 private static ArrayList<ProductionSemaine> listeProdSemaine=new ArrayList<ProductionSemaine>();
-                private static ArrayList<Production> produit =new ArrayList <Production>();
+                
 
 		//Lecture du fichier cntenant les elements 
 		public  void charger(){
@@ -280,8 +280,8 @@ public void lireProdSemaine () {
                     
     }
 
- 
-
+ // fichier achat:ecrire et lire plus ou moins // et un fichier prixelement il faut lire 
+// o, recupere le prix daaht delement interface on recupere le prix dachat et par rapport à ca il peut creer un achat 
 }
 
 
