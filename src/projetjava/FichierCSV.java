@@ -28,6 +28,8 @@ public class FichierCSV implements GererFichier{
                 private static ArrayList<Element> elements =new ArrayList <Element>();
 		private static ArrayList<Chaine> chaineProd =new ArrayList <Chaine>();
                 private static ArrayList<ProductionSemaine> listeProdSemaine=new ArrayList<ProductionSemaine>();
+                private static ArrayList<Production> produit =new ArrayList <Production>();
+
 		//Lecture du fichier cntenant les elements 
 		public  void charger(){
 		try {
@@ -226,74 +228,55 @@ public  void ecrireFichier () throws IOException {
     
 public void lireProdSemaine () {
    
-    //String chemin = "ProgrammationSemaines.csv";
-   BufferedReader bf = null;
-                    try {
-                        bf = new BufferedReader(new FileReader("ProgrammationSemaines.csv"));
-                    } catch (FileNotFoundException ex) {
-                        Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-   String chaine;
-                    try {
-                        chaine = bf.readLine();
-                    } catch (IOException ex) {
-                        Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
-                    }
- 
-                    try {
-                        while((chaine = bf.readLine())!= null)
-                        {
-                            
-                            
-                                String tabChaine[] = chaine.split(";");
-                                
-                            // Partie 2 conversion des machin du tableaux en attribut du style int etc
-				String nom =tabChaine[0];
-				String date=tabChaine[1];                                          
-				// ici conversion revoir le cours 
-				//Hashmap qui contient les element en entre
-				ArrayList<Production> prod=new ArrayList<Production>();
-				// ici on va suprimer les espace et on va separer avec ),( et on le fous dans  le tableau entrers
-				String[] entrers =tabChaine[2].replace(" ","").split("\\),\\(");
-				for (int i=0;i<entrers.length;i++) {
-					String str[]= entrers[i].replace("(","").replace(")","").split(",");
-					String codeElem=str[0];
-                                        double quantite;
-                                        if(str.length<2){
-					quantite=0.0;
-                                        }
-                                        
-                                        else{
-                                        quantite=Double.parseDouble(str[1]);
-                                        }
-					//pour chaque element de la liste si sont code coreponds au codeelement et bien on va lajouter a la liste des entrer de la chaine de prod
-					for (Element elem:elements) {
-						if(elem.getCode().equals(codeElem)) {
-							
-                                                    prod.add(new Production (elem ,quantite));
-						}
-					}
-				}
-				
-				
-				// creer un production semaine et lajouter 
-				ProductionSemaine prodSem = new ProductionSemaine( nom,date,prod);
-				listeProdSemaine.add(prodSem);
+    try {
+        FileReader fic=new FileReader("ProgrammationSemaines.csv");
+        BufferedReader bf = new BufferedReader(fic);
+        String chaine;
+        chaine = bf.readLine();
+        while((chaine = bf.readLine())!= null)
+        {
+                String tabChaine[] = chaine.split(";");
 
-
-                           
-                        }      
-                        
-                        
-               
-                    } catch (IOException ex) {
-                        Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
+        // Partie 2 conversion des machin du tableaux en attribut du style int etc
+            String nom =tabChaine[0];
+            String date=tabChaine[1];                                          
+            // ici conversion revoir le cours 
+            //Hashmap qui contient les element en entre
+            //HashMap<Production,Double>prod=new HashMap<Production,Double>();
+            ArrayList<Production> prod=new ArrayList<Production>();
+            // ici on va suprimer les espace et on va separer avec ),( et on le fous dans  le tableau entrers
+            String[] entrers =tabChaine[2].replace(" ","").split("\\),\\(");
+            for (int i=0;i<entrers.length;i++) {
+                    String str[]= entrers[i].replace("(","").replace(")","").split(",");
+                    String codeElem=str[0];
+                    double quantite;
+                    if(str.length<2){
+                    quantite=0.0;
                     }
-                    try {                 
-                        bf.close();
-                    } catch (IOException ex) {
-                        Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
+                    else{
+                    quantite=Double.parseDouble(str[1]);
                     }
+                    //pour chaque element de la liste si sont code coreponds au codeelement et bien on va lajouter a la liste des entrer de la chaine de prod
+                   
+                   for (Element elem:elements) {
+                            if(elem.getCode().equals(codeElem)) {
+                            prod.add(new Production (elem ,quantite));
+                            }
+                    }
+                   
+            }		
+        // creer un production semaine et lajouter 
+        ProductionSemaine prodSem = new ProductionSemaine( nom,date,prod);
+        listeProdSemaine.add(prodSem);
+                 
+        }
+        bf.close();
+        fic.close();
+           
+        } catch (IOException ex) {
+        Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
                     
     }
 
