@@ -276,9 +276,9 @@ public class ProdSemaine extends javax.swing.JFrame {
         }
         if(source == btnVoirProd){
             ArrayList<ProductionSemaine> listeP=objFichier.getProdSemaine();
-            JOptionPane.showMessageDialog(null,listeP.get(0).getNomSemaine()) ; 
-            if(listeP.size()==0){
-                JOptionPane.showMessageDialog(null,"Vous avez ouvert les productions") ; 
+            JOptionPane.showMessageDialog(null,listeP.isEmpty()) ; 
+            if(listeP.isEmpty()){
+                JOptionPane.showMessageDialog(null,"Impossible") ; 
             }
             else{
                 JOptionPane.showMessageDialog(null,"Vous avez ouvert les productions") ; 

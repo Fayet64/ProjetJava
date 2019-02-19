@@ -36,7 +36,7 @@ public class Achat {
         
         nbAchat++;
     }
-   
+    
 
     public double getPrixA() {
         return prixA;
