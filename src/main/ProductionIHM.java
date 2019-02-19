@@ -21,12 +21,12 @@ import projetjava.GererFichier;
  *
  * @author Julien Fayet
  */
-public class Production extends javax.swing.JFrame {
+public class ProductionIHM extends javax.swing.JFrame {
 
     /**
      * Creates new form Production
      */
-    public Production(ArrayList<Chaine> listeChaine) {
+    public ProductionIHM(ArrayList<Chaine> listeChaine) {
         initComponents();
         setComponents(listeChaine);
     }
@@ -50,7 +50,6 @@ public class Production extends javax.swing.JFrame {
         btnValider = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 350));
         setSize(new java.awt.Dimension(500, 350));
 
         NiveauA.setText("Niveau d'activité : ");

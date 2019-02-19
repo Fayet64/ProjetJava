@@ -153,7 +153,14 @@ public class FichierCSV implements GererFichier{
     public  ArrayList<Element> getElements() {
         return elements;
     }
+    public ArrayList<ProductionSemaine> getProdSemaines(){
+        return this.listeProdSemaine;
+    }
 
+    public void setListeProdSemaine(ArrayList<ProductionSemaine> listeProdSemaine) {
+        FichierCSV.listeProdSemaine = listeProdSemaine;
+    }
+    
 
     public  ArrayList<Chaine> getChaineProd() {
         return chaineProd;

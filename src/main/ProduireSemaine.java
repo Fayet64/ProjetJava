@@ -124,8 +124,8 @@ public class ProduireSemaine extends javax.swing.JFrame {
         }
         if (source == btnContinuer) {
             JOptionPane.showMessageDialog(null,"Vous devrez choisir la semaine sur laquelle rajouter les productions") ; 
-            ProductionSemaine laFenetreProdSemaine;
-	    laFenetreProdSemaine= new ProductionSemaine(Integer.parseInt(txtNbSemaine.getText()));
+            ProdSemaine laFenetreProdSemaine;
+	    laFenetreProdSemaine= new ProdSemaine(Integer.parseInt(txtNbSemaine.getText()));
             laFenetreProdSemaine.setVisible(true);
         } 
     }

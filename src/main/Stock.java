@@ -212,7 +212,7 @@ public class Stock extends javax.swing.JFrame {
         String nom=listeElement.getSelectedItem().toString();
         Element objElement=new Element();
         for(Element e:listeE){
-            if(e.getNom()==nom)
+            if(e.getNom().equals(nom))
                 objElement=e;
         }
         txtCode.setText(objElement.getCode());

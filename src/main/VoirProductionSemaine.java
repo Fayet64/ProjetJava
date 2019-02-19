@@ -6,8 +6,12 @@
 package main;
 
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import projetjava.FichierCSV;
 import projetjava.GererFichier;
+import projetjava.Production;
+import projetjava.ProductionSemaine;
 
 /**
  *
@@ -18,8 +22,9 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
     /**
      * Creates new form VoirProductionSemaine
      */
-    public VoirProductionSemaine() {
+    public VoirProductionSemaine(ArrayList<ProductionSemaine> listeProd) {
         initComponents();
+        setComponents(listeProd);
     }
 
     /**
@@ -31,7 +36,7 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        listeChaines = new javax.swing.JComboBox<>();
+        listeElements = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         listeSemaine = new javax.swing.JComboBox<>();
@@ -44,10 +49,10 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        listeChaines.setPreferredSize(new java.awt.Dimension(10, 22));
-        listeChaines.addActionListener(new java.awt.event.ActionListener() {
+        listeElements.setPreferredSize(new java.awt.Dimension(10, 22));
+        listeElements.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listeChainesActionPerformed(evt);
+                listeElementsActionPerformed(evt);
             }
         });
 
@@ -104,7 +109,7 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addGap(79, 79, 79)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(listeChaines, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(listeElements, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(txtqte, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                                 .addComponent(txtCode, javax.swing.GroupLayout.Alignment.LEADING)))
@@ -126,7 +131,7 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addComponent(listeChaines, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
+                    .addComponent(listeElements, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -143,9 +148,10 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void listeChainesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listeChainesActionPerformed
+    private void listeElementsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listeElementsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_listeChainesActionPerformed
+        maGestionDeLEvenement(evt);
+    }//GEN-LAST:event_listeElementsActionPerformed
 
     private void listeSemaineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listeSemaineActionPerformed
         // TODO add your handling code here:
@@ -164,6 +170,22 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
         Object source = evt.getSource();
         GererFichier objFichier=new FichierCSV();
         
+        String nomS=listeSemaine.getSelectedItem().toString();
+        ProductionSemaine prodS=null;
+        for(ProductionSemaine p:objFichier.getProdSemaines()){
+            if(p.getNomSemaine().equals(nomS))
+                prodS=p;
+        }
+        for(Production e:prodS.getListeProd()){
+            
+        Production objProd=null;
+        for(Production prod:prodS.getListeProd()){
+            if(prod.getObjElement().getNom().equals(listeElements.getSelectedItem().toString()))
+                objProd=prod;
+        }
+        txtCode.setText(objProd.getObjElement().getCode());
+        txtqte.setText(String.valueOf(objProd.getQuantite()));
+        }
         if(source==btnFermer){
             this.dispose();
         }
@@ -176,10 +198,33 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JComboBox<String> listeChaines;
+    private javax.swing.JComboBox<String> listeElements;
     private javax.swing.JComboBox<String> listeSemaine;
     private javax.swing.JTextField txtCode;
     private javax.swing.JTextField txtqte;
     // End of variables declaration//GEN-END:variables
 
+    private void setComponents(ArrayList<ProductionSemaine> listeProd) {
+        for(ProductionSemaine p:listeProd){
+            listeSemaine.addItem(p.getNomSemaine());
+        }
+        String nomS=listeSemaine.getSelectedItem().toString();
+        ProductionSemaine prodS=null;
+        for(ProductionSemaine p:listeProd){
+            if(p.getNomSemaine().equals(nomS))
+                prodS=p;
+        }
+        for(Production e:prodS.getListeProd()){
+            listeElements.addItem(e.getObjElement().getNom());
+        
+        Production objProd=null;
+        for(Production prod:prodS.getListeProd()){
+            if(prod.getObjElement().getNom().equals(listeElements.getSelectedItem().toString()))
+                objProd=prod;
+        }
+        txtCode.setText(objProd.getObjElement().getCode());
+        txtqte.setText(String.valueOf(objProd.getQuantite()));
+    }
+
+}
 }

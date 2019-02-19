@@ -8,20 +8,24 @@ package main;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import projetjava.Calcul;
+import projetjava.Chaine;
 import projetjava.Element;
 import projetjava.FichierCSV;
 import projetjava.GererFichier;
+import projetjava.Production;
+import projetjava.ProductionSemaine;
 
 /**
  *
  * @author Julien Fayet
  */
-public class ProductionSemaine extends javax.swing.JFrame {
+public class ProdSemaine extends javax.swing.JFrame {
 
     /**
      * Creates new form ProductionSemaine
      */
-    public ProductionSemaine(int nb) {
+    public ProdSemaine(int nb) {
         initComponents();
         setComponents(nb);
     }
@@ -200,8 +204,48 @@ public class ProductionSemaine extends javax.swing.JFrame {
  private void maGestionDeLEvenement(ActionEvent evt) {
         Object source = evt.getSource();
         GererFichier objFichier=new FichierCSV();
+                if(source ==btnAjouter){
+            if(txtNiveauA.getText().equals("")){
+               JOptionPane.showMessageDialog(null,"Veuillez rentrez un niveau de production") ;
+          }
+          else{
+               int niveau=Integer.parseInt(txtNiveauA.getText());        
+               ArrayList<Chaine> lesChaines=objFichier.getChaineProd();
+               Chaine laChaine=objFichier.getChaineProd().get(0);
+               for(Chaine c:lesChaines){
+                    if(c.getNom().equals(listeChaines.getSelectedItem().toString()))
+                        laChaine=c;
+                    }
+                Calcul objCalcul=new Calcul();
+                Production objProd=objCalcul.creerProd(laChaine,niveau);
+                if(objProd==null){
+                    JOptionPane.showMessageDialog(null,"Il est impossible de créer ce produit");
+                }
+                else{
+                ArrayList<ProductionSemaine> listeProdSemaine=objFichier.getProdSemaines();
+                boolean existe=false;
+                ProductionSemaine objProdSemaine = null;
+                for(ProductionSemaine p:listeProdSemaine){
+                    if(p.getNomSemaine().equals(listeSemaine.getSelectedItem().toString())){
+                        existe=true;
+                        objProdSemaine=p;
+                    }
+                }
+                if(existe){
+                    objProdSemaine.ajouterProd(objProd);
+                }
+                else{
+                objProdSemaine=new ProductionSemaine(listeSemaine.getSelectedItem().toString(),"19/02/2019");
+                objProdSemaine.ajouterProd(objProd);
+                listeProdSemaine.add(objProdSemaine);
+                objFichier.setListeProdSemaine(listeProdSemaine);
+                }
+                
+                JOptionPane.showMessageDialog(null,objProd.getObjElement().getNom());
+                }
+          }
+        }
         
-        String laChaine = null;
         if(source==btnRetour){
             this.dispose();
         }
@@ -213,11 +257,20 @@ public class ProductionSemaine extends javax.swing.JFrame {
             laFenetreAction.setVisible(true);
         }
         if(source == btnVoirProd){
-            JOptionPane.showMessageDialog(null,"Vous avez ouvert les productions") ; 
-            VoirProductionSemaine laFenetreVoirProd;
-	    laFenetreVoirProd= new VoirProductionSemaine();
-            laFenetreVoirProd.setVisible(true);
+            ArrayList<ProductionSemaine> listeP=objFichier.getProdSemaines();
+            JOptionPane.showMessageDialog(null,listeP.get(0).getNomSemaine()) ; 
+            if(listeP.size()==0){
+                JOptionPane.showMessageDialog(null,"Vous avez ouvert les productions") ; 
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Vous avez ouvert les productions") ; 
+                VoirProductionSemaine laFenetreVoirProd;
+                laFenetreVoirProd= new VoirProductionSemaine(listeP);
+                laFenetreVoirProd.setVisible(true);
+            }
+            
         }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -236,10 +289,16 @@ public class ProductionSemaine extends javax.swing.JFrame {
     private javax.swing.JTextField txtNiveauA;
     // End of variables declaration//GEN-END:variables
 
-    private void setComponents(int nb) 
-        ArrayList<String> listeS=new ArrayList<String>();
-        for(int i=0;i<nb;i++){
-            listeS.add("Semaine"+i);
+    private void setComponents(int nb) {
+        GererFichier objFichier=new FichierCSV();
+        
+        for(Chaine c:objFichier.getChaineProd()){
+            listeChaines.addItem(c.getNom());
         }
+        
+        for(int i=1;i<=nb;i++){
+            listeSemaine.addItem("Semaine "+i);
+        }
+        
     }
 }

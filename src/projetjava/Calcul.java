@@ -70,10 +70,6 @@ public class Calcul {
             objElement=(Element) me2.getKey();
         }
                 double newQuante= laChaine.getSortie().get(objElement);
-                System.out.println(" Quantite en sortie du produit "+objElement.getNom()+" : "+newQuante);                
-                    System.out.println("Quantite du produit "+objElement.getNom()+ " avant "+objElement.getQuantite());
-                     objElement.setQuantite(objElement.getQuantite()+(newQuante*nvx)) ;
-                     System.out.println("Quantite du produit "+objElement.getNom()+ " après "+objElement.getQuantite());
          Production prod= new Production(objElement, newQuante);
      return prod;      
     }

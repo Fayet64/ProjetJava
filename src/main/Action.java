@@ -195,8 +195,8 @@ public class Action extends javax.swing.JFrame {
         } 
         if (source == btnProduire) {
             JOptionPane.showMessageDialog(null,"Vous avez ouvert la production") ;     
-            Production laFenetreProduction;
-	    laFenetreProduction= new Production(chaines);
+            ProductionIHM laFenetreProduction;
+	    laFenetreProduction= new ProductionIHM(chaines);
             laFenetreProduction.setVisible(true);
         }
         if(source == btnProdSemaine){

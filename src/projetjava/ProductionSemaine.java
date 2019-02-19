@@ -16,10 +16,16 @@ public class ProductionSemaine {
     
     
     private String nomSemaine;
-    private Date date;
+    private String date;
     private ArrayList<Production> listeProd;
+    
+    public ProductionSemaine(String nomSemaine, String date,ArrayList<Production> listeProd) {
+        this.nomSemaine = nomSemaine;
+        this.date = date;
+        this.listeProd = listeProd;
+    }
 
-    public ProductionSemaine(String nomSemaine, Date date) {
+    public ProductionSemaine(String nomSemaine, String date) {
         this.nomSemaine = nomSemaine;
         this.date = date;
         this.listeProd = new ArrayList<Production>();
@@ -33,11 +39,11 @@ public class ProductionSemaine {
         this.nomSemaine = nomSemaine;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
