@@ -258,8 +258,6 @@ public class ProdSemaine extends javax.swing.JFrame {
                 listeProdSemaine.add(objProdSemaine);
                 objFichier.setProdSemaine(listeProdSemaine);
                 }
-                
-                JOptionPane.showMessageDialog(null,objProd.getObjElement().getNom());
                 }}
           }
         }
@@ -276,9 +274,8 @@ public class ProdSemaine extends javax.swing.JFrame {
         }
         if(source == btnVoirProd){
             ArrayList<ProductionSemaine> listeP=objFichier.getProdSemaine();
-            JOptionPane.showMessageDialog(null,listeP.isEmpty()) ; 
             if(listeP.isEmpty()){
-                JOptionPane.showMessageDialog(null,"Impossible") ; 
+                JOptionPane.showMessageDialog(null,"Impossible, il n'y à pas de production de prévue") ; 
             }
             else{
                 JOptionPane.showMessageDialog(null,"Vous avez ouvert les productions") ; 
