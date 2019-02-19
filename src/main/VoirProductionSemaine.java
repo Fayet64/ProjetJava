@@ -155,6 +155,7 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
 
     private void listeSemaineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listeSemaineActionPerformed
         // TODO add your handling code here:
+       //maGestionDeLEvenement(evt);
     }//GEN-LAST:event_listeSemaineActionPerformed
 
     private void txtqteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtqteActionPerformed
@@ -174,12 +175,14 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
         }
         
         String nomS=listeSemaine.getSelectedItem().toString();
-        ProductionSemaine prodS=null;
+        ProductionSemaine prodS=new ProductionSemaine();
         for(ProductionSemaine p:objFichier.getProdSemaine()){
             if(p.getNomSemaine().equals(nomS))
                 prodS=p;
         }
+        
         for(Production e:prodS.getListeProd()){
+           // listeElements.setSelectedItem(e.getObjElement().getNom());
             
         Production objProd=null;
         for(Production prod:prodS.getListeProd()){
