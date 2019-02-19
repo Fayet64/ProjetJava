@@ -30,6 +30,56 @@ public class Calcul {
 * la quantite des elements en sorties seront ajouté au stock present 
 * l'achat des elements sera gerer dans la classe achat 
 */
+   
+   
+   public Production creerProd (Chaine laChaine,int nvx){
+       
+                    GererFichier objFichier=new FichierCSV();
+    if (nvx<0) {
+		System.out.println("Il faut que votre niveau de production soit superieur a zero");
+	} 		
+		else if(nvx==0) {
+				System.out.println("la chaine ne produit rien");
+		
+	}else
+     objFichier.getChaineProd().get(1).getEntree().get(objFichier.getElements().get(1));
+     ArrayList<Element> lesElements=objFichier.getElements();
+     
+     boolean achat=true;
+     
+     Iterator iterator = laChaine.getEntree().entrySet().iterator();
+        while (iterator.hasNext() && achat==true) {
+             Map.Entry me2 = (Map.Entry) iterator.next();
+            //System.out.println("Test : Key: "+me2.getKey() + " & Value: " + me2.getValue());
+            //System.out.println(lesElements.indexOf(me2.getKey()));
+            //System.out.println(this.verifStock(lesElements.indexOf(me2.getKey())));
+           // achat=this.verifStock(lesElements.indexOf(me2.getKey()));
+            Element objE=(Element) me2.getKey();
+            achat=objE.verifStock(laChaine,nvx);
+            
+            //System.out.println(achat);
+        }
+    if(achat!=false){
+        
+                    // Ajout du produit fabriqué 
+                    
+        Element objElement=new Element();
+        Iterator iterator2 = laChaine.getSortie().entrySet().iterator();
+        while (iterator2.hasNext()) {
+             Map.Entry me2 = (Map.Entry) iterator2.next();
+            objElement=(Element) me2.getKey();
+        }
+                double newQuante= laChaine.getSortie().get(objElement);
+                System.out.println(" Quantite en sortie du produit "+objElement.getNom()+" : "+newQuante);                
+                    System.out.println("Quantite du produit "+objElement.getNom()+ " avant "+objElement.getQuantite());
+                     objElement.setQuantite(objElement.getQuantite()+(newQuante*nvx)) ;
+                     System.out.println("Quantite du produit "+objElement.getNom()+ " après "+objElement.getQuantite());
+         Production prod= new Production(objElement, newQuante);
+     return prod;      
+    }
+   return null;
+   }   
+    
     public void produire (Chaine laChaine,int nvx){
         
                     GererFichier objFichier=new FichierCSV();
