@@ -30,6 +30,12 @@ public class ProductionSemaine {
         this.date = date;
         this.listeProd = listeProd;
     }
+    
+    public ProductionSemaine(){
+        this.nomSemaine="";
+        this.date="";
+        this.listeProd=new ArrayList<Production>();
+    }
 
     public String getNomSemaine() {
         return nomSemaine;

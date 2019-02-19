@@ -221,17 +221,37 @@ public class ProdSemaine extends javax.swing.JFrame {
                 if(objProd==null){
                     JOptionPane.showMessageDialog(null,"Il est impossible de créer ce produit");
                 }
+                
                 else{
+                    System.out.println(objProd.getObjElement());
                 ArrayList<ProductionSemaine> listeProdSemaine=objFichier.getProdSemaine();
                 boolean existe=false;
-                ProductionSemaine objProdSemaine = null;
+                ProductionSemaine objProdSemaine = new ProductionSemaine();
+                    System.out.println("test");
+                if(listeProdSemaine.isEmpty()){
+                    System.out.println("ici");
+                    objProdSemaine=new ProductionSemaine(listeSemaine.getSelectedItem().toString(),"19/02/2019");
+                    System.out.println(objProdSemaine.getNomSemaine());
+                    objProdSemaine.ajouterProd(objProd);
+                    
+                    //Problème de liste null à régler
+                    listeProdSemaine.add(objProdSemaine);
+                    System.out.println(listeProdSemaine.get(0)+"tt");
+                    
+                    objFichier.setProdSemaine(listeProdSemaine);
+                }
+                else{
                 for(ProductionSemaine p:listeProdSemaine){
                     if(p.getNomSemaine().equals(listeSemaine.getSelectedItem().toString())){
                         existe=true;
+                        System.out.println("test2");
                         objProdSemaine=p;
+                        System.out.println("test"); 
                     }
                 }
                 if(existe){
+                    System.out.println(objProd.getObjElement()+"test");
+                    System.out.println(objProdSemaine.getNomSemaine());                    
                     objProdSemaine.ajouterProd(objProd);
                 }
                 else{
@@ -242,7 +262,7 @@ public class ProdSemaine extends javax.swing.JFrame {
                 }
                 
                 JOptionPane.showMessageDialog(null,objProd.getObjElement().getNom());
-                }
+                }}
           }
         }
         
