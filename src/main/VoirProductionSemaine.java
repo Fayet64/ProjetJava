@@ -169,6 +169,9 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
     private void maGestionDeLEvenement(ActionEvent evt) {
         Object source = evt.getSource();
         GererFichier objFichier=new FichierCSV();
+        if(source==btnFermer){
+            this.dispose();
+        }
         
         String nomS=listeSemaine.getSelectedItem().toString();
         ProductionSemaine prodS=null;
@@ -186,9 +189,7 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
         txtCode.setText(objProd.getObjElement().getCode());
         txtqte.setText(String.valueOf(objProd.getQuantite()));
         }
-        if(source==btnFermer){
-            this.dispose();
-        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

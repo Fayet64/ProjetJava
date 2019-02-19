@@ -5,36 +5,64 @@
  */
 package projetjava;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
  * @author Julien Fayet
  */
 public class Achat {
-    private double codeAchat;
+    private int codeAchat;
     private String codeElement;
     private double quantite;
+    private double prixA;
+    private String dateA;
     
-    private static double nbAchat=0;
-    private static ArrayList<Achat> listeAchat=new ArrayList <Achat>();
+    private static int nbAchat=0;
     
-    public Achat(String codeElement,double quantite){
+    public Achat(String codeElement,double quantite,double prixA){
         this.codeAchat=nbAchat;
         this.codeElement=codeElement;
         this.quantite=quantite;
+        this.prixA=prixA;
+        
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
+	Date date = new Date();
+	this.dateA=dateFormat.format(date);
+        
+        
         nbAchat++;
     }
-    
-    public static void ajouterAchat(Achat objAchat){
-        listeAchat.add(objAchat);
+   
+
+    public double getPrixA() {
+        return prixA;
+    }
+
+    public void setPrixA(double prixA) {
+        this.prixA = prixA;
+    }
+
+    public String getDateA() {
+        return dateA;
+    }
+
+    public void setDateA(String dateA) {
+        this.dateA = dateA;
+    }
+
+    public static int getNbAchat() {
+        return nbAchat;
+    }
+
+    public static void setNbAchat(int nbAchat) {
+        Achat.nbAchat = nbAchat;
     }
     
-    public static ArrayList<Achat> getListeAchat() {
-        return listeAchat;
-    }
-    
-    public double getCodeAchat() {
+    public int getCodeAchat() {
         return codeAchat;
     }
 

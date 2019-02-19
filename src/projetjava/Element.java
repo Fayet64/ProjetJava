@@ -5,6 +5,8 @@
  */
 package projetjava;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Julien Fayet
@@ -98,6 +100,7 @@ public void ajoutStockElemProduit(int ajoute){
 
 
 public boolean verifStock(Chaine laChaine,int nvx){
+    GererFichier objFichier=new FichierCSV();
     
     boolean res=true;
     if (laChaine.getEntree().get(this)*nvx > this.getQuantite()){
@@ -107,8 +110,9 @@ public boolean verifStock(Chaine laChaine,int nvx){
         }
              else {
                  double qte = laChaine.getEntree().get(this)*nvx - this.getQuantite();
-                 Achat objAchat=new Achat(this.getCode(),qte);
-                  Achat.ajouterAchat(objAchat);
+                 Achat objAchat=new Achat(this.getCode(),qte,this.getAchat());
+                 ArrayList<Achat> listeA=objFichier.getListeAchat();
+                  listeA.add(objAchat);
                 System.out.println(" le produit a ete commandé");
                 //(Achat a:Achat.getListeAchat())
                 //System.out.println(a.getCodeAchat());

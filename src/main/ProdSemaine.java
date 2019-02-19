@@ -221,42 +221,40 @@ public class ProdSemaine extends javax.swing.JFrame {
                 if(objProd==null){
                     JOptionPane.showMessageDialog(null,"Il est impossible de créer ce produit");
                 }
-                
                 else{
-                    System.out.println(objProd.getObjElement());
+                    System.out.println(objProd.getObjElement().getNom());
                 ArrayList<ProductionSemaine> listeProdSemaine=objFichier.getProdSemaine();
                 boolean existe=false;
                 ProductionSemaine objProdSemaine = new ProductionSemaine();
-                    System.out.println("test");
+                
                 if(listeProdSemaine.isEmpty()){
-                    System.out.println("ici");
-                    objProdSemaine=new ProductionSemaine(listeSemaine.getSelectedItem().toString(),"19/02/2019");
-                    System.out.println(objProdSemaine.getNomSemaine());
-                    objProdSemaine.ajouterProd(objProd);
-                    
-                    //Problème de liste null à régler
-                    listeProdSemaine.add(objProdSemaine);
-                    System.out.println(listeProdSemaine.get(0)+"tt");
-                    
+                    System.out.println("listeVide");
+                    ArrayList<Production> listeDeProd=new ArrayList<Production>();
+                    listeDeProd.add(objProd);
+                    ProductionSemaine objProdSem=new ProductionSemaine(listeSemaine.getSelectedItem().toString(),"19/02/2019",listeDeProd);
+                    System.out.println("ppp");
+                    listeProdSemaine.add(objProdSem);
                     objFichier.setProdSemaine(listeProdSemaine);
                 }
                 else{
+                    System.out.println("bbb");
+                    
                 for(ProductionSemaine p:listeProdSemaine){
+                    System.out.println("Récupérer chaine qui correspond");
                     if(p.getNomSemaine().equals(listeSemaine.getSelectedItem().toString())){
                         existe=true;
-                        System.out.println("test2");
                         objProdSemaine=p;
-                        System.out.println("test"); 
                     }
                 }
-                if(existe){
+                if(existe==true){
                     System.out.println(objProd.getObjElement()+"test");
                     System.out.println(objProdSemaine.getNomSemaine());                    
                     objProdSemaine.ajouterProd(objProd);
                 }
                 else{
-                objProdSemaine=new ProductionSemaine(listeSemaine.getSelectedItem().toString(),"19/02/2019");
-                objProdSemaine.ajouterProd(objProd);
+                ArrayList<Production> listeDeProd=new ArrayList<Production>();
+                listeDeProd.add(objProd);
+                objProdSemaine=new ProductionSemaine(listeSemaine.getSelectedItem().toString(),"19/02/2019",listeDeProd);
                 listeProdSemaine.add(objProdSemaine);
                 objFichier.setProdSemaine(listeProdSemaine);
                 }

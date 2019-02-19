@@ -27,6 +27,7 @@ public class Action extends javax.swing.JFrame {
         initComponents();
         GererFichier objFichier=new FichierCSV();
         objFichier.charger();
+        objFichier.lireProdSemaine();
         elements=objFichier.getElements();
         chaines=objFichier.getChaineProd();
     }

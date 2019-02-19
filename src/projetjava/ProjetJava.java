@@ -6,7 +6,10 @@
 package projetjava;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -52,14 +55,15 @@ public class ProjetJava {
         // lipus.ajouterProd(lala);
 
          
-       GererFichier objfichier = new FichierCSV();
-       objfichier.charger();
+      // GererFichier objfichier = new FichierCSV();
+       //objfichier.charger();
         //ArrayList<ProductionSemaine> listeProdSemaine=new ArrayList<ProductionSemaine>();
         //listeProdSemaine.add(lipus);
         //mettre ajour larraylist 
         //objfichier.setProdSemaine(listeProdSemaine);
         
        // objfichier.ecrireProdSemaine();
+       /*
         objfichier.lireProdSemaine();
         for (ProductionSemaine p : objfichier.getProdSemaine()){
             System.out.println(p.getListeProd()+"nom"+p.getNomSemaine()+" date"+ p.getDate());
@@ -68,7 +72,11 @@ public class ProjetJava {
                 System.out.println("teeeeeeeeeeeeeeeeeeeeeeeeeee");
             }
             System.out.println("test");
-     
+     */
+       
+       Achat objB=new Achat("C002",10,10);
+       Achat objA=new Achat("C001",10,10);
+        System.out.println(objA.getCodeAchat()+" - "+objA.getCodeElement()+" - "+objA.getQuantite()+" - "+objA.getDateA());
         }
         
         
@@ -86,4 +94,4 @@ public class ProjetJava {
     
     
         
-}
+
