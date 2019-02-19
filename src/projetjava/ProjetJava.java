@@ -55,15 +55,16 @@ public class ProjetJava {
         // lipus.ajouterProd(lala);
 
          
-       GererFichier objfichier = new FichierCSV();
-       objfichier.charger();
+      // GererFichier objfichier = new FichierCSV();
+       //objfichier.charger();
         //ArrayList<ProductionSemaine> listeProdSemaine=new ArrayList<ProductionSemaine>();
         //listeProdSemaine.add(lipus);
         //mettre ajour larraylist 
         //objfichier.setProdSemaine(listeProdSemaine);
         
        // objfichier.ecrireProdSemaine();
-       /* objfichier.lireProdSemaine();
+       /*
+        objfichier.lireProdSemaine();
         for (ProductionSemaine p : objfichier.getProdSemaine()){
             System.out.println(p.getListeProd()+"nom"+p.getNomSemaine()+" date"+ p.getDate());
             for (Production prod : p.getListeProd()){
@@ -71,13 +72,15 @@ public class ProjetJava {
                 System.out.println("teeeeeeeeeeeeeeeeeeeeeeeeeee");
             }
             System.out.println("test");
-     
-        }*/
+     */
+       
+       Achat objB=new Achat("C002",10,10);
+       Achat objA=new Achat("C001",10,10);
+        System.out.println(objA.getCodeAchat()+" - "+objA.getCodeElement()+" - "+objA.getQuantite()+" - "+objA.getDateA());
+        }
         
         
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    Date date = new Date();
-    System.out.println(dateFormat.format(date));
+        
         
         
         
@@ -91,4 +94,4 @@ public class ProjetJava {
     
     
         
-}
+

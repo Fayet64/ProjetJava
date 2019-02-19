@@ -18,7 +18,7 @@ public class ProductionSemaine {
     private String nomSemaine;
     private String date;
     private ArrayList<Production> listeProd;
-    /// ici il faut ajouter une array liste mais moi je vais mettr une hasmap on verra mdr quoique nom
+    
     public ProductionSemaine(String nomSemaine, String date,ArrayList<Production> listeProd) {
         this.nomSemaine = nomSemaine;
         this.date = date;
@@ -29,6 +29,12 @@ public class ProductionSemaine {
         this.nomSemaine = nomSemaine;
         this.date = date;
         this.listeProd = listeProd;
+    }
+    
+    public ProductionSemaine(){
+        this.nomSemaine="";
+        this.date="";
+        this.listeProd=new ArrayList<Production>();
     }
 
     public String getNomSemaine() {

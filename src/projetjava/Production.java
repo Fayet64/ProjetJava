@@ -17,6 +17,10 @@ public class Production {
         this.objElement = objElement;
         this.quantite = quantite;
     }
+    public Production(){
+        this.objElement=null;
+        this.quantite=0;
+    }
 
     public Element getObjElement() {
         return objElement;

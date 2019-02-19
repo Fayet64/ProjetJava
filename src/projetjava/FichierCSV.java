@@ -28,7 +28,8 @@ public class FichierCSV implements GererFichier{
                 private static ArrayList<Element> elements =new ArrayList <Element>();
 		private static ArrayList<Chaine> chaineProd =new ArrayList <Chaine>();
                 private static ArrayList<ProductionSemaine> listeProdSemaine=new ArrayList<ProductionSemaine>();
-                
+                private static ArrayList<Achat> listeAchat=new ArrayList <Achat>();
+                private static HashMap<String,Double> listePrixE=new HashMap<String,Double>();
 
 		//Lecture du fichier cntenant les elements 
 		public  void charger(){
@@ -157,15 +158,7 @@ public class FichierCSV implements GererFichier{
     public  ArrayList<Element> getElements() {
         return elements;
     }
-    public ArrayList<ProductionSemaine> getProdSemaines(){
-        return this.listeProdSemaine;
-    }
-
-    public void setListeProdSemaine(ArrayList<ProductionSemaine> listeProdSemaine) {
-        FichierCSV.listeProdSemaine = listeProdSemaine;
-    }
     
-
     public  ArrayList<Chaine> getChaineProd() {
         return chaineProd;
     }
@@ -175,7 +168,13 @@ public class FichierCSV implements GererFichier{
     
     public ArrayList<ProductionSemaine> getProdSemaine() {
     return listeProdSemaine;
-}
+    }
+
+    public  ArrayList<Achat> getListeAchat() {
+        return listeAchat;
+    }
+
+    
 public  void ecrireFichier () throws IOException {
         BufferedWriter fw = new BufferedWriter(new FileWriter("elements.csv"));
 
@@ -229,7 +228,7 @@ public  void ecrireFichier () throws IOException {
 public void lireProdSemaine () {
    
     try {
-        FileReader fic=new FileReader("ProgrammationSemaines.csv");
+        FileReader fic=new FileReader("ProductionSemaine.csv");
         BufferedReader bf = new BufferedReader(fic);
         String chaine;
         chaine = bf.readLine();
@@ -280,8 +279,8 @@ public void lireProdSemaine () {
                     
     }
 
- // fichier achat:ecrire et lire plus ou moins // et un fichier prixelement il faut lire 
-// o, recupere le prix daaht delement interface on recupere le prix dachat et par rapport à ca il peut creer un achat 
+ 
+
 }
 
 

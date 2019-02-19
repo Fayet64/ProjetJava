@@ -5,6 +5,8 @@
  */
 package projetjava;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Julien Fayet
@@ -98,6 +100,7 @@ public void ajoutStockElemProduit(int ajoute){
 
 
 public boolean verifStock(Chaine laChaine,int nvx){
+    GererFichier objFichier=new FichierCSV();
     
     boolean res=true;
     if (laChaine.getEntree().get(this)*nvx > this.getQuantite()){
@@ -107,23 +110,18 @@ public boolean verifStock(Chaine laChaine,int nvx){
         }
              else {
                  double qte = laChaine.getEntree().get(this)*nvx - this.getQuantite();
-                 Achat objAchat=new Achat(this.getCode(),qte);
-                  Achat.ajouterAchat(objAchat);
+                 Achat objAchat=new Achat(this.getCode(),qte,this.getAchat());
+                 ArrayList<Achat> listeA=objFichier.getListeAchat();
+                  listeA.add(objAchat);
                 System.out.println(" le produit a ete commandé");
                 //(Achat a:Achat.getListeAchat())
                 //System.out.println(a.getCodeAchat());
                 //    }
-        }
+    }
     }
     return res;
 
 
 }
- /* mettre arraylist dans fichier csv ; et mettre les acaht dans un fichier 
-                code achat qui est incrementer automatiiquement arrylist achat dans fichier csv dans verif stock on creer u obj achat on recuppere 
-                        la liste des achat on ajoute cette a chat et on ecrit 
-                                dans ecrire fichier on rajoute achat .
-    }                       faire en sorte decrire dans un fihchier achat */
-                        // dans achat jouter une date . verifistock la date du jour ; 
-    
+
 }

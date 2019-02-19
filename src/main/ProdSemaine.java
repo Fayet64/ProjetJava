@@ -222,27 +222,45 @@ public class ProdSemaine extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null,"Il est impossible de créer ce produit");
                 }
                 else{
+                    System.out.println(objProd.getObjElement().getNom());
                 ArrayList<ProductionSemaine> listeProdSemaine=objFichier.getProdSemaine();
                 boolean existe=false;
-                ProductionSemaine objProdSemaine = null;
+                ProductionSemaine objProdSemaine = new ProductionSemaine();
+                
+                if(listeProdSemaine.isEmpty()){
+                    System.out.println("listeVide");
+                    ArrayList<Production> listeDeProd=new ArrayList<Production>();
+                    listeDeProd.add(objProd);
+                    ProductionSemaine objProdSem=new ProductionSemaine(listeSemaine.getSelectedItem().toString(),"19/02/2019",listeDeProd);
+                    System.out.println("ppp");
+                    listeProdSemaine.add(objProdSem);
+                    objFichier.setProdSemaine(listeProdSemaine);
+                }
+                else{
+                    System.out.println("bbb");
+                    
                 for(ProductionSemaine p:listeProdSemaine){
+                    System.out.println("Récupérer chaine qui correspond");
                     if(p.getNomSemaine().equals(listeSemaine.getSelectedItem().toString())){
                         existe=true;
                         objProdSemaine=p;
                     }
                 }
-                if(existe){
+                if(existe==true){
+                    System.out.println(objProd.getObjElement()+"test");
+                    System.out.println(objProdSemaine.getNomSemaine());                    
                     objProdSemaine.ajouterProd(objProd);
                 }
                 else{
-                objProdSemaine=new ProductionSemaine(listeSemaine.getSelectedItem().toString(),"19/02/2019");
-                objProdSemaine.ajouterProd(objProd);
+                ArrayList<Production> listeDeProd=new ArrayList<Production>();
+                listeDeProd.add(objProd);
+                objProdSemaine=new ProductionSemaine(listeSemaine.getSelectedItem().toString(),"19/02/2019",listeDeProd);
                 listeProdSemaine.add(objProdSemaine);
                 objFichier.setProdSemaine(listeProdSemaine);
                 }
                 
                 JOptionPane.showMessageDialog(null,objProd.getObjElement().getNom());
-                }
+                }}
           }
         }
         
@@ -258,9 +276,9 @@ public class ProdSemaine extends javax.swing.JFrame {
         }
         if(source == btnVoirProd){
             ArrayList<ProductionSemaine> listeP=objFichier.getProdSemaine();
-            JOptionPane.showMessageDialog(null,listeP.get(0).getNomSemaine()) ; 
-            if(listeP.size()==0){
-                JOptionPane.showMessageDialog(null,"Vous avez ouvert les productions") ; 
+            JOptionPane.showMessageDialog(null,listeP.isEmpty()) ; 
+            if(listeP.isEmpty()){
+                JOptionPane.showMessageDialog(null,"Impossible") ; 
             }
             else{
                 JOptionPane.showMessageDialog(null,"Vous avez ouvert les productions") ; 
