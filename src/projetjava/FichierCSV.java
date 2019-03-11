@@ -229,7 +229,7 @@ public  void ecrireFichier () throws IOException {
 public void lireProdSemaine () {
    
     try {
-        FileReader fic=new FileReader("ProductionSemaine.csv");
+        FileReader fic=new FileReader("ProgrammationSemaines.csv");
         BufferedReader bf = new BufferedReader(fic);
         String chaine;
         chaine = bf.readLine();

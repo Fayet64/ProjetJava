@@ -111,6 +111,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Voir l&apos;historique des productions"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHistoriqueActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

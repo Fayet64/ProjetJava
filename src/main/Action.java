@@ -18,18 +18,20 @@ import projetjava.Test2;
  * @author Julien Fayet
  */
 public class Action extends javax.swing.JFrame {
-        private ArrayList<Element> elements ;
-        private ArrayList<Chaine> chaines ;
+
+    private ArrayList<Element> elements;
+    private ArrayList<Chaine> chaines;
+
     /**
      * Creates new form Action
      */
     public Action() {
         initComponents();
-        GererFichier objFichier=new FichierCSV();
+        GererFichier objFichier = new FichierCSV();
         objFichier.charger();
         objFichier.lireProdSemaine();
-        elements=objFichier.getElements();
-        chaines=objFichier.getChaineProd();
+        elements = objFichier.getElements();
+        chaines = objFichier.getChaineProd();
     }
 
     /**
@@ -81,6 +83,11 @@ public class Action extends javax.swing.JFrame {
         });
 
         btnHistorique.setText("Voir l'historique des productions");
+        btnHistorique.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistoriqueActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,6 +154,11 @@ public class Action extends javax.swing.JFrame {
         maProcedureActionPerformed(evt);
     }//GEN-LAST:event_btnProdSemaineActionPerformed
 
+    private void btnHistoriqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoriqueActionPerformed
+        // TODO add your handling code here:
+        maProcedureActionPerformed(evt);
+    }//GEN-LAST:event_btnHistoriqueActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -181,36 +193,42 @@ public class Action extends javax.swing.JFrame {
             }
         });
     }
-    
+
     private void maProcedureActionPerformed(java.awt.event.ActionEvent evt) {
         Object source = evt.getSource();
         String laChaine = null;
-        if(source==btnFermer){
+        if (source == btnFermer) {
             this.dispose();
         }
         if (source == btnStock) {
-            JOptionPane.showMessageDialog(null,"Vous avez ouvert le stock") ; 
+            JOptionPane.showMessageDialog(null, "Vous avez ouvert le stock");
             Stock laFenetreAction;
-	    laFenetreAction= new Stock(elements);
+            laFenetreAction = new Stock(elements);
             laFenetreAction.setVisible(true);
-        } 
+        }
         if (source == btnProduire) {
-            JOptionPane.showMessageDialog(null,"Vous avez ouvert la production") ;     
+            JOptionPane.showMessageDialog(null, "Vous avez ouvert la production");
             ProductionIHM laFenetreProduction;
-	    laFenetreProduction= new ProductionIHM(chaines);
+            laFenetreProduction = new ProductionIHM(chaines);
             laFenetreProduction.setVisible(true);
         }
-        if(source == btnProdSemaine){
-            JOptionPane.showMessageDialog(null,"Vous avez ouvert la production par semaine") ;     
+        if (source == btnProdSemaine) {
+            JOptionPane.showMessageDialog(null, "Vous avez ouvert la production par semaine");
             ProduireSemaine laFenetreProd;
-	    laFenetreProd= new ProduireSemaine();
+            laFenetreProd = new ProduireSemaine();
             laFenetreProd.setVisible(true);
         }
-        
+        if(source==btnHistorique){
+            JOptionPane.showMessageDialog(null, "Vous avez ouvert la production par semaine");
+            Historique laFenetreHistorique;
+            laFenetreHistorique = new Historique(elements);
+            laFenetreHistorique.setVisible(true);
+            
+            
+        }
 
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFermer;
