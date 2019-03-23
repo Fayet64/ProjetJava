@@ -45,6 +45,8 @@ public class ProductionSemaine {
         this.nomSemaine = nomSemaine;
     }
 
+    
+
     public String getDate() {
         return date;
     }

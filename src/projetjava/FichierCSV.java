@@ -25,15 +25,17 @@ public class FichierCSV implements GererFichier{
     /*
     
     */
-                private static ArrayList<Element> elements =new ArrayList <Element>();
-		private static ArrayList<Chaine> chaineProd =new ArrayList <Chaine>();
-                private static ArrayList<ProductionSemaine> listeProdSemaine=new ArrayList<ProductionSemaine>();
+                //private static ArrayList<Element> elements =new ArrayList <Element>();
+		//private static ArrayList<Chaine> chaineProd =new ArrayList <Chaine>();
+                //private static ArrayList<ProductionSemaine> listeProdSemaine=new ArrayList<ProductionSemaine>();
                 private static ArrayList<Achat> listeAchat=new ArrayList <Achat>();
-                private static HashMap<String,Double> listePrixE=new HashMap<String,Double>();
+                //private static HashMap<String,Double> listePrixE=new HashMap<String,Double>();
                 // String et element 
 
 		//Lecture du fichier cntenant les elements 
-		public  void charger(){
+		public ArrayList<Element> chargerElements(){
+                    
+                        ArrayList<Element> elements =new ArrayList <Element>();
 		try {
 			//ouvert en mode lecture 
 			FileReader elem = new FileReader("elements.csv");
@@ -76,6 +78,15 @@ public class FichierCSV implements GererFichier{
 			
 			e.printStackTrace();
 		}
+                
+                return elements;
+                }
+                
+                
+                public ArrayList<Chaine> chargerChaines(){
+                    
+                        ArrayList<Element> elements =this.chargerElements();
+                        ArrayList<Chaine> chaines =new ArrayList <Chaine>();
 		try {
 			//ouvert en mode lecture 
 			FileReader chaine = new FileReader("chaines.csv");
@@ -133,7 +144,7 @@ public class FichierCSV implements GererFichier{
 				
 				
 				Chaine cp= new Chaine(code,nom,entree,sortie);
-				chaineProd.add(cp);
+				chaines.add(cp);
 
 
 				
@@ -153,16 +164,9 @@ public class FichierCSV implements GererFichier{
 		//System.out.println(Arrays.toString(elements.toArray()));
 		//System.out.println(Arrays.toString(chaineProd.toArray()));
 
-		
+		return chaines;
 	}
-
-    public  ArrayList<Element> getElements() {
-        return elements;
-    }
-    
-    public  ArrayList<Chaine> getChaineProd() {
-        return chaineProd;
-    }
+/*
     public void setProdSemaine(ArrayList<ProductionSemaine> obj){
          this.listeProdSemaine =obj ;
     }
@@ -170,13 +174,13 @@ public class FichierCSV implements GererFichier{
     public ArrayList<ProductionSemaine> getProdSemaine() {
     return listeProdSemaine;
     }
-
+*/
     public  ArrayList<Achat> getListeAchat() {
         return listeAchat;
     }
 
     
-public  void ecrireFichier () throws IOException {
+public  void ecrireElements(Usine usine) throws IOException {
         BufferedWriter fw = new BufferedWriter(new FileWriter("elements.csv"));
         
         String ligneTitre= "Code"+";"+"Nom"+";"+"Quantite"+";"+"Unite"+";"+"Achat"+";"+"Vente";
@@ -184,7 +188,7 @@ public  void ecrireFichier () throws IOException {
         fw.write(ligneTitre);
         fw.newLine();
        
-    	for(Element e:elements) {
+    	for(Element e:usine.getElements()) {
                                  
 				 String ligne= e.getCode()+";"+e.getNom()+";"+e.getQuantite()+";"+e.getUnite()+";"+e.getAchat()+";"+e.getVente();
                                 fw.write(ligne);
@@ -202,7 +206,7 @@ public  void ecrireFichier () throws IOException {
                         String ligneTitre= "Nom"+";"+"Date"+";"+"Production";
                         fw.write(ligneTitre);
                         fw.newLine();
-                        for (ProductionSemaine e:listeProdSemaine){
+                        for (ProductionSemaine e:this.chargerProdSemaine()){
                             String ligne= e.getNomSemaine()+";"+e.getDate()+";";
                             for (Production p : e.getListeProd()){
                                 String prod ="("+ p.getObjElement().getCode()+","+p.getQuantite()+")";
@@ -226,7 +230,8 @@ public  void ecrireFichier () throws IOException {
     
 }
     
-public void lireProdSemaine () {
+public ArrayList<ProductionSemaine> chargerProdSemaine () {
+    ArrayList<ProductionSemaine> listeProdSemaine=new ArrayList<ProductionSemaine>();
    
     try {
         FileReader fic=new FileReader("ProgrammationSemaines.csv");
@@ -258,7 +263,7 @@ public void lireProdSemaine () {
                     }
                     //pour chaque element de la liste si sont code coreponds au codeelement et bien on va lajouter a la liste des entrer de la chaine de prod
                    
-                   for (Element elem:elements) {
+                   for (Element elem:this.chargerElements()) {
                             if(elem.getCode().equals(codeElem)) {
                             prod.add(new Production (elem ,quantite));
                             }
@@ -277,7 +282,7 @@ public void lireProdSemaine () {
         Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
-                    
+         return listeProdSemaine;
     }
 
  public void ecrireListeAchat(){
@@ -303,7 +308,9 @@ public void lireProdSemaine () {
 
             }
     }
- public void lireListePrix(){
+ public HashMap<String,Double> chargerListePrix(){
+    HashMap<String,Double> listePrixE=new HashMap<String,Double>();
+/*
  try{
     BufferedReader fs =new BufferedReader(new FileReader("listeprix.csv"));
     String chaine;
@@ -328,6 +335,8 @@ public void lireProdSemaine () {
 }                   catch (IOException ex) {
                         Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
                     }
+*/
+                 return listePrixE;   
  }
 
 }

@@ -12,6 +12,7 @@ import projetjava.Element;
 import projetjava.FichierCSV;
 import projetjava.GererFichier;
 import projetjava.Test2;
+import projetjava.Usine;
 
 /**
  *
@@ -19,19 +20,20 @@ import projetjava.Test2;
  */
 public class Action extends javax.swing.JFrame {
 
-    private ArrayList<Element> elements;
-    private ArrayList<Chaine> chaines;
+    private Usine usine=new Usine();
 
     /**
      * Creates new form Action
      */
     public Action() {
         initComponents();
+        
         GererFichier objFichier = new FichierCSV();
-        objFichier.charger();
-        objFichier.lireProdSemaine();
-        elements = objFichier.getElements();
-        chaines = objFichier.getChaineProd();
+        //objFichier.lireProdSemaine();
+        usine.setChaineProd(objFichier.chargerChaines());
+        usine.setElements(objFichier.chargerElements());
+        usine.setListeProdSemaine(objFichier.chargerProdSemaine());
+        usine.setListePrixE(objFichier.chargerListePrix());
     }
 
     /**
@@ -49,6 +51,7 @@ public class Action extends javax.swing.JFrame {
         btnFermer = new javax.swing.JButton();
         btnProdSemaine = new javax.swing.JButton();
         btnHistorique = new javax.swing.JButton();
+        btnAchatSup = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,6 +92,13 @@ public class Action extends javax.swing.JFrame {
             }
         });
 
+        btnAchatSup.setText("Achat matières premières");
+        btnAchatSup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAchatSupActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,16 +113,18 @@ public class Action extends javax.swing.JFrame {
                 .addGap(150, 150, 150))
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addComponent(btnStock, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                .addComponent(btnStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(28, 28, 28)
-                .addComponent(btnProduire, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                .addComponent(btnProduire, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnProdSemaine, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                .addComponent(btnProdSemaine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(21, 21, 21))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnHistorique)
-                .addGap(140, 140, 140))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(btnAchatSup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(76, 76, 76)
+                .addComponent(btnHistorique, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(39, 39, 39))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,9 +136,11 @@ public class Action extends javax.swing.JFrame {
                     .addComponent(btnStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnProduire, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnProdSemaine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(29, 29, 29)
-                .addComponent(btnHistorique)
-                .addGap(44, 44, 44)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnHistorique, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAchatSup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
                 .addComponent(btnFermer, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                 .addGap(45, 45, 45))
         );
@@ -158,6 +172,11 @@ public class Action extends javax.swing.JFrame {
         // TODO add your handling code here:
         maProcedureActionPerformed(evt);
     }//GEN-LAST:event_btnHistoriqueActionPerformed
+
+    private void btnAchatSupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAchatSupActionPerformed
+        // TODO add your handling code here:
+        maProcedureActionPerformed(evt);
+    }//GEN-LAST:event_btnAchatSupActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,34 +222,41 @@ public class Action extends javax.swing.JFrame {
         if (source == btnStock) {
             JOptionPane.showMessageDialog(null, "Vous avez ouvert le stock");
             Stock laFenetreAction;
-            laFenetreAction = new Stock(elements);
+            laFenetreAction = new Stock(this.usine);
             laFenetreAction.setVisible(true);
         }
         if (source == btnProduire) {
             JOptionPane.showMessageDialog(null, "Vous avez ouvert la production");
             ProductionIHM laFenetreProduction;
-            laFenetreProduction = new ProductionIHM(chaines);
+            laFenetreProduction = new ProductionIHM(this.usine);
             laFenetreProduction.setVisible(true);
         }
         if (source == btnProdSemaine) {
             JOptionPane.showMessageDialog(null, "Vous avez ouvert la production par semaine");
             ProduireSemaine laFenetreProd;
-            laFenetreProd = new ProduireSemaine();
+            laFenetreProd = new ProduireSemaine(usine);
             laFenetreProd.setVisible(true);
         }
         if(source==btnHistorique){
             JOptionPane.showMessageDialog(null, "Vous avez ouvert la production par semaine");
             Historique laFenetreHistorique;
-            laFenetreHistorique = new Historique(elements);
+            laFenetreHistorique = new Historique(usine);
             laFenetreHistorique.setVisible(true);
-            
-            
+        }
+        
+        //Obsolète tant que la lecture du fichierCSV marche pas
+        if(source==btnAchatSup){
+            JOptionPane.showMessageDialog(null, "Vous avez ouvert l'achat de matières premières");
+            AchatSup laFenetreAchatSup;
+            laFenetreAchatSup = new AchatSup(usine);
+            laFenetreAchatSup.setVisible(true);
         }
 
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAchatSup;
     private javax.swing.JButton btnFermer;
     private javax.swing.JButton btnHistorique;
     private javax.swing.JButton btnProdSemaine;

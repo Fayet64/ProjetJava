@@ -10,19 +10,22 @@ import java.util.ArrayList;
 import projetjava.Element;
 import projetjava.FichierCSV;
 import projetjava.GererFichier;
+import projetjava.Usine;
 
 /**
  *
  * @author Julien Fayet
  */
 public class Stock extends javax.swing.JFrame {
-
+    private Usine usine;
     /**
      * Creates new form Interface
      */
-    public Stock(ArrayList<Element> listeElement) {
+    public Stock(Usine usine) {
         initComponents();
-        setComponents(listeElement);
+        this.usine=usine;
+        setComponents();
+        
     }
 
     /**
@@ -168,11 +171,10 @@ public class Stock extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     private void maProcedureActionPerformed(java.awt.event.ActionEvent evt) {
-        GererFichier objFichier=new FichierCSV();        
-        ArrayList<Element> listeE=objFichier.getElements();
+        
         String nom=listeElement.getSelectedItem().toString();
         Element objElement=new Element();
-        for(Element e:listeE){
+        for(Element e:usine.getElements()){
             if(e.getNom().equals(nom))
                 objElement=e;
         }
@@ -205,13 +207,13 @@ public class Stock extends javax.swing.JFrame {
     private javax.swing.JTextField txtUnite;
     // End of variables declaration//GEN-END:variables
 
-    private void setComponents(ArrayList<Element> listeE) {
-        for(Element e:listeE){
+    private void setComponents() {
+        for(Element e:usine.getElements()){
             listeElement.addItem(e.getNom());
         }
         String nom=listeElement.getSelectedItem().toString();
         Element objElement=new Element();
-        for(Element e:listeE){
+        for(Element e:usine.getElements()){
             if(e.getNom().equals(nom))
                 objElement=e;
         }

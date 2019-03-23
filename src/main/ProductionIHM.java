@@ -16,19 +16,21 @@ import projetjava.Chaine;
 import projetjava.Element;
 import projetjava.FichierCSV;
 import projetjava.GererFichier;
+import projetjava.Usine;
 
 /**
  *
  * @author Julien Fayet
  */
 public class ProductionIHM extends javax.swing.JFrame {
-
+    private Usine usine;
     /**
      * Creates new form Production
      */
-    public ProductionIHM(ArrayList<Chaine> listeChaine) {
+    public ProductionIHM(Usine usine) {
         initComponents();
-        setComponents(listeChaine);
+        this.usine=usine;
+        setComponents();
     }
 
     /**
@@ -191,15 +193,14 @@ public class ProductionIHM extends javax.swing.JFrame {
     private javax.swing.JTextField txtNiveau;
     // End of variables declaration//GEN-END:variables
 
-    private void setComponents(ArrayList<Chaine> listeChaine) {
-        for(Chaine c:listeChaine){
+    private void setComponents() {
+        for(Chaine c:usine.getChaineProd()){
             listeChaines.addItem(c.getNom());
         }
     }
 
     private void maGestionDeLEvenement(ActionEvent evt) {
         JButton source =(JButton) evt.getSource();
-        GererFichier objFichier=new FichierCSV();
         
         if(source == btnEssai){
             
@@ -208,8 +209,8 @@ public class ProductionIHM extends javax.swing.JFrame {
           }
           else{
         int niveau=Integer.parseInt(txtNiveau.getText());        
-        ArrayList<Chaine> lesChaines=objFichier.getChaineProd();
-        Chaine laChaine=objFichier.getChaineProd().get(0);
+        ArrayList<Chaine> lesChaines=usine.getChaineProd();
+        Chaine laChaine=lesChaines.get(0);
         for(Chaine c:lesChaines){
             if(c.getNom().equals(listeChaines.getSelectedItem().toString()))
                 laChaine=c;
@@ -224,7 +225,7 @@ public class ProductionIHM extends javax.swing.JFrame {
             objElement=(Element) me2.getKey();
         }
         ProduitFini laFenetreProduitFini;
-            laFenetreProduitFini= new ProduitFini(objElement);
+            laFenetreProduitFini= new ProduitFini(objElement,usine);
             laFenetreProduitFini.setVisible(true);
         
         }

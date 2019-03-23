@@ -15,18 +15,20 @@ import projetjava.Calcul;
 import projetjava.Element;
 import projetjava.FichierCSV;
 import projetjava.GererFichier;
+import projetjava.Usine;
 
 /**
  *
  * @author Julien Fayet
  */
 public class ProduitFini extends javax.swing.JFrame {
-
+    private Usine usine;
     /**
      * Creates new form ProduitFini
      */
-    public ProduitFini(Element lElement) {
+    public ProduitFini(Element lElement,Usine usine) {
         initComponents();
+        this.usine=usine;
         setComponents(lElement);
     }
 
@@ -279,13 +281,12 @@ public class ProduitFini extends javax.swing.JFrame {
         if (source == btnVerifStock) {
             JOptionPane.showMessageDialog(null,"Vous avez ouvert le stock") ; 
             Stock laFenetreAction;
-            ArrayList<Element> elements =objFichier.getElements();
-	    laFenetreAction= new Stock(elements);
+	    laFenetreAction= new Stock(usine);
             laFenetreAction.setVisible(true);
         }
         if(source==btnValider){
             JOptionPane.showMessageDialog(null,"Vous avez validez la production et donc modifier le fichier element.csv") ; 
-            objFichier.ecrireFichier();
+            objFichier.ecrireElements(usine);
             this.dispose();
         }
         

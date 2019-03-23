@@ -7,18 +7,20 @@ package main;
 
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
+import projetjava.Usine;
 
 /**
  *
  * @author Julien Fayet
  */
 public class ProduireSemaine extends javax.swing.JFrame {
-
+    private Usine usine;
     /**
      * Creates new form ProduireSemaine
      */
-    public ProduireSemaine() {
+    public ProduireSemaine(Usine usine) {
         initComponents();
+        this.usine=usine;
     }
 
     /**
@@ -125,7 +127,7 @@ public class ProduireSemaine extends javax.swing.JFrame {
         if (source == btnContinuer) {
             JOptionPane.showMessageDialog(null,"Vous devrez choisir la semaine sur laquelle rajouter les productions") ; 
             ProdSemaine laFenetreProdSemaine;
-	    laFenetreProdSemaine= new ProdSemaine(Integer.parseInt(txtNbSemaine.getText()));
+	    laFenetreProdSemaine= new ProdSemaine(Integer.parseInt(txtNbSemaine.getText()),usine);
             laFenetreProdSemaine.setVisible(true);
         } 
     }

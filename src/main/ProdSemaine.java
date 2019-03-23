@@ -18,6 +18,7 @@ import projetjava.FichierCSV;
 import projetjava.GererFichier;
 import projetjava.Production;
 import projetjava.ProductionSemaine;
+import projetjava.Usine;
 
 /**
  *
@@ -25,12 +26,15 @@ import projetjava.ProductionSemaine;
  */
 public class ProdSemaine extends javax.swing.JFrame {
     private int nb;
+    private Usine usine;
+    
     /**
      * Creates new form ProductionSemaine
      */
-    public ProdSemaine(int nb) {
+    public ProdSemaine(int nb,Usine usine) {
         initComponents();
         this.nb=nb;
+        this.usine=usine;
         setComponents(nb);
     }
 
@@ -207,17 +211,17 @@ public class ProdSemaine extends javax.swing.JFrame {
 
  private void maGestionDeLEvenement(ActionEvent evt) {
         Object source = evt.getSource();
-        GererFichier objFichier=new FichierCSV();
+        //GererFichier objFichier=new FichierCSV();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
                 Date date = new Date();
-                if(source ==btnAjouter){
+        if(source ==btnAjouter){
             if(txtNiveauA.getText().equals("")){
                JOptionPane.showMessageDialog(null,"Veuillez rentrez un niveau de production") ;
           }
           else{
                int niveau=Integer.parseInt(txtNiveauA.getText());        
-               ArrayList<Chaine> lesChaines=objFichier.getChaineProd();
-               Chaine laChaine=objFichier.getChaineProd().get(0);
+               ArrayList<Chaine> lesChaines=usine.getChaineProd();
+               Chaine laChaine=lesChaines.get(0);
                for(Chaine c:lesChaines){
                     if(c.getNom().equals(listeChaines.getSelectedItem().toString()))
                         laChaine=c;
@@ -229,7 +233,7 @@ public class ProdSemaine extends javax.swing.JFrame {
                 }
                 else{
                     System.out.println(objProd.getObjElement().getNom());
-                ArrayList<ProductionSemaine> listeProdSemaine=objFichier.getProdSemaine();
+                ArrayList<ProductionSemaine> listeProdSemaine=usine.getListeProdSemaine();
                 boolean existe=false;
                 ProductionSemaine objProdSemaine = new ProductionSemaine();
                 
@@ -242,10 +246,9 @@ public class ProdSemaine extends javax.swing.JFrame {
                     ProductionSemaine objProdSem=new ProductionSemaine(listeSemaine.getSelectedItem().toString(),dateA,listeDeProd);
                     System.out.println(objProdSem.getDate());
                     listeProdSemaine.add(objProdSem);
-                    objFichier.setProdSemaine(listeProdSemaine);
+                    //objFichier.setProdSemaine(listeProdSemaine);
                 }
                 else{
-                    System.out.println("bbb");
                     
                 for(ProductionSemaine p:listeProdSemaine){
                     System.out.println("Récupérer chaine qui correspond");
@@ -267,7 +270,7 @@ public class ProdSemaine extends javax.swing.JFrame {
                 objProdSemaine=new ProductionSemaine(listeSemaine.getSelectedItem().toString(),dateA,listeDeProd);
                 System.out.println(objProdSemaine.getDate());
                 listeProdSemaine.add(objProdSemaine);
-                objFichier.setProdSemaine(listeProdSemaine);
+                //objFichier.setProdSemaine(listeProdSemaine);
                 }
                 }}
           }
@@ -278,20 +281,19 @@ public class ProdSemaine extends javax.swing.JFrame {
         }
         if (source == btnStock) {
             JOptionPane.showMessageDialog(null,"Vous avez ouvert le stock") ; 
-            Stock laFenetreAction;
-            ArrayList<Element> elements =objFichier.getElements();
-	    laFenetreAction= new Stock(elements);
+            Stock laFenetreAction;;
+	    laFenetreAction= new Stock(usine);
             laFenetreAction.setVisible(true);
         }
         if(source == btnVoirProd){
-            ArrayList<ProductionSemaine> listeP=objFichier.getProdSemaine();
+            ArrayList<ProductionSemaine> listeP=usine.getListeProdSemaine();
             if(listeP.isEmpty()){
                 JOptionPane.showMessageDialog(null,"Impossible, il n'y à pas de production de prévue") ; 
             }
             else{
                 JOptionPane.showMessageDialog(null,"Vous avez ouvert les productions") ; 
                 VoirProductionSemaine laFenetreVoirProd;
-                laFenetreVoirProd= new VoirProductionSemaine(listeP);
+                laFenetreVoirProd= new VoirProductionSemaine(usine);
                 laFenetreVoirProd.setVisible(true);
             }
             
@@ -316,9 +318,8 @@ public class ProdSemaine extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setComponents(int nb) {
-        GererFichier objFichier=new FichierCSV();
         
-        for(Chaine c:objFichier.getChaineProd()){
+        for(Chaine c:usine.getChaineProd()){
             listeChaines.addItem(c.getNom());
         }
         

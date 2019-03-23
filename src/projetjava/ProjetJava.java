@@ -79,7 +79,7 @@ public class ProjetJava {
        //
         //System.out.println(objA.getCodeAchat()+" - "+objA.getCodeElement()+" - "+objA.getQuantite()+" - "+objA.getDateA());
          GererFichier objfichier = new FichierCSV();
-        objfichier.lireListePrix();
+        //objfichier.lireListePrix();
         // ArrayList<Achat> listeAchat;
          
          //listeAchat=objfichier.getListeAchat();

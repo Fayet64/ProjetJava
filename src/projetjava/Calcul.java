@@ -42,8 +42,8 @@ public class Calcul {
 				System.out.println("la chaine ne produit rien");
 		
 	}else
-     objFichier.getChaineProd().get(1).getEntree().get(objFichier.getElements().get(1));
-     ArrayList<Element> lesElements=objFichier.getElements();
+     objFichier.chargerChaines().get(1).getEntree().get(objFichier.chargerElements().get(1));
+     ArrayList<Element> lesElements=objFichier.chargerElements();
      
      boolean achat=true;
      
@@ -86,8 +86,8 @@ public class Calcul {
 				System.out.println("la chaine ne produit rien");
 		
 	}else
-     objFichier.getChaineProd().get(1).getEntree().get(objFichier.getElements().get(1));
-     ArrayList<Element> lesElements=objFichier.getElements();
+     objFichier.chargerChaines().get(1).getEntree().get(objFichier.chargerElements().get(1));
+     ArrayList<Element> lesElements=objFichier.chargerElements();
      
      boolean achat=true;
      
