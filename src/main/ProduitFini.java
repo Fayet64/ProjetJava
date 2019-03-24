@@ -305,7 +305,7 @@ public class ProduitFini extends javax.swing.JFrame {
             txtPourcentage.setText("0%");
         }
         else{
-        Calcul c=new Calcul();
+        Calcul c=new Calcul(usine);
         double satisf=c.satisfaction(quantite,demande);
         txtPourcentage.setText(String.valueOf(satisf)+"%");    
         if(satisf<100){

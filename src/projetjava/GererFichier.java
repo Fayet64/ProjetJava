@@ -17,7 +17,7 @@ public interface GererFichier {
     public ArrayList<Element> chargerElements();
     public ArrayList<Chaine> chargerChaines();
     public ArrayList<ProductionSemaine> chargerProdSemaine();
-    public HashMap<String,Double> chargerListePrix();
+    public HashMap<String,HashMap<String,Double>> chargerListePrix();
     public void ecrireElements (Usine usine) throws IOException;
     public ArrayList<Achat> getListeAchat();
     public void ecrireListeAchat();

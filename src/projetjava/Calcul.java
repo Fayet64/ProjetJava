@@ -16,9 +16,10 @@ import projetjava.Element;
  * @author MamadouMbodouKokia
  */
 public class Calcul {
+    private Usine usine;
  
-    public Calcul(){
-        
+    public Calcul(Usine usine){
+        this.usine=usine;
     }
 
 /*  Gestion de la production 
@@ -34,16 +35,17 @@ public class Calcul {
    
    public Production creerProd (Chaine laChaine,int nvx){
        
-                    GererFichier objFichier=new FichierCSV();
+                    //GererFichier objFichier=new FichierCSV();
     if (nvx<0) {
 		System.out.println("Il faut que votre niveau de production soit superieur a zero");
 	} 		
 		else if(nvx==0) {
 				System.out.println("la chaine ne produit rien");
 		
-	}else
-     objFichier.chargerChaines().get(1).getEntree().get(objFichier.chargerElements().get(1));
-     ArrayList<Element> lesElements=objFichier.chargerElements();
+	}else{
+                
+     //objFichier.chargerChaines().get(1).getEntree().get(objFichier.chargerElements().get(1));
+     ArrayList<Element> lesElements=usine.getElements();
      
      boolean achat=true;
      
@@ -70,24 +72,27 @@ public class Calcul {
             objElement=(Element) me2.getKey();
         }
                 double newQuante= laChaine.getSortie().get(objElement);
-         Production prod= new Production(objElement, newQuante);
+                
+                Production prod= new Production(objElement, newQuante);
      return prod;      
     }
+                }
    return null;
    }   
     
     public void produire (Chaine laChaine,int nvx){
         
-                    GererFichier objFichier=new FichierCSV();
+                    //GererFichier objFichier=new FichierCSV();
     if (nvx<0) {
 		System.out.println("Il faut que votre niveau de production soit superieur a zero");
 	} 		
-		else if(nvx==0) {
-				System.out.println("la chaine ne produit rien");
+    else if(nvx==0)
+    {
+		System.out.println("la chaine ne produit rien");
 		
-	}else
-     objFichier.chargerChaines().get(1).getEntree().get(objFichier.chargerElements().get(1));
-     ArrayList<Element> lesElements=objFichier.chargerElements();
+    }else{
+     //objFichier.chargerChaines().get(1).getEntree().get(objFichier.chargerElements().get(1));
+     ArrayList<Element> lesElements=usine.getElements();
      
      boolean achat=true;
      
@@ -139,7 +144,7 @@ public class Calcul {
     else{
         System.out.println("Vous ne pouvez pas réaliser ce produit car il manque du stock et il n'y à pas de prix d'achat");
     }
-    
+    }
          }
     
     public double satisfaction(double quantite,int demande){

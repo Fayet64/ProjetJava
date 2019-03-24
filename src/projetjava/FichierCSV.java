@@ -308,8 +308,8 @@ public ArrayList<ProductionSemaine> chargerProdSemaine () {
 
             }
     }
- public HashMap<String,Double> chargerListePrix(){
-    HashMap<String,Double> listePrixE=new HashMap<String,Double>();
+ public HashMap<String,HashMap<String,Double> > chargerListePrix(){
+    HashMap<String,HashMap<String,Double>> listePrixE=new HashMap<String,HashMap<String,Double>>();
 /*
  try{
     BufferedReader fs =new BufferedReader(new FileReader("listeprix.csv"));

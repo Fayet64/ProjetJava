@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -226,7 +227,7 @@ public class ProdSemaine extends javax.swing.JFrame {
                     if(c.getNom().equals(listeChaines.getSelectedItem().toString()))
                         laChaine=c;
                     }
-                Calcul objCalcul=new Calcul();
+                Calcul objCalcul=new Calcul(usine);
                 Production objProd=objCalcul.creerProd(laChaine,niveau);
                 if(objProd==null){
                     JOptionPane.showMessageDialog(null,"Il est impossible de créer ce produit");
@@ -259,8 +260,19 @@ public class ProdSemaine extends javax.swing.JFrame {
                 }
                 if(existe==true){
                     System.out.println(objProd.getObjElement()+"test");
-                    System.out.println(objProdSemaine.getNomSemaine());                    
-                    objProdSemaine.ajouterProd(objProd);
+                    System.out.println(objProdSemaine.getNomSemaine());  
+                    Production objPr=null;
+                    for(Production pr:objProdSemaine.getListeProd()){
+                        if(pr.getObjElement().getCode().equals(objProd.getObjElement().getCode())){
+                              objPr=pr;
+                        }
+                    }
+                    if(objPr!=null){
+                        objPr.setQuantite(objPr.getQuantite()+objProd.getQuantite());   
+                    }
+                    else{
+                          objProdSemaine.ajouterProd(objProd);
+                    }
                 }
                 else{
                 ArrayList<Production> listeDeProd=new ArrayList<Production>();

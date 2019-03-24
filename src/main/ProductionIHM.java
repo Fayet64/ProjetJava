@@ -215,7 +215,7 @@ public class ProductionIHM extends javax.swing.JFrame {
             if(c.getNom().equals(listeChaines.getSelectedItem().toString()))
                 laChaine=c;
         }
-        Calcul objCalcul=new Calcul();
+        Calcul objCalcul=new Calcul(usine);
         objCalcul.produire(laChaine,niveau);
         
         Element objElement=new Element();

@@ -6,6 +6,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import projetjava.Chaine;
 import projetjava.Element;
@@ -33,7 +34,12 @@ public class Action extends javax.swing.JFrame {
         usine.setChaineProd(objFichier.chargerChaines());
         usine.setElements(objFichier.chargerElements());
         usine.setListeProdSemaine(objFichier.chargerProdSemaine());
-        usine.setListePrixE(objFichier.chargerListePrix());
+        HashMap<String, HashMap<String,Double> > listePrix=new HashMap<String, HashMap<String,Double> >();
+        HashMap<String,Double>  codePrix=new HashMap<String,Double>();
+        codePrix.put("E019",50.0);
+        listePrix.put("Semaine 1",codePrix);
+        usine.setListePrixE(listePrix);
+        //usine.setListePrixE(objFichier.chargerListePrix());
     }
 
     /**

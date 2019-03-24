@@ -18,7 +18,7 @@ public class Usine {
 		private  ArrayList<Chaine> chaineProd =new ArrayList <Chaine>();
                 private  ArrayList<ProductionSemaine> listeProdSemaine=new ArrayList<ProductionSemaine>();
                 private  ArrayList<Achat> listeAchat=new ArrayList <Achat>();
-                private  HashMap<String,Double> listePrixE=new HashMap<String,Double>();
+                private  HashMap<String,HashMap<String,Double> > listePrixE=new HashMap<String,HashMap<String,Double> >();
 
     public Usine() {
     }
@@ -55,11 +55,11 @@ public class Usine {
         this.listeAchat = listeAchat;
     }
 
-    public HashMap<String, Double> getListePrixE() {
+    public HashMap<String, HashMap<String,Double> > getListePrixE() {
         return listePrixE;
     }
 
-    public void setListePrixE(HashMap<String, Double> listePrixE) {
+    public void setListePrixE(HashMap<String, HashMap<String,Double>> listePrixE) {
         this.listePrixE = listePrixE;
     }
     
