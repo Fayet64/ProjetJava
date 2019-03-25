@@ -322,16 +322,31 @@ public ArrayList<ProductionSemaine> chargerProdSemaine () {
  try{
     BufferedReader fs =new BufferedReader(new FileReader("listeprix.csv"));
     String chaine;
-    int i=1;
+    double prixAchat;
+    
+    //le premier cest la date
+    //deuxielme = code 
+    //3eme cest le prix =double
+    
      
-         while ((chaine=fs.readLine())!=null){
-             if(i>1){
-                 String [] tabChaine=chaine.split(";");
-                 System.out.println(tabChaine[i]);
-             }
-             i++;
-             
-             
+    chaine = fs.readLine();
+             while((chaine = fs.readLine())!= null)
+        {
+                String tabChaine[] = chaine.split(";");
+
+        // Partie 2 conversion des machin du tableaux en attribut du style int etc
+            String code =tabChaine[0];  
+            System.out.println(tabChaine[1]);
+            prixAchat =Double.parseDouble(tabChaine[1]);
+            String date=tabChaine[2]; 
+            if(listePrixE.get(date)!=null){
+                listePrixE.get(date).put(code, prixAchat);
+            }else{
+                HashMap<String,Double> Lamap=new HashMap<String,Double>();
+                Lamap.put(code,prixAchat);
+                listePrixE.put(date, Lamap);
+                }
+       
          } 
      try {
          fs.close();

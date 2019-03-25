@@ -34,12 +34,12 @@ public class Action extends javax.swing.JFrame {
         usine.setChaineProd(objFichier.chargerChaines());
         usine.setElements(objFichier.chargerElements());
         usine.setListeProdSemaine(objFichier.chargerProdSemaine());
-        HashMap<String, HashMap<String,Double> > listePrix=new HashMap<String, HashMap<String,Double> >();
+       /* HashMap<String, HashMap<String,Double> > listePrix=new HashMap<String, HashMap<String,Double> >();
         HashMap<String,Double>  codePrix=new HashMap<String,Double>();
         codePrix.put("E019",50.0);
         listePrix.put("Semaine 1",codePrix);
-        usine.setListePrixE(listePrix);
-        //usine.setListePrixE(objFichier.chargerListePrix());
+        usine.setListePrixE(listePrix);*/
+        usine.setListePrixE(objFichier.chargerListePrix());
     }
 
     /**
@@ -252,6 +252,7 @@ public class Action extends javax.swing.JFrame {
         
         //Obsolète tant que la lecture du fichierCSV marche pas
         if(source==btnAchatSup){
+            System.out.println(usine.getListePrixE());
             JOptionPane.showMessageDialog(null, "Vous avez ouvert l'achat de matières premières");
             AchatSup laFenetreAchatSup;
             laFenetreAchatSup = new AchatSup(usine);

@@ -148,7 +148,9 @@ public class AchatSupElem extends javax.swing.JFrame {
             if(e.getNom().equals(nom))
                 objElement=e;
         }
-        txtPrixAct.setText(objElement.getCode());
+      
+        txtPrixAct.setText(Double.toString(objElement.getVente()));
+
         
         String semaine=lasemaine;
         double prix=0;
@@ -158,7 +160,7 @@ public class AchatSupElem extends javax.swing.JFrame {
                     prix=usine.getListePrixE().get(s).get(objElement.getCode());
                 }
                 else{
-                    prix=objElement.getAchat();
+                    prix=objElement.getVente();
                 }
                 
         }
@@ -188,17 +190,17 @@ public class AchatSupElem extends javax.swing.JFrame {
             if(e.getNom().equals(nom))
                 objElement=e;
         }
-        txtPrixAct.setText(objElement.getCode());
+        txtPrixAct.setText(Double.toString(objElement.getVente()));
         
         String semaine=lasemaine;
         double prix=0;
         for(String s:usine.getListePrixE().keySet()){
             if(s.equals(semaine))
                 if(usine.getListePrixE().get(s).get(objElement.getCode())!=null){
-                    prix=usine.getListePrixE().get(s).get(s);
+                    prix=usine.getListePrixE().get(s).get(objElement.getCode());
                 }
                 else{
-                    prix=objElement.getAchat();
+                    prix=objElement.getVente();
                 }
                 
         }
