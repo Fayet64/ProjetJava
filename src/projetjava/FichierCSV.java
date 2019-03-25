@@ -198,26 +198,34 @@ public  void ecrireElements(Usine usine) throws IOException {
                                 fw.close();
     	
     }
-    public void ecrireProdSemaine() {
-    
+    public void ecrireProdSemaine(ArrayList<ProductionSemaine> prodSem) {
+        
     BufferedWriter fw = null;
                     try {
                         fw = new BufferedWriter (new FileWriter("ProgrammationSemaines.csv"));
                         String ligneTitre= "Nom"+";"+"Date"+";"+"Production";
                         fw.write(ligneTitre);
                         fw.newLine();
-                        for (ProductionSemaine e:this.chargerProdSemaine()){
+                        System.out.println(" methode"+prodSem);
+                        for (ProductionSemaine e:prodSem){
                             String ligne= e.getNomSemaine()+";"+e.getDate()+";";
+                            String prod="";
+                            System.out.println("Premier for");
                             for (Production p : e.getListeProd()){
-                                String prod ="("+ p.getObjElement().getCode()+","+p.getQuantite()+")";
+                                System.out.println("Deuxieme for");
+                                if(prod.equals("")){
+                                    prod ="("+ p.getObjElement().getCode()+","+p.getQuantite()+")";
+                                }
+                                else{
+                                    prod=prod+",("+ p.getObjElement().getCode()+","+p.getQuantite()+")";
+                                }
                                 
-                                ligne=ligne+prod+"," ;
                             }
-                            
-                            
+                            ligne=ligne+prod;
+                            System.out.println(ligne);
                             fw.write(ligne);
+                            System.out.println("frwrite");
                             fw.newLine();
-                            fw.close();
                         }               } catch (IOException ex) {
                         Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
                     } finally {
@@ -310,7 +318,7 @@ public ArrayList<ProductionSemaine> chargerProdSemaine () {
     }
  public HashMap<String,HashMap<String,Double> > chargerListePrix(){
     HashMap<String,HashMap<String,Double>> listePrixE=new HashMap<String,HashMap<String,Double>>();
-/*
+
  try{
     BufferedReader fs =new BufferedReader(new FileReader("listeprix.csv"));
     String chaine;
@@ -335,7 +343,7 @@ public ArrayList<ProductionSemaine> chargerProdSemaine () {
 }                   catch (IOException ex) {
                         Logger.getLogger(FichierCSV.class.getName()).log(Level.SEVERE, null, ex);
                     }
-*/
+
                  return listePrixE;   
  }
 

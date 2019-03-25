@@ -13,8 +13,14 @@ import java.util.Map;
 /**
  *
  * @author Julien Fayet
+ * 
  */
 
+/**
+ *
+ * @code est le code de la Chaine
+ * 
+ */
 public class Chaine {
     private String code;
     private String nom;

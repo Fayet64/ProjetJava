@@ -130,7 +130,6 @@ public class AchatSup extends javax.swing.JFrame {
         }
         
         if(source==btnValider){
-            JOptionPane.showMessageDialog(null, "test");
             AchatSupElem laFenetreAchatSupElem;
             laFenetreAchatSupElem = new AchatSupElem(this.usine,listeSemaine.getSelectedItem().toString());
             laFenetreAchatSupElem.setVisible(true);

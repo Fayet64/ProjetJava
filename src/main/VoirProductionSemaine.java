@@ -45,6 +45,7 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnFermer = new javax.swing.JButton();
         btnVoirProd = new javax.swing.JButton();
+        btnValider = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,28 +74,35 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
             }
         });
 
+        btnValider.setText("Valider");
+        btnValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValiderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(242, 242, 242)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                 .addGap(165, 165, 165))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(btnFermer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(138, 138, 138))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(79, 79, 79)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(listeSemaine, 0, 155, Short.MAX_VALUE)
-                    .addComponent(btnVoirProd))
+                .addGap(121, 121, 121)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(79, 79, 79)
+                .addComponent(listeSemaine, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(108, 108, 108))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(164, 164, 164)
+                .addComponent(btnFermer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnValider, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(btnVoirProd)
+                .addGap(87, 87, 87))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,6 +116,7 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
                 .addGap(142, 142, 142)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFermer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnValider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVoirProd))
                 .addGap(27, 27, 27))
         );
@@ -130,6 +139,11 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
         maGestionDeLEvenement(evt);
     }//GEN-LAST:event_btnVoirProdActionPerformed
 
+    private void btnValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValiderActionPerformed
+        // TODO add your handling code here:
+        maGestionDeLEvenement(evt);
+    }//GEN-LAST:event_btnValiderActionPerformed
+
     private void maGestionDeLEvenement(ActionEvent evt) {
         Object source = evt.getSource();
         
@@ -142,11 +156,17 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
             laFenetreProdS = new voirProdDuneSemaine(this.usine,listeSemaine.getSelectedItem().toString());
             laFenetreProdS.setVisible(true);
         }
+        if(source ==btnValider){
+            JOptionPane.showMessageDialog(null,"Vous avez sauvegarder les productions dans le fichier") ;
+            GererFichier objFichier=new FichierCSV();
+            objFichier.ecrireProdSemaine(usine.getListeProdSemaine());
+        }
         
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFermer;
+    private javax.swing.JButton btnValider;
     private javax.swing.JButton btnVoirProd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
