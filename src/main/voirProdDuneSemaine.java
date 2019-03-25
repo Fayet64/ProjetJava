@@ -263,7 +263,7 @@ public class voirProdDuneSemaine extends javax.swing.JFrame {
         if(source ==btnValider){
             JOptionPane.showMessageDialog(null,"Vous avez sauvegarder les productions dans le fichier") ;
             GererFichier objFichier=new FichierCSV();
-            objFichier.ecrireProdSemaine();
+            objFichier.ecrireProdSemaine(usine.getListeProdSemaine());
         }
     }
 

@@ -21,7 +21,7 @@ public interface GererFichier {
     public void ecrireElements (Usine usine) throws IOException;
     public ArrayList<Achat> getListeAchat();
     public void ecrireListeAchat();
-    public void ecrireProdSemaine();
+    public void ecrireProdSemaine(ArrayList<ProductionSemaine> prodSem);
     
 
 }

@@ -215,6 +215,8 @@ public class ProdSemaine extends javax.swing.JFrame {
         //GererFichier objFichier=new FichierCSV();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
                 Date date = new Date();
+                
+        
         if(source ==btnAjouter){
             if(txtNiveauA.getText().equals("")){
                JOptionPane.showMessageDialog(null,"Veuillez rentrez un niveau de production") ;
