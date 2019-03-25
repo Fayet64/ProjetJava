@@ -40,32 +40,13 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        listeElements = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         listeSemaine = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtCode = new javax.swing.JTextField();
-        txtqte = new javax.swing.JTextField();
         btnFermer = new javax.swing.JButton();
-        btnValider = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        txtDate = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        txtPrixSemaine = new javax.swing.JTextField();
+        btnVoirProd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        listeElements.setPreferredSize(new java.awt.Dimension(10, 22));
-        listeElements.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listeElementsActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Element :");
 
         jLabel2.setText("Choisir semaine : ");
 
@@ -78,16 +59,6 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
 
         jLabel1.setText("Liste des production par semaine");
 
-        jLabel4.setText("Code :");
-
-        jLabel5.setText("Quantite Produite:");
-
-        txtqte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtqteActionPerformed(evt);
-            }
-        });
-
         btnFermer.setText("Fermer");
         btnFermer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,140 +66,69 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
             }
         });
 
-        btnValider.setText("Valider");
-        btnValider.addActionListener(new java.awt.event.ActionListener() {
+        btnVoirProd.setText("Voir production");
+        btnVoirProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnValiderActionPerformed(evt);
+                btnVoirProdActionPerformed(evt);
             }
         });
-
-        jLabel6.setText("Date :");
-
-        jLabel7.setText("Prix vente semaine :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(195, 195, 195)
+                .addGap(242, 242, 242)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(193, 193, 193))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(135, 135, 135)
+                .addGap(165, 165, 165))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(164, 164, 164)
+                        .addComponent(btnFermer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(138, 138, 138))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(listeSemaine, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(29, 29, 29)
-                                        .addComponent(btnFermer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(41, 41, 41))
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(66, 66, 66))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(69, 69, 69)))
-                                .addGap(79, 79, 79)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtqte)
-                                    .addComponent(txtCode)
-                                    .addComponent(txtDate)
-                                    .addComponent(listeElements, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(btnValider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(88, 88, 88))
-                                    .addComponent(txtPrixSemaine))))
-                        .addGap(121, 121, 121))))
+                        .addGap(121, 121, 121)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(79, 79, 79)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(listeSemaine, 0, 155, Short.MAX_VALUE)
+                    .addComponent(btnVoirProd))
+                .addGap(108, 108, 108))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                .addGap(99, 99, 99)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                     .addComponent(listeSemaine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE))
-                    .addComponent(txtDate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                        .addGap(17, 17, 17))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(listeElements, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                        .addGap(25, 25, 25)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel7)
-                                    .addComponent(txtPrixSemaine))
-                                .addGap(27, 27, 27))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtqte)
-                                .addGap(73, 73, 73))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(122, 122, 122)))
+                .addGap(142, 142, 142)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFermer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnValider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnVoirProd))
                 .addGap(27, 27, 27))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void listeElementsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listeElementsActionPerformed
-        // TODO add your handling code here:
-        maGestionDeLEvenement(evt);
-    }//GEN-LAST:event_listeElementsActionPerformed
-
     private void listeSemaineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listeSemaineActionPerformed
         // TODO add your handling code here:
         //maGestionDeLEvenement(evt);
     }//GEN-LAST:event_listeSemaineActionPerformed
-
-    private void txtqteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtqteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtqteActionPerformed
 
     private void btnFermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFermerActionPerformed
         // TODO add your handling code here:
         maGestionDeLEvenement(evt);
     }//GEN-LAST:event_btnFermerActionPerformed
 
-    private void btnValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValiderActionPerformed
+    private void btnVoirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoirProdActionPerformed
         // TODO add your handling code here:
         maGestionDeLEvenement(evt);
-    }//GEN-LAST:event_btnValiderActionPerformed
+    }//GEN-LAST:event_btnVoirProdActionPerformed
 
     private void maGestionDeLEvenement(ActionEvent evt) {
         Object source = evt.getSource();
@@ -236,68 +136,21 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
         if(source==btnFermer){
             this.dispose();
         }
-        
-        String nomS=listeSemaine.getSelectedItem().toString();
-        ProductionSemaine prodS=new ProductionSemaine();
-        for(ProductionSemaine p:usine.getListeProdSemaine()){
-            if(p.getNomSemaine().equals(nomS))
-                prodS=p;
-        }
-        if(!listeSemaine.getSelectedItem().toString().equals(prodS.getNomSemaine())){
-            //listeElements.removeAllItems();
-            JOptionPane.showMessageDialog(null,"Ouai sa passe encore");
-        /*
-        for(Production e:prodS.getListeProd()){
-             
-             listeElements.addItem(e.getObjElement().getNom());
-        }*/
-        }
-        for(Production e:prodS.getListeProd()){
-           
-            
-        Production objProd=null;
-        for(Production prod:prodS.getListeProd()){
-            if(prod.getObjElement().getNom().equals(listeElements.getSelectedItem().toString()))
-                objProd=prod;
-        }
-        txtCode.setText(objProd.getObjElement().getCode());
-        txtqte.setText(String.valueOf(objProd.getQuantite()));
-        
-        if(usine.getListePrixE().get(listeSemaine.getSelectedItem().toString()).get(objProd.getObjElement().getCode())!=null){
-            //JOptionPane.showMessageDialog(null,"a "+usine.getListePrixE().get(nomS).get(objProd.getObjElement().getCode()));
-            txtPrixSemaine.setText(String.valueOf(usine.getListePrixE().get(nomS).get(objProd.getObjElement().getCode())));
-        }
-        else{
-            //JOptionPane.showMessageDialog(null,"b "+objProd.getObjElement().getVente());
-            txtPrixSemaine.setText(String.valueOf(objProd.getObjElement().getVente()));
+        if(source==btnVoirProd){
+            JOptionPane.showMessageDialog(null, "test");
+            voirProdDuneSemaine laFenetreProdS;
+            laFenetreProdS = new voirProdDuneSemaine(this.usine,listeSemaine.getSelectedItem().toString());
+            laFenetreProdS.setVisible(true);
         }
         
-        
-        }
-        
-        if(source ==btnValider){
-            JOptionPane.showMessageDialog(null,"Vous avez sauvegarder les productions dans le fichier") ;
-            GererFichier objFichier=new FichierCSV();
-            objFichier.ecrireProdSemaine();
-        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFermer;
-    private javax.swing.JButton btnValider;
+    private javax.swing.JButton btnVoirProd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JComboBox<String> listeElements;
     private javax.swing.JComboBox<String> listeSemaine;
-    private javax.swing.JTextField txtCode;
-    private javax.swing.JTextField txtDate;
-    private javax.swing.JTextField txtPrixSemaine;
-    private javax.swing.JTextField txtqte;
     // End of variables declaration//GEN-END:variables
 
     private void setComponents() {
@@ -305,57 +158,9 @@ public class VoirProductionSemaine extends javax.swing.JFrame {
         for(ProductionSemaine p:usine.getListeProdSemaine()){
             listeSemaine.addItem(p.getNomSemaine());
         }
-        String nomS=listeSemaine.getSelectedItem().toString();
-        ProductionSemaine prodS=null;
-        for(ProductionSemaine p:usine.getListeProdSemaine()){
-            if(p.getNomSemaine().equals(nomS))
-                prodS=p;
-        }
-        txtDate.setText(prodS.getDate());
-        for(Production e:prodS.getListeProd()){
-            listeElements.addItem(e.getObjElement().getNom());
-        
-        Production objProd=null;
-        for(Production prod:prodS.getListeProd()){
-            if(prod.getObjElement().getNom().equals(listeElements.getSelectedItem().toString()))
-                objProd=prod;
-        }
-        txtCode.setText(objProd.getObjElement().getCode());
-        txtqte.setText(String.valueOf(objProd.getQuantite()));
-        
-        if(String.valueOf(usine.getListePrixE().get(nomS).get(objProd.getObjElement().getCode()))!=null){
-            txtPrixSemaine.setText(String.valueOf(usine.getListePrixE().get(nomS).get(objProd.getObjElement().getCode())));
-        }
-        else{
-            txtPrixSemaine.setText(String.valueOf(objProd.getObjElement().getVente()));
-        }
-        
-        
         
     }
 
 }
-/*
-    private void maProcedureActionPerformed(ActionEvent evt) {
-        
-        String nomS=listeSemaine.getSelectedItem().toString();
-        ProductionSemaine prodS=new ProductionSemaine();
-        for(ProductionSemaine p:usine.getListeProdSemaine()){
-            if(p.getNomSemaine().equals(nomS))
-                prodS=p;
-        }
-        listeElements.removeAll();
-        for(Production e:prodS.getListeProd()){
-            listeElements.addItem(e.getObjElement().getNom());
-            
-        Production objProd=null;
-        for(Production prod:prodS.getListeProd()){
-            if(prod.getObjElement().getNom().equals(listeElements.getSelectedItem().toString()))
-                objProd=prod;
-        }
-        txtCode.setText(objProd.getObjElement().getCode());
-        txtqte.setText(String.valueOf(objProd.getQuantite()));
-        }
-    }
-*/
-}
+
+
