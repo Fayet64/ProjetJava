@@ -53,8 +53,18 @@ public class AchatSup extends javax.swing.JFrame {
         });
 
         btnRetour.setText("Retour");
+        btnRetour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetourActionPerformed(evt);
+            }
+        });
 
         btnValider.setText("Valider");
+        btnValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValiderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,6 +111,16 @@ public class AchatSup extends javax.swing.JFrame {
         // TODO add your handling code here:
         maGestionDeLevenement(evt);
     }//GEN-LAST:event_listeSemaineActionPerformed
+
+    private void btnValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValiderActionPerformed
+        // TODO add your handling code here:
+        maGestionDeLevenement(evt);
+    }//GEN-LAST:event_btnValiderActionPerformed
+
+    private void btnRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetourActionPerformed
+        // TODO add your handling code here:
+        maGestionDeLevenement(evt);
+    }//GEN-LAST:event_btnRetourActionPerformed
 
  private void maGestionDeLevenement(ActionEvent evt) {
         Object source = evt.getSource();

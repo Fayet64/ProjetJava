@@ -47,7 +47,7 @@ public class AchatSupElem extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel5.setText("Prix d'achat :");
+        jLabel5.setText("Prix de vente:");
 
         btnStock.setText("Voir stock");
 
@@ -142,7 +142,27 @@ public class AchatSupElem extends javax.swing.JFrame {
 
   
     private void maGestionDeLevenement(ActionEvent evt) {
+        String nom=listeElem.getSelectedItem().toString();
+        Element objElement=new Element();
+        for(Element e:usine.getElements()){
+            if(e.getNom().equals(nom))
+                objElement=e;
+        }
+        txtPrixAct.setText(objElement.getCode());
         
+        String semaine=lasemaine;
+        double prix=0;
+        for(String s:usine.getListePrixE().keySet()){
+            if(s.equals(semaine))
+                if(usine.getListePrixE().get(s).get(objElement.getCode())!=null){
+                    prix=usine.getListePrixE().get(s).get(objElement.getCode());
+                }
+                else{
+                    prix=objElement.getAchat();
+                }
+                
+        }
+        txtPrixSem.setText(Double.toString(prix));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -174,7 +194,13 @@ public class AchatSupElem extends javax.swing.JFrame {
         double prix=0;
         for(String s:usine.getListePrixE().keySet()){
             if(s.equals(semaine))
-                prix=usine.getListePrixE().get(s).get(s);
+                if(usine.getListePrixE().get(s).get(objElement.getCode())!=null){
+                    prix=usine.getListePrixE().get(s).get(s);
+                }
+                else{
+                    prix=objElement.getAchat();
+                }
+                
         }
         txtPrixSem.setText(Double.toString(prix));
     }

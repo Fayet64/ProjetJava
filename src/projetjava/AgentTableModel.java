@@ -115,7 +115,7 @@ public class AgentTableModel extends AbstractTableModel {
 				return ch.getSemaine();
 			}
 			case 1: {
-				return ch.getChaine().getCode();
+				return ch.getChaine().getCode()+"-"+ch.getChaine().getNom();
 			}
 			case 2: {
 				return ch.getQuantite();

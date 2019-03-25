@@ -96,11 +96,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Retour"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRetourActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnValider">
       <Properties>
         <Property name="text" type="java.lang.String" value="Valider"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnValiderActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

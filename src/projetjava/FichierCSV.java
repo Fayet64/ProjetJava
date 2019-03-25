@@ -183,14 +183,14 @@ public class FichierCSV implements GererFichier{
 public  void ecrireElements(Usine usine) throws IOException {
         BufferedWriter fw = new BufferedWriter(new FileWriter("elements.csv"));
         
-        String ligneTitre= "Code"+";"+"Nom"+";"+"Quantite"+";"+"Unite"+";"+"Achat"+";"+"Vente";
+        String ligneTitre= "Code"+";"+"Nom"+";"+"Quantite"+";"+"Unite"+";"+"Achat"+";"+"Vente"+"Demande";
         
         fw.write(ligneTitre);
         fw.newLine();
        
     	for(Element e:usine.getElements()) {
                                  
-				 String ligne= e.getCode()+";"+e.getNom()+";"+e.getQuantite()+";"+e.getUnite()+";"+e.getAchat()+";"+e.getVente();
+				 String ligne= e.getCode()+";"+e.getNom()+";"+e.getQuantite()+";"+e.getUnite()+";"+e.getAchat()+";"+e.getVente()+";"+e.getDemande();
                                 fw.write(ligne);
                                  
                                  fw.newLine();

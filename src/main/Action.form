@@ -122,7 +122,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAchatSup">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Achat mati&#xe8;res premi&#xe8;res"/>
+        <Property name="text" type="java.lang.String" value="Prix de vente &#xe9;l&#xe9;ments par semaines"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAchatSupActionPerformed"/>

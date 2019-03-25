@@ -98,7 +98,7 @@ public class Action extends javax.swing.JFrame {
             }
         });
 
-        btnAchatSup.setText("Achat matières premières");
+        btnAchatSup.setText("Prix de vente éléments par semaines");
         btnAchatSup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAchatSupActionPerformed(evt);
