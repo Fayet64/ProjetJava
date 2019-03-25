@@ -13,12 +13,12 @@ import java.util.Date;
 
 /**
  *
- * @author fayet64
+ * <b> Cette classe nous permet de tester notre code <b>
  */
 public class ProjetJava {
 
     /**
-     * @param args the command line arguments
+     * @param args Methode main qui nous a permit de tester les differentes lignes de notre code
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {

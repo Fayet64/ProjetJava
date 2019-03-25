@@ -17,8 +17,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author Julien Fayet
+ 
+ * <b>Cette classe permet de charger des Fichier CSV et de creer et ecrire dans des fichiers Csv<b>
+ * 
  */
 public class FichierCSV implements GererFichier{
     
@@ -82,7 +83,10 @@ public class FichierCSV implements GererFichier{
                 return elements;
                 }
                 
-                
+                /**
+                 * Cette methode permet de charger le fichier des chaines  
+                 * @return renvoie les elements contenu dans le fichier
+                 */
                 public ArrayList<Chaine> chargerChaines(){
                     
                         ArrayList<Element> elements =this.chargerElements();
@@ -175,11 +179,19 @@ public class FichierCSV implements GererFichier{
     return listeProdSemaine;
     }
 */
+                /**
+                 * Cette methode est un gette qui recuperer la liste des achats 
+                 * @return la liste des achats 
+                 */
     public  ArrayList<Achat> getListeAchat() {
         return listeAchat;
     }
 
-    
+    /**
+     * Cette methode permet de creer et d'ecrire dans un fichier l'ensemble des élements produits.
+     * @param usine 
+     * @throws IOException 
+     */
 public  void ecrireElements(Usine usine) throws IOException {
         BufferedWriter fw = new BufferedWriter(new FileWriter("elements.csv"));
         
@@ -198,6 +210,10 @@ public  void ecrireElements(Usine usine) throws IOException {
                                 fw.close();
     	
     }
+    /**
+     *  Cette methode permet de creer et d'ecrire dans un fichier des production/ par semaine effectuée.
+     * @param prodSem 
+     */
     public void ecrireProdSemaine(ArrayList<ProductionSemaine> prodSem) {
         
     BufferedWriter fw = null;
@@ -237,7 +253,10 @@ public  void ecrireElements(Usine usine) throws IOException {
                     }
     
 }
-    
+    /**
+     * Cette methode permet de charger la liste des production semaines a partir du fichier ProgramationSemaines
+     * @return renvoie une liste de production par semaine
+     */
 public ArrayList<ProductionSemaine> chargerProdSemaine () {
     ArrayList<ProductionSemaine> listeProdSemaine=new ArrayList<ProductionSemaine>();
    
@@ -292,7 +311,9 @@ public ArrayList<ProductionSemaine> chargerProdSemaine () {
                     
          return listeProdSemaine;
     }
-
+/**
+ * Cette methode permet de créer et d'ecrire dans un fichier csv l'ensemble des achats a effectuer pour renouveller le stock
+ */
  public void ecrireListeAchat(){
      
        BufferedWriter fy;
@@ -316,6 +337,10 @@ public ArrayList<ProductionSemaine> chargerProdSemaine () {
 
             }
     }
+ /**
+  * Cette methode permet de charger la liste des prix a partir du fichier listeprix.csv
+  * @return une hashmap contenant cette liste des prix
+  */
  public HashMap<String,HashMap<String,Double> > chargerListePrix(){
     HashMap<String,HashMap<String,Double>> listePrixE=new HashMap<String,HashMap<String,Double>>();
 

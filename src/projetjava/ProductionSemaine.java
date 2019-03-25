@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- *
- * @author Julien Fayet
+ *<b>Cette classe permet de gerer la production par semaine<b>
+
  */
 public class ProductionSemaine {
     
@@ -18,19 +18,31 @@ public class ProductionSemaine {
     private String nomSemaine;
     private String date;
     private ArrayList<Production> listeProd;
-    
+    /**
+     * premier constructeur
+     * @param nomSemaine
+     * @param date
+     * @param listeProd 
+     */
     public ProductionSemaine(String nomSemaine, String date,ArrayList<Production> listeProd) {
         this.nomSemaine = nomSemaine;
         this.date = date;
         this.listeProd = listeProd;
     }
-
+    /**
+     * Deuxième constructeur
+     * @param nomSemaine
+     * @param date 
+     */
     public ProductionSemaine(String nomSemaine, String date) {
         this.nomSemaine = nomSemaine;
         this.date = date;
         this.listeProd = listeProd;
     }
     
+    /**
+     * Troisieme constructeur
+     */
     public ProductionSemaine(){
         this.nomSemaine="";
         this.date="";
@@ -62,11 +74,17 @@ public class ProductionSemaine {
     public void setListeProd(ArrayList<Production> listeProd) {
         this.listeProd = listeProd;
     }
-    
+    /**
+     * permet d'ajouter une production
+     * @param objProd 
+     */
     public void ajouterProd(Production objProd){
         listeProd.add(objProd);
     }
-    
+    /**
+     * permet de retirer une production
+     * @param objProd 
+     */
     public void retirerProd(Production objProd){
         listeProd.remove(objProd);
     }

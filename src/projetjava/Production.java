@@ -6,17 +6,24 @@
 package projetjava;
 
 /**
- *
- * @author Julien Fayet
+ * <b> Cette classe permet de gerer la production
+ * @author bronco
  */
 public class Production {
     private Element objElement;
     private double quantite;
-
+    /**
+     * premier constucteur
+     * @param objElement
+     * @param quantite 
+     */
     public Production(Element objElement, double quantite) {
         this.objElement = objElement;
         this.quantite = quantite;
     }
+    /**
+     * deuxième constructeur
+     */
     public Production(){
         this.objElement=null;
         this.quantite=0;

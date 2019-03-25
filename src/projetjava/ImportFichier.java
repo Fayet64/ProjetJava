@@ -7,7 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-
+/**
+ * <b> Class qui nous a permit de tester nos première ecriture et chargement de fichier<b>
+ * 
+ */
 public class ImportFichier {
 
 	public static void main(String[] args) {

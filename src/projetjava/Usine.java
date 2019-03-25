@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- *
- * @author Julien Fayet
+ *<b> Cette classe permet de centraliser l'ensemble des listes utilisées<b>
+ * 
  */
 public class Usine {
     

@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- *
- * @author Julien Fayet
+ * C'est une interface qui possède les methodes suivantes
  */
 public interface GererFichier {
     public ArrayList<Element> chargerElements();
